@@ -20,6 +20,12 @@ module.exports = function(environment) {
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
+    },
+    firebase: {
+      apiKey: 'AIzaSyCOUcLH56NTr8Gc8utMp3zReRJp9iDK6JQ',
+      authDomain: "cooperativa-1.firebaseapp.com",
+      databaseURL: "https://cooperativa-1.firebaseio.com",
+      storageBucket: "cooperativa-1.appspot.com",
     }
   };
 
