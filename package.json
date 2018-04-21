@@ -17,6 +17,7 @@
     "test": "ember test"
   },
   "devDependencies": {
+    "bootstrap": "^3.3.7",
     "broccoli-asset-rev": "^2.4.5",
     "ember-ajax": "^3.0.0",
     "ember-cli": "~3.0.0",
@@ -44,5 +45,9 @@
   },
   "engines": {
     "node": "^4.5 || 6.* || >= 7.*"
+  },
+  "dependencies": {
+    "ember-aupac-typeahead": "^3.0.0",
+    "ember-bootstrap": "^1.2.2"
   }
 }
