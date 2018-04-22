@@ -3,8 +3,9 @@ import Controller from '@ember/controller';
 const mensajes = Ember.A(["Santiago trabaje mijo haha","sexo"  ]);
 
 export default Controller.extend({
+    
 
- 
+    inputData:{hola:"sexo"},
     country : null,
     countrySource : function(query, syncResults, asyncResults) {
       const regex = new RegExp(`.*${query}.*`, 'i');
@@ -33,6 +34,9 @@ export default Controller.extend({
             nuevoMensaje.save().then(function () {
                 return administrador.save();
             });
+        },
+        mostrar(){
+            console.log(this.get('person'))
         }
     }
 
