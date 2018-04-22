@@ -37,8 +37,8 @@ export default Controller.extend({
             });
         },
         mostrar(name){
-            console.log(name);
-            console.log(this.inputData.texto);
+            console.log(this.mostrar(name));
+
         },
 
     }
