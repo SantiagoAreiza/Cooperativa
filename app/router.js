@@ -8,6 +8,7 @@ const Router = EmberRouter.extend({
 
 Router.map(function() {
   this.route('insertar-socio');
+  this.route('iniciar-sesion');
 });
 
 export default Router;
