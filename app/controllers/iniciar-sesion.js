@@ -7,15 +7,17 @@ export default Controller.extend({
 
   actions: {
     signIn() {
-      let usuarioIngresado = Usuario.create({
-        Email: this.get('Email'),
-        Password: this.get('Contrasena')
+      var Email= this.get('Email'),
+      var Password= this.get('Contrasena');
+      this.get('session').open('firebase', {
+        provider: 'password',
+        email: this.get('Email'),
+        password: this.get('Password')
       });
-      usuarioIngresado.iniciarSesion();
     },
 
     signOut: function() {
-      Usuario.cerrarSesion();
+      this.get('session').close();
     }
   }
 });
