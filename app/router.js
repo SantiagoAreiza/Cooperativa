@@ -7,7 +7,7 @@ const Router = EmberRouter.extend({
 });
 
 Router.map(function() {
-  this.route('muro');
+  this.route('mensajes');
 });
 
 export default Router;
