@@ -1,23 +1,22 @@
 import Controller from '@ember/controller';
 import { inject as service } from '@ember/service';
-import Usuario from '../Class/Usuario';
+import Usuario from '../class/socio';
 
 export default Controller.extend({
   session: service(),
 
   actions: {
     signIn() {
-      var Email= this.get('Email'),
-      var Password= this.get('Contrasena');
-      this.get('session').open('firebase', {
-        provider: 'password',
-        email: this.get('Email'),
-        password: this.get('Password')
-      });
+      let usuarioIngresado = Usuario.create({
+        Email: this.get('Email'),
+        Password: this.get('Contrasena')
+      })
+      usuarioIngresado.iniciarSesion(this.get('session'));
     },
 
-    signOut: function() {
-      this.get('session').close();
+    signOut() {
+      var usuarioAutenticado = Usuario.create();
+      usuarioAutenticado.cerrarSesion(this.get('session'));
     }
   }
 });
