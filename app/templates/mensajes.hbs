@@ -10,7 +10,7 @@
 
 <button {{action "mostrar"}}>mostrar</button>
 <ul>
-  {{#each model as |mensaje|}}
+  {{#each   model  as |mensaje|}}
     <li>Hello, {{mensaje.texto}}!</li>
   {{/each}}
 </ul>
@@ -19,27 +19,12 @@
 
 
 
-
-<h1>Welcome to {{appName}}</h1>
-<br>
-
-<h1> One way binding </h1>
-{{#each solutionTypes as |solutionType|}}
- {{input value=(get inputData (get solutionType 'id')) }}
-{{/each}}
-
-<h2> Two way binding </h2>
-{{#each mensajes as |mensaje|}}
- {{input value=(mut (get inputData (get mensaje 'texto'))) }}
-{{/each}}
-<br>
-<h2> Result </h2>
- {{#each mensajes as |mensaje|}}     
-   <span> {{get inputData (get mensaje 'id')}} </span>
- {{/each}}
+ {{input  value=(mut (get inputData 'texto')) key-press=(action (action 'mostrar' (get inputData 'texto'))  value=(mut (get inputData 'texto'))) }}
+   
+ <span> {{get inputData 'texto'}} </span>
  <br />
-{{outlet}}
-<br>
-<br>
+
+
+
 
 {{outlet}}
