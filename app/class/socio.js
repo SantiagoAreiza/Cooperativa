@@ -7,6 +7,8 @@ export default EmberObject.extend({
       provider: 'password',
       email: this.get('Email'),
       password: this.get('Password')
+    }).catch(function(error){
+      console.log(error.message);
     });
   },
 
