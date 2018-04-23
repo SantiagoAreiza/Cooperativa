@@ -11,17 +11,20 @@ export default Controller.extend({
 			var password = this.get('Contrasena');
 			const auth = this.get('firebaseApp').auth();
 			auth.createUserWithEmailAndPassword(email, password)
+			.then(function(data){
+				var nuevoUsuario = this.store.createRecord('usuario',{
+					Nombre: nombre,
+					Correo: email,
+					Rol: "Socio",
+					Tipo: "Nuevo"
+				});
+				nuevoUsuario.save();
+			})
 			.catch(function(error) {
 				// Handle Errors here.
 				console.log(error.message)
 			});
-			var nuevoUsuario = this.store.createRecord('usuario',{
-				Nombre: nombre,
-				Correo: email,
-				Rol: "Socio",
-				Tipo: "Nuevo"
-			});
-			nuevoUsuario.save();
+			
 		}
 	}
 });

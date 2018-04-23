@@ -9,5 +9,7 @@
   {{/each}}
 </ul>
 
-
+{{#if error.error}}
+  {{ventana-notificacion mensaje=error.message}}
+{{/if}}
 {{outlet}}

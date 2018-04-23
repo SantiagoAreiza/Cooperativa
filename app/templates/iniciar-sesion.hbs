@@ -9,3 +9,7 @@
   Contraseña: {{input type="password" value=Contrasena}}<br/>
   <button {{action "signIn"}}>Iniciar Sesion</button>
 {{/if}}
+{{Hola}}
+{{#if error.error}}
+  {{ventana-notificacion mensaje=error.message}}
+{{/if}}
