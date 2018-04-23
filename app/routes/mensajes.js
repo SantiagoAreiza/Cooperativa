@@ -1,9 +1,9 @@
 import Route from '@ember/routing/route';
+import Mensaje from '../class/mensaje';
 
 export default Route.extend({
-
-    model: function() {
-        console.log(this.store.findAll('mensaje'));
-        return this.store.findAll('mensaje');
-      }
+	model() {
+		let mensajes = Mensaje.create();
+		return mensajes.verMensajes(this.store);
+	}
 });

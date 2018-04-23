@@ -1,46 +1,25 @@
 import Controller from '@ember/controller';
-
-const mensajes = Ember.A(["Santiago trabaje mijo haha","sexo"  ]);
+import Mensaje from '../class/mensaje';
 
 export default Controller.extend({
-    
-    
+	actions: {
+		publicarMensaje() {
+			var fechaActual = new Date();
+			var mensajeEscrito = this.get('mensaje');
+			var nuevoMensaje = Mensaje.create({
+				texto: mensajeEscrito,
+				fecha: fechaActual.getTime()
+			});
+			//Aquí se consulta el usuario que va a estar autenticado
+			var administrador = this.store.createRecord('usuario', {
+				Nombre: 'Simon',
+				Correo: 'szeag2@aa.com',
+				Rol: 'Admin'
+			});
 
-    inputData:{'texto':null},
-    country : null,
-    countrySource : function(query, syncResults, asyncResults) {
-      const regex = new RegExp(`.*${query}.*`, 'i');
-      const results = mensajes.filter((item, index, enumerable) => {
-        return regex.test(item);
-      })
-      syncResults(results);
-    },
+			nuevoMensaje.publicarMensaje(administrador, this.store);
+		},
 
-    actions: {
-        publicarMensaje() {
-            var nuevoMensaje = this.store.createRecord('mensaje', {
-                texto: 'My awesome new comment',
-                fecha: 123233
-            });
-
-
-            var   administrador = this.store.createRecord('administrador', {
-                nombre: 'Simon',
-                correo: 'szeag2@aa.com'
-            });
-
-                administrador.get('mensajes').addObject(nuevoMensaje)
-
-            // Save the comment, then save the post
-            nuevoMensaje.save().then(function () {
-                return administrador.save();
-            });
-        },
-        mostrar(name){
-            console.log(this.mostrar(name));
-
-        },
-
-    }
+	}
 
 });

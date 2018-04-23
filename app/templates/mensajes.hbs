@@ -1,29 +1,13 @@
 
-{{aupac-typeahead action=(action (mut country))
-  class='form-control'
-  source=countrySource
-  placeholder='Busca tu mensaje'}}
+{{textarea value=mensaje}}<br/>
 
-<button {{action "publicarMensaje"}}>Publicar</button>
-{{input value=(mut (get person field))}}
+<button {{action "publicarMensaje"}}>Publicar </button>
 
-<button {{action "mostrar"}}>Buscar</button>
 <ul>
   {{#each   model  as |mensaje|}}
     <li>Hello, {{mensaje.texto}}!</li>
   {{/each}}
 </ul>
-
-
-
-
-
- {{input  value=(mut (get inputData 'texto')) key-press=(action (action 'mostrar' (get inputData 'texto'))  value=(mut (get inputData 'texto'))) }}
-   
- <span> {{get inputData 'texto'}} </span>
- <br />
-
-
 
 
 {{outlet}}
