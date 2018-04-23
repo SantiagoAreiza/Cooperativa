@@ -26,6 +26,9 @@ module.exports = function(environment) {
       authDomain: "cooperativa-1.firebaseapp.com",
       databaseURL: "https://cooperativa-1.firebaseio.com",
       storageBucket: "cooperativa-1.appspot.com",
+    },
+    torii: {
+     sessionServiceName: 'session'
     }
   };
 
