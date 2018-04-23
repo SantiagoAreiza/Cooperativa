@@ -8,7 +8,7 @@ export default Controller.extend({
 			var mensajeEscrito = this.get('mensaje');
 			var nuevoMensaje = Mensaje.create({
 				texto: mensajeEscrito,
-				fecha: fechaActual.getTime()
+				fecha: fechaActual.getDate().toString() + '/' + (fechaActual.getMonth() + 1).toString() + '/' + fechaActual.getFullYear().toString()
 			});
 			//Aquí se consulta el usuario que va a estar autenticado
 			var administrador = this.store.createRecord('usuario', {
@@ -18,6 +18,7 @@ export default Controller.extend({
 			});
 
 			nuevoMensaje.publicarMensaje(administrador, this.store);
+			this.set('mensaje', null)
 		},
 
 	}

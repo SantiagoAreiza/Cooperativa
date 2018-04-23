@@ -1,13 +1,20 @@
+ <div class="container">
+  <div class="cuadroDeTexto">
+    {{textarea value=mensaje}}
+  </div>
+  <div class="row">
 
-{{textarea value=mensaje}}<br/>
-
-<button {{action "publicarMensaje"}}>Publicar </button>
-
-<ul>
-  {{#each   model  as |mensaje|}}
-    <li>Hello, {{mensaje.texto}}!</li>
-  {{/each}}
-</ul>
-
+    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+      <ul>
+          {{#each   model  as |mensaje|}}
+            <li>{{mensaje.fecha}} {{mensaje.texto}}</li>
+          {{/each}}
+      </ul>
+    </div>
+    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+      <button class="btn btn-lg btn-danger active" {{action "publicarMensaje"}}><span class="glyphicon glyphicon-envelope"></span> Publicar </button>
+    </div>
+  </div>
+</div>
 
 {{outlet}}

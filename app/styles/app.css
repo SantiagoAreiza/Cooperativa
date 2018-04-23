@@ -1,9 +1,36 @@
+body {
+    background-color: rgba(243, 242, 240, 0.952);
+}
+
 div.navbar-header {
     position: absolute;
     left: 1px;
 }
 
+.navbar-default .navbar-brand {
+    color: #ffff;
+}
+
+.navbar-default .navbar-nav > li > a {
+    color: #ffff;
+}
+
 div.navbar-content {
     position: absolute;
     left: 100px;
+}
+
+div.cuadroDeTexto{
+    position: relative;
+}
+
+textarea {
+    width: 62.5%;
+    height: 100%;
+    border-radius: 5px;
+}
+
+.navbar-default {
+    background-color: #e82e5e;
+    border-color: #e82e5e;
 }
