@@ -15,4 +15,4 @@ export default EmberObject.extend({
   cerrarSesion(servicio){
     servicio.close();
   }
-})
+});

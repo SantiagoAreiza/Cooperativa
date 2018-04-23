@@ -1,11 +1,12 @@
 import Controller from '@ember/controller';
+import Mensaje from '../class/mensaje';
 
 export default Controller.extend({
 	actions: {
 		publicarMensaje() {
 			var fechaActual = new Date();
 			var mensajeEscrito = this.get('mensaje');
-			var nuevoMensaje = this.store.createRecord('mensaje', {
+			var nuevoMensaje = Mensaje.create({
 				texto: mensajeEscrito,
 				fecha: fechaActual.getTime()
 			});
@@ -15,11 +16,8 @@ export default Controller.extend({
 				Correo: 'szeag2@aa.com',
 				Rol: 'Admin'
 			});
-			
-			administrador.get('mensajes').addObject(nuevoMensaje)
-			nuevoMensaje.save().then(function () {
-				return administrador.save();
-			});
+
+			nuevoMensaje.publicarMensaje(administrador, this.store);
 		},
 
 	}
