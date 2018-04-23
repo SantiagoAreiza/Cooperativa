@@ -1,14 +1,13 @@
-<p>holaaa</p>
 
 {{aupac-typeahead action=(action (mut country))
   class='form-control'
   source=countrySource
   placeholder='Busca tu mensaje'}}
 
-<button {{action "publicarMensaje"}}>Crear socio</button>
+<button {{action "publicarMensaje"}}>Publicar</button>
 {{input value=(mut (get person field))}}
 
-<button {{action "mostrar"}}>mostrar</button>
+<button {{action "mostrar"}}>Buscar</button>
 <ul>
   {{#each   model  as |mensaje|}}
     <li>Hello, {{mensaje.texto}}!</li>

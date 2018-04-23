@@ -1,0 +1,9 @@
+div.navbar-header {
+    position: absolute;
+    left: 1px;
+}
+
+div.navbar-content {
+    position: absolute;
+    left: 100px;
+}
