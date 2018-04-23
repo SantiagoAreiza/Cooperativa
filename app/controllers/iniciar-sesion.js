@@ -7,7 +7,7 @@ export default Controller.extend({
   error: { error: false, message: ""},
 
   camposInvalidos(arregloComponentes){
-    for (var i = 0; i < arregloComponentes.length; i++) { 
+    for (var i = 0; i < arregloComponentes.length; i++) {
       if(arregloComponentes[i] === "" || typeof(arregloComponentes[i])=="undefined"){
         return true;
       }
@@ -31,6 +31,9 @@ export default Controller.extend({
           set(MError,'error',true);
           set(MError,'message',error.message);
         });
+        if(!get(MError,'error')){
+          this.transitionToRoute('mensajes');
+        }
       }
     },
 
