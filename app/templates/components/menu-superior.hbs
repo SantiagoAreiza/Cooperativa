@@ -1,7 +1,7 @@
 {{#bs-navbar type=(if inverse 'inverse') fluid=fluid collapsed=collapsed onCollapse=(action (mut collapsed) true) onExpand=(action (mut collapsed) false) as |navbar|}}
   <div class="navbar-header">
     {{navbar.toggle}}
-    {{#link-to "mensajes" class="navbar-brand"}}Cooperativa{{/link-to}}
+    {{#link-to "mensajes" class="navbar-brand"}} <strong><span>Cooperativa</span></strong> {{/link-to}}
   </div>
   <div class="navbar-content">
   {{#navbar.content}}
