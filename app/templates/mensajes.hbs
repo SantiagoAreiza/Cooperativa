@@ -21,8 +21,8 @@
     <div class="alert alert-warning">
       Advertencia: Campos incompletos
     </div>
-    {{#if error.error}}
-      {{ventana-notificacion mensaje=error.message}}
+    {{#if error}}
+      {{ventana-notificacion mensaje=errorMessage}}
     {{/if}}
   </div>
 </div>

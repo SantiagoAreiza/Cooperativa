@@ -1,12 +1,11 @@
 import Controller from '@ember/controller';
-import Mensaje from '../class/mensaje';
-import { set, get } from '@ember/object';
 
 export default Controller.extend({
-	error: { error: false, message: ""},
+	error: false,
+	errorMessage: "Campos invalidos",
 	camposInvalidos(arregloComponentes){
     for (var i = 0; i < arregloComponentes.length; i++) { 
-      if(arregloComponentes[i] === "" || typeof(arregloComponentes[i])=="undefined"){
+      if(arregloComponentes[i] === "" ||typeof(arregloComponentes[i])=="undefined"){
         return true;
       }
     }
@@ -16,8 +15,7 @@ export default Controller.extend({
 			var fechaActual = new Date();
 			var mensajeEscrito = this.get('mensaje');
 			if(this.camposInvalidos([mensajeEscrito])){
-				set(this.get('error'),'error',true);
-        set(this.get('error'),'message',"Campos incompletos");
+				this.set('error', true);
 			}else{
 				var nuevoMensaje = this.store.createRecord('mensaje', {
 					texto: mensajeEscrito,

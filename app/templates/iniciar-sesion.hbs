@@ -10,6 +10,6 @@
   <button {{action "signIn"}}>Iniciar Sesion</button>
 {{/if}}
 {{Hola}}
-{{#if error.error}}
-  {{ventana-notificacion mensaje=error.message}}
+{{#if error}}
+  {{ventana-notificacion mensaje=errorMessage}}
 {{/if}}

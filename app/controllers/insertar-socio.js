@@ -11,7 +11,7 @@ export default Controller.extend({
 			var password = this.get('Contrasena');
 			const auth = this.get('firebaseApp').auth();
 			auth.createUserWithEmailAndPassword(email, password)
-			.then(function(data){
+			.then(() => {
 				var nuevoUsuario = this.store.createRecord('usuario',{
 					Nombre: nombre,
 					Correo: email,
@@ -19,10 +19,6 @@ export default Controller.extend({
 					Tipo: "Nuevo"
 				});
 				nuevoUsuario.save();
-			})
-			.catch(function(error) {
-				// Handle Errors here.
-				console.log(error.message)
 			});
 			
 		}

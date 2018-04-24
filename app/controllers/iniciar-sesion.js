@@ -1,29 +1,29 @@
 import Controller from '@ember/controller';
 import { inject as service } from '@ember/service';
-import { set, get } from '@ember/object';
+import { set } from '@ember/object';
 
 export default Controller.extend({
   session: service(),
-  error: { error: false, message: ""},
+  error: false,
+	errorMessage: "Campos invalidos",
 
-  camposInvalidos(arregloComponentes){
+  camposInvalidos: function(arregloComponentes){
     for (var i = 0; i < arregloComponentes.length; i++) {
-      if(arregloComponentes[i] === "" || typeof(arregloComponentes[i])=="undefined"){
+      if(arregloComponentes[i] === "" ||typeof(arregloComponentes[i])=="undefined"){
         return true;
       }
     }
   },
 
   actions: {
-    signIn() {
+    async signIn() {
       var Email = this.get('Email');
       var Password = this.get('Contrasena');
-      var MError = this.get('error');
+      var MError = { error: false, message: "Campos invalidos"};
       if(this.camposInvalidos([Email,Password])){
-        set(MError,'error',true);
-        set(MError,'message',"Campos incompletos");
+        this.set('error', true);
       }else{
-        this.get('session').open('firebase', {
+        var promesa = await this.get('session').open('firebase', {
           provider: 'password',
           email: Email,
           password: Password
@@ -31,7 +31,9 @@ export default Controller.extend({
           set(MError,'error',true);
           set(MError,'message',error.message);
         });
-        if(!get(MError,'error')){
+        this.set('error', MError.error);
+        this.set('errorMessage', MError.message);
+        if(!this.get('error')){
           this.transitionToRoute('mensajes');
         }
       }
