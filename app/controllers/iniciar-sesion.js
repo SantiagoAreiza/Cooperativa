@@ -38,9 +38,5 @@ export default Controller.extend({
         }
       }
     },
-
-    signOut() {
-      this.get('session').close();
-    }
   }
 });

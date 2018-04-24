@@ -1,14 +1,10 @@
 {{outlet}}
 
-{{#if session.isAuthenticated}}
-  Logged in as {{session.currentUser.displayName}}
-  <button {{action "signOut"}}>Sign out</button>
-  {{outlet}}
-{{else}}
+{{#unless session.isAuthenticated}}
   Correo: {{input type="email" value=Email}}<br/>
   Contraseña: {{input type="password" value=Contrasena}}<br/>
   <button {{action "signIn"}}>Iniciar Sesion</button>
-{{/if}}
+{{/unless}}
 {{#if error}}
   {{ventana-notificacion mensaje=errorMessage}}
 {{/if}}

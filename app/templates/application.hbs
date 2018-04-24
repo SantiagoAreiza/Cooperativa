@@ -1,18 +1,2 @@
-{{#bs-navbar type=(if inverse 'inverse') fluid=fluid collapsed=collapsed onCollapse=(action (mut collapsed) true) onExpand=(action (mut collapsed) false) as |navbar|}}
-  <div class="navbar-header">
-    {{navbar.toggle}}
-    {{#link-to "mensajes" class="navbar-brand"}}Cooperativa{{/link-to}}
-  </div>
-  <div class="navbar-content">
-  {{#navbar.content}}
-    {{#navbar.nav as |nav|}}
-      {{#nav.item}}{{#link-to "mensajes"}}Inicio{{/link-to}}{{/nav.item}}
-      {{#nav.item}}{{#link-to "mensajes"}}Préstamos{{/link-to}}{{/nav.item}}
-      {{#nav.item}}{{#link-to "mensajes"}}Historial{{/link-to}}{{/nav.item}}
-      {{#nav.item}}{{#link-to "mensajes"}}Gestión{{/link-to}}{{/nav.item}}
-    {{/navbar.nav}}
-  {{/navbar.content}}
-  </div>
-{{/bs-navbar}}
-
+{{menu-superior}}
 {{outlet}}
