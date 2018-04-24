@@ -1,4 +1,6 @@
+import { get, set } from '@ember/object';
 import Controller from '@ember/controller';
+import FindQuery from 'ember-emberfire-find-query/mixins/find-query';
 
 export default Controller.extend({
 	error: false,
@@ -35,6 +37,20 @@ export default Controller.extend({
 				});
 			}
 		},
+		buscarMensaje(model){
+			console.log(model);
+			var mensaje =[];
+			this.filterContains(this.store, 'mensaje', {'texto':this.get('mensaje')}, function(mensajes){
+				model = mensajes;
+				console.log(model);
+				model.forEach(element => {
+					console.log(get( element , 'texto'));
+					mensaje.pushObject(get( element , 'texto'));
+					
+				});
+			});
+
+		}
 
 	}
 
