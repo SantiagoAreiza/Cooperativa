@@ -18,8 +18,8 @@
     </div>
   </div>
   <div class="buscar">
-    {{textarea class="buscarMensaje" value=input}}
-    <button class="btn btn-default" style="color:#12225C"> <span class="glyphicon glyphicon-search"></span> Buscar </button> 
+    {{textarea class="buscarMensaje" value=buscarMensaje}}
+    <button class="btn btn-default" style="color:#12225C" {{action "buscarMensaje"}}> <span class="glyphicon glyphicon-search"></span> Buscar </button> 
   </div>
 </div>
 <br>

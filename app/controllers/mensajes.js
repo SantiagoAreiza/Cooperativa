@@ -37,15 +37,16 @@ export default Controller.extend(FindQuery, {
 				nuevoMensaje.save().then(function () {
 					return administrador.save();
 				});
+				this.set('model',this.store.findAll('mensaje'));
 			}
 		},
 		buscarMensaje(){
 			this.set('error', false);
-			if(this.camposInvalidos([this.get('mensaje')])){
+			if(this.camposInvalidos([this.get('buscarMensaje')])){
 				this.set('error', true);
 			}else{
 				var Mensajes = {arreglo : []};
-				this.filterContains(this.store, 'mensaje', {'texto':this.get('mensaje')}, function(mensajes){
+				this.filterContains(this.store, 'mensaje', {'texto':this.get('buscarMensaje')}, function(mensajes){
 					mensajes.forEach(element => {
 						Mensajes.arreglo.push({texto: get( element , 'texto'), fecha: get( element , 'fecha')});
 					});
