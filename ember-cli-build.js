@@ -9,9 +9,9 @@ module.exports = function(defaults) {
       'importBootstrapFont': true,
       'importBootstrapCSS': true
     },
-    babel: {
+    'ember-cli-babel': {
       includePolyfill: true
-    },
+    }
   });
 
   // Use `app.import` to add additional libraries to the generated

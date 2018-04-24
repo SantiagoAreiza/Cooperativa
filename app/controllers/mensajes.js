@@ -1,10 +1,11 @@
-import { get, set } from '@ember/object';
+import { get } from '@ember/object';
 import Controller from '@ember/controller';
 import FindQuery from 'ember-emberfire-find-query/mixins/find-query';
 
-export default Controller.extend({
+export default Controller.extend(FindQuery, {
 	error: false,
 	errorMessage: "Campos invalidos",
+  
 	camposInvalidos(arregloComponentes){
     for (var i = 0; i < arregloComponentes.length; i++) { 
       if(arregloComponentes[i] === "" ||typeof(arregloComponentes[i])=="undefined"){
@@ -37,19 +38,14 @@ export default Controller.extend({
 				});
 			}
 		},
-		buscarMensaje(model){
-			console.log(model);
-			var mensaje =[];
+		buscarMensaje(){
+			var Mensajes = {arreglo : []};
 			this.filterContains(this.store, 'mensaje', {'texto':this.get('mensaje')}, function(mensajes){
-				model = mensajes;
-				console.log(model);
-				model.forEach(element => {
-					console.log(get( element , 'texto'));
-					mensaje.pushObject(get( element , 'texto'));
-					
+				mensajes.forEach(element => {
+					Mensajes.arreglo.push({texto: get( element , 'texto'), fecha: get( element , 'fecha')});
 				});
 			});
-
+			this.set('model',Mensajes.arreglo);
 		}
 
 	}

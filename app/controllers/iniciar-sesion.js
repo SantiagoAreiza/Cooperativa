@@ -23,7 +23,7 @@ export default Controller.extend({
       if(this.camposInvalidos([Email,Password])){
         this.set('error', true);
       }else{
-        var promesa = await this.get('session').open('firebase', {
+        await this.get('session').open('firebase', {
           provider: 'password',
           email: Email,
           password: Password
