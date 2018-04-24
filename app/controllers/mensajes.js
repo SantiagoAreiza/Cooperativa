@@ -1,10 +1,13 @@
-import { get } from '@ember/object';
 import Controller from '@ember/controller';
+import { inject as service } from '@ember/service';
+import { get } from '@ember/object';
+
 import FindQuery from 'ember-emberfire-find-query/mixins/find-query';
 
 export default Controller.extend(FindQuery, {
 	error: false,
 	errorMessage: "Campos invalidos",
+	firebaseApp: service(),
   
 	camposInvalidos(arregloComponentes){
     for (var i = 0; i < arregloComponentes.length; i++) { 
@@ -25,17 +28,13 @@ export default Controller.extend(FindQuery, {
 					texto: mensajeEscrito,
 					fecha: fechaActual.getDate().toString() + '/' + (fechaActual.getMonth() + 1).toString() + '/' + fechaActual.getFullYear().toString()
 				});
-				
-				//Aquí se consulta el usuario que va a estar autenticado
-				var administrador = this.store.createRecord('usuario', {
-					Nombre: 'Simon',
-					Correo: 'szeag2@aa.com',
-					Rol: 'Admin'
-				});
-	
-				administrador.get('mensajes').addObject(nuevoMensaje)
-				nuevoMensaje.save().then(function () {
-					return administrador.save();
+				this.filterContains(this.store, 'usuario', {'Correo':this.get('firebaseApp').auth().currentUser.email}, function(administradores){
+					administradores.forEach(administrador => {
+						administrador.get('mensajes').addObject(nuevoMensaje);
+						nuevoMensaje.save().then(function () {
+							return administrador.save();
+						});
+					});
 				});
 				this.set('model',this.store.findAll('mensaje'));
 			}
