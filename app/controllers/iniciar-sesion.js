@@ -17,6 +17,8 @@ export default Controller.extend({
 
   actions: {
     async signIn() {
+      this.set('error', false);
+      this.set('errorMessage' , 'Campos invalidos');
       var Email = this.get('Email');
       var Password = this.get('Contrasena');
       var MError = { error: false, message: "Campos invalidos"};
