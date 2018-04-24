@@ -15,6 +15,7 @@ export default Controller.extend(FindQuery, {
   },
 	actions: {
 		publicarMensaje() {
+			this.set('error', false);
 			var fechaActual = new Date();
 			var mensajeEscrito = this.get('mensaje');
 			if(this.camposInvalidos([mensajeEscrito])){
@@ -39,13 +40,18 @@ export default Controller.extend(FindQuery, {
 			}
 		},
 		buscarMensaje(){
-			var Mensajes = {arreglo : []};
-			this.filterContains(this.store, 'mensaje', {'texto':this.get('mensaje')}, function(mensajes){
-				mensajes.forEach(element => {
-					Mensajes.arreglo.push({texto: get( element , 'texto'), fecha: get( element , 'fecha')});
+			this.set('error', false);
+			if(this.camposInvalidos([this.get('mensaje')])){
+				this.set('error', true);
+			}else{
+				var Mensajes = {arreglo : []};
+				this.filterContains(this.store, 'mensaje', {'texto':this.get('mensaje')}, function(mensajes){
+					mensajes.forEach(element => {
+						Mensajes.arreglo.push({texto: get( element , 'texto'), fecha: get( element , 'fecha')});
+					});
 				});
-			});
-			this.set('model',Mensajes.arreglo);
+				this.set('model',Mensajes.arreglo);
+			}
 		}
 
 	}

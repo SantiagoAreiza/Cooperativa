@@ -19,11 +19,8 @@
         <span class="glyphicon glyphicon-search"></span> Buscar </button>
     </div>
   </div>
-  <div class="row">
-    <div class="alert alert-warning">
-      Advertencia: Campos incompletos
-    </div>
-    {{#if error.error}} {{ventana-notificacion mensaje=error.message}} {{/if}}
+  <div>
+  {{#if error}} {{ventana-notificacion mensaje=errorMessage}} {{/if}}
   </div>
 </div>
 
