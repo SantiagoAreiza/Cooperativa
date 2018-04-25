@@ -12,15 +12,13 @@
       {{#nav.item}}{{#link-to "mensajes"}}Historial{{/link-to}}{{/nav.item}}
       {{#nav.item}}{{#link-to "mensajes"}}Gestión{{/link-to}}{{/nav.item}}
       {{#nav.item}}
-					Logged in as {{session.currentUser.displayName}}
-					<button {{action "signOut"}}>Sign out</button>
+					<button {{action "signOut"}} class="but">Sign out</button>
       {{/nav.item}}
       {{else}}
       {{#nav.item}}{{#link-to "mensajes"}}Inicio{{/link-to}}{{/nav.item}}
       {{#nav.item}}{{#link-to "mensajes"}}Préstamos{{/link-to}}{{/nav.item}}
       {{#nav.item}}{{#link-to "mensajes"}}Historial{{/link-to}}{{/nav.item}}
-            {{#nav.item}}
-					Logged in as {{session.currentUser.displayName}}
+      {{#nav.item}}
 					<button {{action "signOut"}}>Sign out</button>
       {{/nav.item}}
       {{/if}}

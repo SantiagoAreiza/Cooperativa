@@ -11,7 +11,13 @@ export default Controller.extend(FindQuery, {
 	firebaseApp: service(),
 	Admin: computed(function(){
 		return localStorage.rol === "Admin";
-    }),
+	}),
+	init() {
+
+		if(localStorage.rol==='null'){
+			this.transitionToRoute('iniciar-sesion');
+		}
+	  },
 
 
 	camposInvalidos(arregloComponentes){
