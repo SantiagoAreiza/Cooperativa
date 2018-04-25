@@ -2,10 +2,13 @@ import Controller from '@ember/controller';
 import { inject as service } from '@ember/service';
 import { set } from '@ember/object';
 
-export default Controller.extend({
+import FindQuery from 'ember-emberfire-find-query/mixins/find-query';
+
+export default Controller.extend(FindQuery, {
   session: service(),
   error: false,
-	errorMessage: "Campos invalidos",
+  errorMessage: "Campos invalidos",
+  firebaseApp: service(),
 
   camposInvalidos: function(arregloComponentes){
     for (var i = 0; i < arregloComponentes.length; i++) {
@@ -37,6 +40,11 @@ export default Controller.extend({
         this.set('errorMessage', MError.message);
         if(!this.get('error')){
           this.transitionToRoute('mensajes');
+          this.filterEqual(this.store, 'usuario', {'Correo':this.get('firebaseApp').auth().currentUser.email}, function(administradores){
+            administradores.forEach(administrador => {
+              localStorage.rol = administrador.get('Rol');
+            });
+          });
         }
       }
     },

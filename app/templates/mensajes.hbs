@@ -1,6 +1,7 @@
 <div class="container" style="border:1px solid #6d6261; border-radius: 5px; background-color: rgba(230,230,230)">
   <h4 style="color: rgb(50,50,50)"><strong >Publicar Mensaje</strong></h4>
   <div class="publicar">
+    {{rol}}
     {{textarea class="publicarMensaje" value=mensaje}}
     <button class="btn btn-default" style="color:rgb(50, 50, 50); margin: 0px 0px 5px;" {{action "publicarMensaje"}}><span class="glyphicon glyphicon-envelope"></span> Publicar </button>
     

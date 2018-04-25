@@ -8,7 +8,7 @@ export default Controller.extend(FindQuery, {
 	error: false,
 	errorMessage: "Campos invalidos",
 	firebaseApp: service(),
-  
+
 	camposInvalidos(arregloComponentes){
     for (var i = 0; i < arregloComponentes.length; i++) { 
       if(arregloComponentes[i] === "" ||typeof(arregloComponentes[i])=="undefined"){
@@ -28,7 +28,7 @@ export default Controller.extend(FindQuery, {
 					texto: mensajeEscrito,
 					fecha: fechaActual.getDate().toString() + '/' + (fechaActual.getMonth() + 1).toString() + '/' + fechaActual.getFullYear().toString()
 				});
-				this.filterContains(this.store, 'usuario', {'Correo':this.get('firebaseApp').auth().currentUser.email}, function(administradores){
+				this.filterEqual(this.store, 'usuario', {'Correo':this.get('firebaseApp').auth().currentUser.email}, function(administradores){
 					administradores.forEach(administrador => {
 						administrador.get('mensajes').addObject(nuevoMensaje);
 						nuevoMensaje.save().then(function () {
