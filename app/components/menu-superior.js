@@ -7,7 +7,7 @@ export default Component.extend({
     session: service(),
     router: service(),
     Admin: computed(function(){
-		return localStorage.rol == "Admin";
+		return localStorage.rol === "Admin";
     }),
     
     actions: {
