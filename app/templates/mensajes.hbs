@@ -51,12 +51,9 @@
 </div>
 <br>
   {{#if error}} 
-  <span style="width:500px; border-radius: 5px; background-color: rgb(245, 150, 106) ">{{ventana-notificacion mensaje=errorMessage}} </span> 
-  {{else}}
-    <div class="container" style="border:1px solid #6d6261; width:500px; border-radius: 5px; background-color: rgb(162, 247, 174)">
-        <span><strong>Éxito:</strong></span>
-        <span >Mensaje Publicado con éxito</span> 
-    </div>
-      
+  <div class="container">
+    {{ventana-notificacion mensaje=errorMessage}}
+  </div>
+  
   {{/if}}
 {{outlet}}

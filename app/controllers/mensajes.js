@@ -7,7 +7,7 @@ import FindQuery from 'ember-emberfire-find-query/mixins/find-query';
 
 export default Controller.extend(FindQuery, {
 	error: false,
-	errorMessage: "Campos invalidos",
+	errorMessage: "Advertencia: Campos invalidos",
 	firebaseApp: service(),
 	Admin: computed(function(){
 		return localStorage.rol === "Admin";
@@ -48,6 +48,8 @@ export default Controller.extend(FindQuery, {
 					});
 				});
 				this.set('model',this.store.findAll('mensaje'));
+				this.set('error',true);
+				this.set('errorMessage',"Exito: Mensaje publicado con éxito")
 			}
 		},
 		buscarMensaje(){
