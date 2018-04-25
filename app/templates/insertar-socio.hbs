@@ -1,4 +1,12 @@
-Nombre: {{input type="text" value=Nombre}}<br/>
-Correo: {{input type="email" value=Email}}<br/>
-Contraseña: {{input type="password" value=Contrasena}}<br/>
-<button {{action "crearUsuario"}}>Crear socio</button>
+
+<div class="container" style="border:1px solid #6d6261; border-radius: 20px; background-color:rgb(200,200,200); width: 320px; min-height:270px;">
+<br>
+<span class="glyphicon glyphicon-user" style="font-size: 100px; margin: 0px 0px 20px 90px" ></span><br/>
+<span style="margin: 0px 14px 0px;"><strong>Nombre:</strong></span> {{input type="text" value=Nombre}}<br/>
+<span style="margin: 0px 17.5px 0px;"><strong>Correo:</strong></span> {{input type="email" value=Email}}<br/>
+<span style="margin: 0px 1.5px 10px;"><strong>Contraseña:</strong> </span> {{input type="password" value=Contrasena}}<br/>
+<button class="class=btn btn-basic btn-md" style="margin: 10px 0px 10px 100px;" {{action "crearUsuario"}}>Crear socio</button>
+
+
+</div>
+
