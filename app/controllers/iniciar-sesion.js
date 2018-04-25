@@ -46,6 +46,8 @@ export default Controller.extend(FindQuery, {
             });
           });
         }
+        this.set('Contrasena','');
+        this.set('Email','');
       }
     },
   }
