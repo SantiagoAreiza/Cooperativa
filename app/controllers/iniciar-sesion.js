@@ -18,6 +18,13 @@ export default Controller.extend(FindQuery, {
     }
   },
 
+  init() {
+    this._super(...arguments);
+		if(localStorage.rol!=='null'||typeof(localStorage.rol)!=='undefined'){
+      this.transitionToRoute('mensajes');
+		}
+	},
+
   actions: {
     async signIn() {
       this.set('error', false);
