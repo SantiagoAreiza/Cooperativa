@@ -1,6 +1,7 @@
 import Controller from '@ember/controller';
 import { inject as service } from '@ember/service';
 import { get } from '@ember/object';
+import { computed } from '@ember/object';
 
 import FindQuery from 'ember-emberfire-find-query/mixins/find-query';
 
@@ -8,6 +9,10 @@ export default Controller.extend(FindQuery, {
 	error: false,
 	errorMessage: "Campos invalidos",
 	firebaseApp: service(),
+	Admin: computed(function(){
+		return localStorage.rol === "Admin";
+    }),
+
 
 	camposInvalidos(arregloComponentes){
     for (var i = 0; i < arregloComponentes.length; i++) { 
