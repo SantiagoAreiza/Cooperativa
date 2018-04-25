@@ -14,8 +14,8 @@ export default Controller.extend(FindQuery, {
 	}),
 	init() {
 		this._super(...arguments);
-		if(localStorage.rol==='null'){
-			this.transitionToRoute('iniciar-sesion');
+		if(localStorage.rol=='null'||typeof(localStorage.rol)=='undefined'){
+		this.transitionToRoute('iniciar-sesion');
 		}
 	},
 
