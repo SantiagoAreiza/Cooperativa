@@ -13,12 +13,11 @@ export default Controller.extend(FindQuery, {
 		return localStorage.rol === "Admin";
 	}),
 	init() {
-
+		this._super(...arguments);
 		if(localStorage.rol==='null'){
 			this.transitionToRoute('iniciar-sesion');
 		}
-	  },
-
+	},
 
 	camposInvalidos(arregloComponentes){
     for (var i = 0; i < arregloComponentes.length; i++) { 
@@ -49,7 +48,7 @@ export default Controller.extend(FindQuery, {
 				});
 				this.set('model',this.store.findAll('mensaje'));
 				this.set('error',true);
-				this.set('errorMessage',"Exito: Mensaje publicado con éxito")
+				this.set('errorMessage',"Exito: Mensaje publicado con éxito");
 			}
 		},
 		buscarMensaje(){
@@ -63,7 +62,12 @@ export default Controller.extend(FindQuery, {
 						Mensajes.arreglo.push({texto: get( element , 'texto'), fecha: get( element , 'fecha')});
 					});
 				});
-				this.set('model',Mensajes.arreglo);
+				if(Mensajes.arreglo.length == 0){
+					this.set('error', true);
+					this.set('errorMessage',"Advertencia: No se han encontrado mensajes");
+				}else{
+					this.set('model',Mensajes.arreglo);
+				}
 			}
 		}
 
