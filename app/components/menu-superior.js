@@ -14,11 +14,11 @@ export default Component.extend({
     }),
     
     actions: {
-        signOut() {
+        signOut: function() {
             this.get('session').close();
             this.get('router').transitionTo('iniciar-sesion');
             localStorage.removeItem('rol');
-        }
+          }
     }
     
 });
