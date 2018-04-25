@@ -6,16 +6,24 @@
   <div class="navbar-content">
   {{#navbar.content}}
     {{#navbar.nav as |nav|}}
+    {{#if Admin}}
       {{#nav.item}}{{#link-to "mensajes"}}Inicio{{/link-to}}{{/nav.item}}
-      {{#nav.item}}{{#link-to "mensajes"}}Préstamos{{/link-to}}{{/nav.item}}
+      {{#nav.item}}{{#link-to "mensajes"}}Préstamos Aprobados{{/link-to}}{{/nav.item}}
       {{#nav.item}}{{#link-to "mensajes"}}Historial{{/link-to}}{{/nav.item}}
       {{#nav.item}}{{#link-to "mensajes"}}Gestión{{/link-to}}{{/nav.item}}
       {{#nav.item}}
-        {{#if Admin}}
 					Logged in as {{session.currentUser.displayName}}
 					<button {{action "signOut"}}>Sign out</button>
-        {{/if}}
       {{/nav.item}}
+      {{else}}
+      {{#nav.item}}{{#link-to "mensajes"}}Inicio{{/link-to}}{{/nav.item}}
+      {{#nav.item}}{{#link-to "mensajes"}}Préstamos{{/link-to}}{{/nav.item}}
+      {{#nav.item}}{{#link-to "mensajes"}}Historial{{/link-to}}{{/nav.item}}
+            {{#nav.item}}
+					Logged in as {{session.currentUser.displayName}}
+					<button {{action "signOut"}}>Sign out</button>
+      {{/nav.item}}
+      {{/if}}
     {{/navbar.nav}}
   {{/navbar.content}}
   </div>
