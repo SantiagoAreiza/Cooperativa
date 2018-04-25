@@ -9,12 +9,15 @@ export default Component.extend({
     Admin: computed(function(){
 		return localStorage.rol === "Admin";
     }),
+    Auth: computed(function(){
+        return typeof(localStorage.rol) !=="undefined";
+    }),
     
     actions: {
         signOut() {
             this.get('session').close();
             this.get('router').transitionTo('iniciar-sesion');
-            localStorage.rol = null;
+            localStorage.removeItem('rol');
         }
     }
     
