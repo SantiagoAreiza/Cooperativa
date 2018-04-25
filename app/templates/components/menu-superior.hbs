@@ -10,13 +10,12 @@
       {{#nav.item}}{{#link-to "mensajes"}}Préstamos{{/link-to}}{{/nav.item}}
       {{#nav.item}}{{#link-to "mensajes"}}Historial{{/link-to}}{{/nav.item}}
       {{#nav.item}}{{#link-to "mensajes"}}Gestión{{/link-to}}{{/nav.item}}
-      {{#nav.item}}
-        {{#if Admin}}
-					Logged in as {{session.currentUser.displayName}}
-					<button {{action "signOut"}}>Sign out</button>
-        {{/if}}
-      {{/nav.item}}
     {{/navbar.nav}}
   {{/navbar.content}}
+  </div>
+  <div class="salir">
+    {{#if Admin}}
+      <button class="btn btn-default" {{action "signOut"}}> <span class="glyphicon glyphicon-log-out"></span> Sign out </button>
+    {{/if}}
   </div>
 {{/bs-navbar}}

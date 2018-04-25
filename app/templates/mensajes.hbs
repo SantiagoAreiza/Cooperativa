@@ -14,13 +14,14 @@
     <h4><strong>Publicaciones </strong></h4>
     <div class="estetica" style="border:1px solid #6d6261; border-radius: 5px;">
       <div>
-
-        {{#each model as |mensaje|}}            
+          {{#each model as |mensaje|}}
+          <div class="ubicacionFecha">          
             <h4>
               <span class="label label-default label-lg" style="margin: 0px 10px;">            
                 <h6 class="glyphicon glyphicon-calendar"><span> </span> {{mensaje.fecha}}</h6>   
               </span>
-            </h4>   
+            </h4>
+          </div>   
 
             
             <p class="glyphicon glyphicon-envelope " style="margin: 0px 10px;" ><span> </span><span style="font-family: sans-serif;">{{mensaje.texto}}</span></p>

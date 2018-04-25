@@ -45,3 +45,9 @@ container{
     background-color: rgb(40,40,40);
     border-color: rgb(40,40,40);
 }
+
+div.salir{
+    float: right;
+    position: absolute;
+    right: 0;
+}
