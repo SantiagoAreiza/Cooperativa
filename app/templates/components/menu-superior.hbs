@@ -17,14 +17,15 @@
           {{#nav.item}}{{#link-to "mensajes"}}Préstamos{{/link-to}}{{/nav.item}}
           {{#nav.item}}{{#link-to "mensajes"}}Historial{{/link-to}}{{/nav.item}}
         {{/if}}
-        {{#nav.item}}
-            Logged in as {{session.currentUser.displayName}}
-            <button {{action "signOut"}}>Sign out</button>
-        {{/nav.item}}
       {{else}}
         {{#nav.item}}Cooperativa{{/nav.item}}
       {{/if}}
     {{/navbar.nav}}
   {{/navbar.content}}
   </div>
+  {{#if Auth}}
+    <div class="salir">
+        <button class="btn btn-default" {{action "signOut"}}> <span class="glyphicon glyphicon-log-out"></span> Sign out </button>
+    </div>
+  {{/if}}
 {{/bs-navbar}}
