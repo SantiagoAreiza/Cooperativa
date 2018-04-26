@@ -20,7 +20,7 @@ export default Controller.extend(FindQuery, {
 
   init() {
     this._super(...arguments);
-		if(localStorage.rol!=='null'||typeof(localStorage.rol)!=='undefined'){
+		if(typeof(localStorage.rol)!=='undefined'){
       this.transitionToRoute('mensajes');
 		}
 	},

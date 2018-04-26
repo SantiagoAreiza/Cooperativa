@@ -12,7 +12,7 @@ export default Controller.extend(FindQuery, {
 	Admin: false,
 	init() {
 		this._super(...arguments);
-		if(localStorage.rol=='null'||typeof(localStorage.rol)=='undefined'){
+		if(typeof(localStorage.rol)=='undefined'){
 		this.transitionToRoute('iniciar-sesion');
 		}
 	},
