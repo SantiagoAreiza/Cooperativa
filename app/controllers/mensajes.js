@@ -49,13 +49,13 @@ export default Controller.extend(FindQuery, {
 				this.set('errorMessage',"Exito: Mensaje publicado con éxito");
 			}
 		},
-		buscarMensaje(){
+		async buscarMensaje(){
 			this.set('error', false);
 			if(this.camposInvalidos([this.get('buscarMensaje')])){
 				this.set('error', true);
 			}else{
 				var Mensajes = {arreglo : []};
-				this.filterContains(this.store, 'mensaje', {'texto':this.get('buscarMensaje')}, function(mensajes){
+				await this.filterContains(this.store, 'mensaje', {'texto':this.get('buscarMensaje')}, function(mensajes){
 					mensajes.forEach(element => {
 						Mensajes.arreglo.push({texto: get( element , 'texto'), fecha: get( element , 'fecha')});
 					});
