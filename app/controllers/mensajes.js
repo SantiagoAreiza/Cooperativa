@@ -1,7 +1,6 @@
 import Controller from '@ember/controller';
 import { inject as service } from '@ember/service';
 import { get } from '@ember/object';
-import { computed } from '@ember/object';
 
 import FindQuery from 'ember-emberfire-find-query/mixins/find-query';
 
