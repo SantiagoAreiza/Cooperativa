@@ -51,3 +51,111 @@ div.salir{
     position: absolute;
     right: 0;
 }
+
+#contenedor_sesion{    
+    border:1px solid #6d6261;
+    border-radius: 20px; 
+    background-color:rgb(200,200,200); 
+    width: 350px; 
+    min-height:270px;
+}
+
+#icono_inicio_sesion{
+    font-size: 100px; 
+    margin: 0px 0px 20px 105px;
+}
+
+#etiqueta_correo_incio_sesion{
+    margin: 0px 30px ;
+}
+
+#etiqueta_contraseña_inicio_sesion{
+    margin: 0px 16px;
+}
+
+#boton_inicio_sesion{
+    margin: 20px 0px 10px 105px;
+}
+
+#contenedor_insertar_socio{
+    border:1px solid #6d6261; 
+    border-radius: 20px; 
+    background-color:rgb(200,200,200); 
+    width: 320px; min-height:270px;
+}
+
+#icono_suma_insertar_socio{
+    font-size: 50px; 
+    margin: 50px 0px 0px 65px;
+}
+
+#icono_usuario_insertar_socio{
+    font-size: 100px; 
+    margin: 0px 0px 20px 0px;
+}
+
+#etiqueta_nombre_socio{
+    margin: 0px 14px 0px;
+}
+
+#etiqueta_correo_socio{
+    margin: 0px 17.5px 0px;
+}
+
+#etiqueta_contraseña_socio{
+    margin: 0px 1.5px 10px;
+}
+
+#boton_insertar_socio{
+    margin: 10px 0px 10px 100px;
+}
+
+#contenedor_insertar_mensaje{
+    border:1px solid #6d6261; 
+    border-radius: 5px; 
+    background-color: rgba(230,230,230);
+}
+
+#etiqueta_publicar_mensaje{
+    color: rgb(50,50,50)
+}
+
+#boton_publicar_mensaje{
+    color:rgb(50, 50, 50); 
+    margin: 0px 0px 5px;
+}
+
+#contenedor_mensajes{
+    border:1px solid #6d6261; 
+    border-radius: 5px; 
+    background-color: #FAFAFD;
+}
+
+#estetica_mensajes{
+    border:1px solid #6d6261; 
+    border-radius: 5px;
+}
+
+#etiqueta_fecha_mensaje{
+    margin: 0px 10px;
+}
+
+#etiqueta_mensaje{
+    margin: 0px 10px;
+    font-family: sans-serif;
+}
+
+#lineas_separacion{
+    border: 0; 
+    height: 1px; 
+    margin: 0.1em auto;
+    background-image: -webkit-linear-gradient(left, #f0f0f0, #5c5b5b, #f0f0f0);
+    background-image: -moz-linear-gradient(left, #f0f0f0, #5c5b5b, #f0f0f0);
+    background-image: -ms-linear-gradient(left, #f0f0f0, #5c5b5b, #f0f0f0);
+    background-image: -o-linear-gradient(left, #f0f0f0, #5c5b5b, #f0f0f0);
+}
+
+#boton_buscar_mensaje{
+    color:#12225C; 
+    margin: 0px 0px 5px;
+}

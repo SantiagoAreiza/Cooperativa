@@ -10,14 +10,14 @@
 <br>
 <br>
 
-<div class="container" style="border:1px solid #6d6261; border-radius: 20px; background-color:rgb(200,200,200); width: 350px; min-height:270px;">
+<div class="container" id="contenedor_sesion">
 <br>
 
-  <span class="glyphicon glyphicon-user" style="font-size: 100px; margin: 0px 0px 20px 105px" ></span><br/>
+  <span class="glyphicon glyphicon-user" id="icono_inicio_sesion"></span><br/>
 
-  <span style="margin: 0px 30px ;"><strong>Correo:</strong></span> {{input type="email" value=Email}}<br/>
-  <span style="margin: 0px 16px ;"><strong>Contraseña:</strong></span>{{input type="password" value=Contrasena}}<br/>
-  <button class="class=btn btn-basic btn-md" style="margin: 20px 0px 10px 105px;" {{action "signIn"}}>Iniciar Sesion</button>
+  <span id="etiqueta_correo_incio_sesion"><strong>Correo:</strong></span> {{input type="email" value=Email}}<br/>
+  <span id="etiqueta_contraseña_inicio_sesion"><strong>Contraseña:</strong></span>{{input type="password" value=Contrasena}}<br/>
+  <button class="class=btn btn-basic btn-md" id="boton_inicio_sesion" {{action "signIn"}}>Iniciar Sesion</button>
 </div>
 
 {{/unless}}

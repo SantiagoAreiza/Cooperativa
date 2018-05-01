@@ -1,42 +1,34 @@
 {{menu-superior}}
 {{#if Admin}}
-<div class="container" style="border:1px solid #6d6261; border-radius: 5px; background-color: rgba(230,230,230)">
-  <h4 style="color: rgb(50,50,50)"><strong >Publicar Mensaje</strong></h4>
+<div class="container" id="contenedor_insertar_mensaje">
+  <h4 id="etiqueta_publicar_mensaje"><strong >Publicar Mensaje</strong></h4>
   <div class="publicar">
     {{rol}}
     {{textarea class="publicarMensaje" value=mensaje}}
-    <button class="btn btn-default" style="color:rgb(50, 50, 50); margin: 0px 0px 5px;" {{action "publicarMensaje"}}><span class="glyphicon glyphicon-envelope"></span> Publicar</button>
+    <button class="btn btn-default" id="boton_publicar_mensaje" {{action "publicarMensaje"}}><span class="glyphicon glyphicon-envelope"></span> Publicar</button>
     
   </div>
 </div>
 {{/if}}
 <br>
-<div class="container" style="border:1px solid #6d6261; border-radius: 5px; background-color: #FAFAFD;">
+<div class="container" id="contenedor_mensajes">
   <div class="publicaciones">
     <h4><strong>Publicaciones </strong></h4>
-    <div class="estetica" style="border:1px solid #6d6261; border-radius: 5px;">
+    <div class="estetica" id="estetica_mensajes">
       <div>
           {{#each model as |mensaje|}}
           <div class="ubicacionFecha">          
             <h4>
-              <span class="label label-default label-lg" style="margin: 0px 10px;">            
+              <span class="label label-default label-lg" id="etiqueta_fecha_mensaje">            
                 <h6 class="glyphicon glyphicon-calendar"><span> </span> {{mensaje.fecha}}</h6>   
               </span>
             </h4>
           </div>   
 
+            <p class="glyphicon glyphicon-envelope " id="etiqueta_mensaje"><span> </span><span>{{mensaje.texto}}</span></p>                    
             
-            <p class="glyphicon glyphicon-envelope " style="margin: 0px 10px;" ><span> </span><span style="font-family: sans-serif;">{{mensaje.texto}}</span></p>
-                    
-                
-            <hr style="border: 0; 
-            height: 1px; 
-            margin: 0.1em auto;
-            background-image: -webkit-linear-gradient(left, #f0f0f0, #5c5b5b, #f0f0f0);
-            background-image: -moz-linear-gradient(left, #f0f0f0, #5c5b5b, #f0f0f0);
-            background-image: -ms-linear-gradient(left, #f0f0f0, #5c5b5b, #f0f0f0);
-            background-image: -o-linear-gradient(left, #f0f0f0, #5c5b5b, #f0f0f0); ">
-
+            <hr id="lineas_separacion">
+            
         {{/each}} 
       </div>        
      
@@ -46,7 +38,7 @@
     <br>
     {{textarea class="buscarMensaje" value=buscarMensaje}}
     
-    <button class="btn btn-default" style="color:#12225C; margin: 0px 0px 5px;" {{action "buscarMensaje"}}> <span class="glyphicon glyphicon-search"></span> Buscar </button> 
+    <button class="btn btn-default" id="boton_buscar_mensaje" {{action "buscarMensaje"}}> <span class="glyphicon glyphicon-search"></span> Buscar </button> 
   </div>
 </div>
 <br>
