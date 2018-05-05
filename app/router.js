@@ -7,8 +7,8 @@ const Router = EmberRouter.extend({
 });
 
 Router.map(function() {
-  this.route('mensajes');
-  this.route('insertar-socio');
+  this.authenticatedRoute('mensajes');
+  this.authenticatedRoute('insertar-socio');
   this.route('iniciar-sesion');
 });
 

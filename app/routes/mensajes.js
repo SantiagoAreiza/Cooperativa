@@ -8,8 +8,4 @@ export default Route.extend({
 	model() {
 		return this.store.findAll('mensaje')
 	},
-
-	afterModel(){
-		this.controllerFor('mensajes').set('Admin',localStorage.rol === "Admin");
-	}
 });
