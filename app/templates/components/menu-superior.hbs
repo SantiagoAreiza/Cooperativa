@@ -6,7 +6,7 @@
   <div class="navbar-content">
   {{#navbar.content}}
     {{#navbar.nav as |nav|}}
-      {{#if Auth}}
+      {{#if session.isAuthenticated}}
         {{#if Admin}}
           {{#nav.item}}{{#link-to "mensajes"}}Inicio{{/link-to}}{{/nav.item}}
           {{#nav.item}}{{#link-to "mensajes"}}Préstamos Aprobados{{/link-to}}{{/nav.item}}
@@ -23,7 +23,7 @@
     {{/navbar.nav}}
   {{/navbar.content}}
   </div>
-  {{#if Auth}}
+  {{#if session.isAuthenticated}}
     <div class="salir">
         <button class="btn btn-default" {{action "signOut"}}> <span class="glyphicon glyphicon-log-out"></span> Sign out </button>
     </div>

@@ -1,10 +1,12 @@
 import Controller from '@ember/controller';
 import { inject as service } from '@ember/service';
+import { get } from '@ember/object';
 
 import FindQuery from 'ember-emberfire-find-query/mixins/find-query';
 
 export default Controller.extend(FindQuery, {
   session: service(),
+  autenticacion: service(),
   error: false,
   errorMessage: "Campos invalidos",
 
@@ -31,13 +33,18 @@ export default Controller.extend(FindQuery, {
           password: Password
         }).then((user) => {
           this.store.query('usuario', {
-            orderBy: 'id',
-            equalTo: user.id
-          }).then((user)=> {
-            this.get('session').set('Rol',user.get('rol'));
-            this.transitionToRoute('mensajes');
-            this.set('Contrasena','');
-            this.set('Email','');
+            orderBy: 'correo',
+            equalTo: Email
+          }).then((users)=> {
+            users.forEach(user => {
+              this.get('autenticacion').setRol(user.get('rol'));
+              this.transitionToRoute('mensajes');
+              this.set('Contrasena','');
+              this.set('Email','');
+            });
+          }).catch((error) => {
+            this.set('error', true);
+            this.set('errorMessage' , error.message);
           });
         }).catch((error) => {
           this.set('error', true);

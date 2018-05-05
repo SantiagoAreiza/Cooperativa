@@ -8,13 +8,8 @@ export default Controller.extend(FindQuery, {
 	error: false,
 	errorMessage: "Advertencia: Campos invalidos",
 	firebaseApp: service(),
+	autenticacion: service(),
 	Admin: false,
-	init() {
-		this._super(...arguments);
-		if(typeof(localStorage.rol)=='undefined'){
-		this.transitionToRoute('iniciar-sesion');
-		}
-	},
 
 	camposInvalidos(arregloComponentes){
     for (var i = 0; i < arregloComponentes.length; i++) { 
