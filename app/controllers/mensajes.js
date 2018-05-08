@@ -1,6 +1,6 @@
 import Controller from '@ember/controller';
 import { inject as service } from '@ember/service';
-import { get } from '@ember/object';
+import { get, computed } from '@ember/object';
 
 import FindQuery from 'ember-emberfire-find-query/mixins/find-query';
 
@@ -11,13 +11,17 @@ export default Controller.extend(FindQuery, {
 	autenticacion: service(),
 	Admin: false,
 
+	init(){
+		this.set('Admin',this.get('autenticacion').getRol() == 'Admin');
+	},
+
 	camposInvalidos(arregloComponentes){
-    for (var i = 0; i < arregloComponentes.length; i++) { 
-      if(arregloComponentes[i] === "" ||typeof(arregloComponentes[i])=="undefined"){
-        return true;
-      }
-    }
-  },
+		for (var i = 0; i < arregloComponentes.length; i++) { 
+			if(arregloComponentes[i] === "" ||typeof(arregloComponentes[i])=="undefined"){
+				return true;
+			}
+		}
+	},
 	actions: {
 		publicarMensaje() {
 			this.set('error', false);

@@ -11,16 +11,22 @@
 <br>
 
 <div class="container" id="contenedor_sesion">
-<br>
+  <br>
 
   <span class="glyphicon glyphicon-user" id="icono_inicio_sesion"></span><br/>
 
-  <span id="etiqueta_correo_incio_sesion"><strong>Correo:</strong></span> {{input type="email" value=Email}}<br/>
-  <span id="etiqueta_contraseña_inicio_sesion"><strong>Contraseña:</strong></span>{{input type="password" value=Contrasena}}<br/>
-  <button class="class=btn btn-basic btn-md" id="boton_inicio_sesion" {{action "signIn"}}>Iniciar Sesion</button>
+  <form {{action "signIn" on="submit"}}>
+    <strong>Correo</strong> {{input value=email class="form-control"}}
+    <strong>Contraseña</strong> {{input value=Contrasena type="password" class="form-control"}}<br>
+    <button class="btn btn-primary" id="boton_inicio_sesion" type="submit">Inicar sesion</button>
+  </form>
+  <br>
+  {{#if error}}
+    <br>
+    <br>
+    {{ventana-notificacion mensaje=errorMessage}}
+  {{/if}}
+  <br>
 </div>
 
 {{/unless}}
-{{#if error}}
-  {{ventana-notificacion mensaje=errorMessage}}
-{{/if}}

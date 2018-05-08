@@ -57,7 +57,7 @@ div.salir{
     border-radius: 20px; 
     background-color:rgb(200,200,200); 
     width: 350px; 
-    min-height:270px;
+    min-height:300px;
 }
 
 #icono_inicio_sesion{
@@ -65,16 +65,9 @@ div.salir{
     margin: 0px 0px 20px 105px;
 }
 
-#etiqueta_correo_incio_sesion{
-    margin: 0px 30px ;
-}
-
-#etiqueta_contraseña_inicio_sesion{
-    margin: 0px 16px;
-}
 
 #boton_inicio_sesion{
-    margin: 20px 0px 10px 105px;
+    float: right;
 }
 
 #contenedor_insertar_socio{
