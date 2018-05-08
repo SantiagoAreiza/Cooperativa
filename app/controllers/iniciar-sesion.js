@@ -44,7 +44,6 @@ export default Controller.extend({
             equalTo: Email
           }).then((users)=> {
             users.forEach(user => {
-              debugger;
               this.get('autenticacion').setRol(user.get('rol'));
               this.transitionToRoute('mensajes');
               this.set('Contrasena','');
