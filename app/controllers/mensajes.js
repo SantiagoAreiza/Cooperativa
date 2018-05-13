@@ -1,9 +1,7 @@
 import Controller from '@ember/controller';
 import { inject as service } from '@ember/service';
 
-import FindQuery from 'ember-emberfire-find-query/mixins/find-query';
-
-export default Controller.extend(FindQuery, {
+export default Controller.extend({
 	error: false,
 	errorMessage: "Advertencia: Campos invalidos",
 	firebaseApp: service(),
