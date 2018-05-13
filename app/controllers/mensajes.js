@@ -3,7 +3,7 @@ import { inject as service } from '@ember/service';
 
 export default Controller.extend({
 	error: false,
-	errorMessage: "Advertencia: Campos invalidos",
+	errorMessage: null,
 	firebaseApp: service(),
 	autenticacion: service(),
 	Admin: false,
@@ -22,6 +22,7 @@ export default Controller.extend({
 			var mensajeEscrito = this.get('mensaje');
 			if(this.camposInvalidos([mensajeEscrito])){
 				this.set('error', true);
+				this.set('errorMessage', 'Advertencia: Campos incompletos');
 			}else{
 				var nuevoMensaje = this.store.createRecord('mensaje', {
 					texto: mensajeEscrito,
@@ -35,7 +36,6 @@ export default Controller.extend({
 							return administrador.save();
 						});
 					});
-				this.set('model',this.store.findAll('mensaje'));
 				this.set('error',true);
 				this.set('errorMessage',"Exito: Mensaje publicado con éxito");
 			}

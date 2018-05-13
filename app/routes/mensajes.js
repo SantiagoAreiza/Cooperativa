@@ -22,7 +22,6 @@ export default Route.extend({
 
 	afterModel(){
 		if(this.get('session').get('isAuthenticated')){
-			debugger;
 			this.controllerFor('mensajes').set('Admin',this.get('autenticacion').getRol() == 'Admin');
 		}else{
 			this.transitionTo('iniciar-sesion');
