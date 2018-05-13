@@ -17,7 +17,7 @@ export default Service.extend({
 					this.set('rol', user.get('rol'));
 				});
 			});
-	  	}
+		}
 	},
 		
 	getRol(){

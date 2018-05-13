@@ -47,7 +47,7 @@ export default Controller.extend({
               this.get('autenticacion').setRol(user.get('rol'));
               this.transitionToRoute('mensajes');
               this.set('Contrasena','');
-              this.set('Email','');
+              this.set('email','');
             });
           }).catch((error) => {
             this.set('error', true);

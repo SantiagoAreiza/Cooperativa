@@ -1,6 +1,6 @@
 import Controller from '@ember/controller';
 import { inject as service } from '@ember/service';
-import { get, computed } from '@ember/object';
+import { get } from '@ember/object';
 
 import FindQuery from 'ember-emberfire-find-query/mixins/find-query';
 
@@ -12,6 +12,7 @@ export default Controller.extend(FindQuery, {
 	Admin: false,
 
 	init(){
+		this._super(...arguments);
 		this.set('Admin',this.get('autenticacion').getRol() == 'Admin');
 	},
 
