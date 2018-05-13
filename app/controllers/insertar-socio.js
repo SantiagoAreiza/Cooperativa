@@ -4,7 +4,7 @@ import { inject as service } from '@ember/service';
 export default Controller.extend({
 	firebaseApp: service(), 
     error: false,
-	errorMessage: "Campos invalidos",
+	errorMessage: "Campos incompletos",
 
 	actions: {
 		crearUsuario(){
@@ -14,12 +14,12 @@ export default Controller.extend({
 			const auth = this.get('firebaseApp').auth();
 			auth.createUserWithEmailAndPassword(email, password)
 			.then((user) => {
-				var nuevoUsuario = this.store.createRecord('usuario',{
+				var nuevoUsuario = this.store.createRecord('user',{
 					id: user.uid,
-					nombre: nombre,
-					correo: user.email,
-					rol: "Socio",
-					tipo: "Nuevo"
+					name: nombre,
+					email: user.email,
+					role: "Socio",
+					type: "Nuevo"
 				});
 				nuevoUsuario.save();
 			}).catch((error) => {

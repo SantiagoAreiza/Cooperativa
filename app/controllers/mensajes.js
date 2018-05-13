@@ -24,14 +24,14 @@ export default Controller.extend({
 				this.set('error', true);
 				this.set('errorMessage', 'Advertencia: Campos incompletos');
 			}else{
-				var nuevoMensaje = this.store.createRecord('mensaje', {
-					texto: mensajeEscrito,
-					fecha: fechaActual.getDate().toString() + '/' + (fechaActual.getMonth() + 1).toString() + '/' + fechaActual.getFullYear().toString()
+				var nuevoMensaje = this.store.createRecord('message', {
+					text: mensajeEscrito,
+					date: fechaActual.getDate().toString() + '/' + (fechaActual.getMonth() + 1).toString() + '/' + fechaActual.getFullYear().toString()
 				});
-				this.store.findRecord('usuario', this.get('session').get('currentUser').uid)
+				this.store.findRecord('user', this.get('session').get('currentUser').uid)
 					.then((administrador)=>{
-						nuevoMensaje.set('administrador',administrador);
-						administrador.get('mensajes').addObject(nuevoMensaje);
+						nuevoMensaje.set('admin',administrador);
+						administrador.get('messages').addObject(nuevoMensaje);
 						nuevoMensaje.save().then(function () {
 							return administrador.save();
 						});
@@ -46,7 +46,7 @@ export default Controller.extend({
 			if(this.camposInvalidos([textoBuscar])){
 				this.set('error', true);
 			}else{
-				this.store.findAll('mensaje').then((mensajes)=>{
+				this.store.findAll('message').then((mensajes)=>{
 					//Logica para filtrar los mensajes
 					if(mensajes.length == 0){
 						this.set('error', true);

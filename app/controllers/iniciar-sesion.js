@@ -39,10 +39,10 @@ export default Controller.extend({
           email: Email,
           password: Password
         }).then((user) => {
-          this.store.findRecord('usuario', user.uid)
+          this.store.findRecord('user', user.uid)
             .then((userAuth)=>{
               this.transitionToRoute('mensajes');
-              this.get('autenticacion').setRol(userAuth.get('rol'));
+              this.get('autenticacion').setRol(userAuth.get('role'));
               this.set('Contrasena','');
               this.set('email','');
             }).catch((error)=>{

@@ -8,16 +8,16 @@ export default Route.extend({
 		if(!this.get('session').get('isAuthenticated')){
 			return this.get('session').fetch()
 			.then(()=>{
-				this.store.findRecord('usuario', this.get('session').get('currentUser').uid)
+				this.store.findRecord('user', this.get('session').get('currentUser').uid)
 					.then((user)=>{
-						this.get('autenticacion').setRol(user.get('rol'));
+						this.get('autenticacion').setRol(user.get('role'));
 					})            
 			}).catch(()=>{this.transitionTo('iniciar-sesion');});
 		}
 	},
 
 	model() {
-		return this.store.findAll('mensaje')
+		return this.store.findAll('message')
 	},
 
 	afterModel(){
