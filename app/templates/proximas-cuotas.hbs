@@ -1,0 +1,7 @@
+{{menu-superior}}
+{{outlet}}
+{{#each model as |prestamo|}}
+    <span>{{prestamo.payment}}</span>
+    <span>{{prestamo.state}}</span>
+    <span>{{prestamo.date}}</span>
+{{/each}}

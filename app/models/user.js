@@ -7,5 +7,6 @@ export default DS.Model.extend({
     role: DS.attr('string'),
 
     //Relationship
-    messages: DS.hasMany('message', { async: true, inverse: null })
+    messages: DS.hasMany('message', { async: true, inverse: null }),
+    loans: DS.hasMany('loan', { async: true, inverse: null })
 });

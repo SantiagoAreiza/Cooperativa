@@ -3,6 +3,7 @@ import { inject as service } from '@ember/service';
 
 export default Service.extend({
 	rol: null,
+	usuario: null,
 	session: service(),
 
     init(){
@@ -15,5 +16,13 @@ export default Service.extend({
 
 	setRol(valor){
 		this.set('rol', valor);
+	},
+
+	getUsuario(){
+		return this.get('usuario');
+	},
+
+	setUsuario(usuario){
+		this.set('usuario', usuario);
 	}
 });

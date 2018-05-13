@@ -43,6 +43,7 @@ export default Controller.extend({
             .then((userAuth)=>{
               this.transitionToRoute('mensajes');
               this.get('autenticacion').setRol(userAuth.get('role'));
+              this.get('autenticacion').setUsuario(userAuth);
               this.set('Contrasena','');
               this.set('email','');
             }).catch((error)=>{

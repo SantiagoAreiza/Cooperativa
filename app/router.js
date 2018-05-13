@@ -10,6 +10,7 @@ Router.map(function() {
   this.route('mensajes');
   this.route('insertar-socio');
   this.route('iniciar-sesion');
+  this.route('proximas-cuotas');
 });
 
 export default Router;
