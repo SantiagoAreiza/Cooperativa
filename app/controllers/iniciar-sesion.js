@@ -3,6 +3,7 @@ import { inject as service } from '@ember/service';
 
 export default Controller.extend({
   session: service(),
+  autenticacion: service(),
   error: false,
   errorMessage: null,
 
@@ -39,9 +40,9 @@ export default Controller.extend({
           password: Password
         }).then((user) => {
           this.store.findRecord('usuario', user.uid)
-            .then((user)=>{
-              this.controllerFor('mensajes').set('Admin',user.get('rol') == 'Admin');
+            .then((userAuth)=>{
               this.transitionToRoute('mensajes');
+              this.get('autenticacion').setRol(userAuth.get('rol'));
               this.set('Contrasena','');
               this.set('email','');
             }).catch((error)=>{

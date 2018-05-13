@@ -1,6 +1,5 @@
 import Controller from '@ember/controller';
 import { inject as service } from '@ember/service';
-import { get } from '@ember/object';
 
 import FindQuery from 'ember-emberfire-find-query/mixins/find-query';
 
@@ -30,36 +29,34 @@ export default Controller.extend(FindQuery, {
 					texto: mensajeEscrito,
 					fecha: fechaActual.getDate().toString() + '/' + (fechaActual.getMonth() + 1).toString() + '/' + fechaActual.getFullYear().toString()
 				});
-				this.filterEqual(this.store, 'usuario', {'Correo':this.get('firebaseApp').auth().currentUser.email}, function(administradores){
-					administradores.forEach(administrador => {
+				this.store.findRecord('usuario', this.get('session').get('currentUser').uid)
+					.then((administrador)=>{
+						nuevoMensaje.set('administrador',administrador);
 						administrador.get('mensajes').addObject(nuevoMensaje);
 						nuevoMensaje.save().then(function () {
 							return administrador.save();
 						});
 					});
-				});
 				this.set('model',this.store.findAll('mensaje'));
 				this.set('error',true);
 				this.set('errorMessage',"Exito: Mensaje publicado con éxito");
 			}
 		},
-		async buscarMensaje(){
+		buscarMensaje(){
 			this.set('error', false);
-			if(this.camposInvalidos([this.get('buscarMensaje')])){
+			var textoBuscar = this.get('buscarMensaje');
+			if(this.camposInvalidos([textoBuscar])){
 				this.set('error', true);
 			}else{
-				var Mensajes = {arreglo : []};
-				await this.filterContains(this.store, 'mensaje', {'texto':this.get('buscarMensaje')}, function(mensajes){
-					mensajes.forEach(element => {
-						Mensajes.arreglo.push({texto: get( element , 'texto'), fecha: get( element , 'fecha')});
-					});
-				});
-				if(Mensajes.arreglo.length == 0){
-					this.set('error', true);
-					this.set('errorMessage',"Advertencia: No se han encontrado mensajes");
-				}else{
-					this.set('model',Mensajes.arreglo);
-				}
+				this.store.findAll('mensaje').then((mensajes)=>{
+					//Logica para filtrar los mensajes
+					if(mensajes.length == 0){
+						this.set('error', true);
+						this.set('errorMessage',"Advertencia: No se han encontrado mensajes");
+					}else{
+						this.set('model',mensajes);
+					}
+				})
 			}
 		}
 

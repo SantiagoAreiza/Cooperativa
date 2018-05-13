@@ -12,11 +12,21 @@
 {{/if}}
 <br>
 <div class="container" id="contenedor_mensajes">
+  <div class="buscar">
+    <br>
+    {{textarea class="buscarMensaje" value=buscarMensaje}}
+    <button class="btn btn-default" id="boton_buscar_mensaje" {{action "buscarMensaje"}}> <span class="glyphicon glyphicon-search"></span> Buscar </button> 
+  </div>
+  {{#if error}} 
+    <div class="container">
+      {{ventana-notificacion mensaje=errorMessage}}
+    </div>
+  {{/if}}
   <div class="publicaciones">
     <h4><strong>Publicaciones </strong></h4>
     <div class="estetica" id="estetica_mensajes">
       <div>
-          {{#each model as |mensaje|}}
+        {{#each model as |mensaje|}}
           <div class="ubicacionFecha">          
             <h4>
               <span class="label label-default label-lg" id="etiqueta_fecha_mensaje">            
@@ -24,28 +34,12 @@
               </span>
             </h4>
           </div>   
-
-            <p class="glyphicon glyphicon-envelope " id="etiqueta_mensaje"><span> </span><span>{{mensaje.texto}}</span></p>                    
-            
-            <hr id="lineas_separacion">
-            
+          <p class="glyphicon glyphicon-envelope " id="etiqueta_mensaje"><span> </span><span>{{mensaje.texto}}</span></p>
+          <hr id="lineas_separacion">   
         {{/each}} 
       </div>        
-     
     </div>
-  </div>
-  <div class="buscar">
     <br>
-    {{textarea class="buscarMensaje" value=buscarMensaje}}
-    
-    <button class="btn btn-default" id="boton_buscar_mensaje" {{action "buscarMensaje"}}> <span class="glyphicon glyphicon-search"></span> Buscar </button> 
   </div>
 </div>
-<br>
-  {{#if error}} 
-  <div class="container">
-    {{ventana-notificacion mensaje=errorMessage}}
-  </div>
-  
-  {{/if}}
 {{outlet}}

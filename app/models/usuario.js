@@ -5,5 +5,7 @@ export default DS.Model.extend({
     correo: DS.attr('string'),
     tipo: DS.attr('string'),
     rol: DS.attr('string'),
+
+    //Relationship
     mensajes: DS.hasMany('mensaje', { async: true, inverse: null })
 });
