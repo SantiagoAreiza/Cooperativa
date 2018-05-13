@@ -11,11 +11,6 @@ export default Controller.extend(FindQuery, {
 	autenticacion: service(),
 	Admin: false,
 
-	init(){
-		this._super(...arguments);
-		this.set('Admin',this.get('autenticacion').getRol() == 'Admin');
-	},
-
 	camposInvalidos(arregloComponentes){
 		for (var i = 0; i < arregloComponentes.length; i++) { 
 			if(arregloComponentes[i] === "" ||typeof(arregloComponentes[i])=="undefined"){

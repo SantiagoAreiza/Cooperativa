@@ -3,7 +3,6 @@ import { inject as service } from '@ember/service';
 
 export default Controller.extend({
   session: service(),
-  autenticacion: service(),
   error: false,
   errorMessage: null,
 
@@ -38,21 +37,19 @@ export default Controller.extend({
           provider: 'password',
           email: Email,
           password: Password
-        }).then(() => {
-          this.store.query('usuario', {
-            orderBy: 'correo',
-            equalTo: Email
-          }).then((users)=> {
-            users.forEach(user => {
-              this.get('autenticacion').setRol(user.get('rol'));
+        }).then((user) => {
+          this.store.findRecord('usuario', user.uid)
+            .then((user)=>{
+              this.controllerFor('mensajes').set('Admin',user.get('rol') == 'Admin');
               this.transitionToRoute('mensajes');
               this.set('Contrasena','');
               this.set('email','');
+            }).catch((error)=>{
+              this.set('error', true);
+              this.set('errorMessage' , error.message);
+              this.set('email','');
+              this.set('Contrasena','');
             });
-          }).catch((error) => {
-            this.set('error', true);
-            this.set('errorMessage' , error.message);
-          });
         }).catch((error) => {
           this.set('error', true);
           switch(error.code) {

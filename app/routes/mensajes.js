@@ -2,17 +2,19 @@ import Route from '@ember/routing/route';
 import { inject as service } from '@ember/service';
 
 export default Route.extend({
-	autenticacion: service(),
 	session:service(),
+
+	beforeModel(){
+		return this.get('session').fetch()
+		.then(()=>{
+			this.store.findRecord('usuario', this.get('session').get('currentUser').uid)
+				.then((user)=>{
+					this.controllerFor('mensajes').set('Admin',user.get('rol') == 'Admin');
+				})            
+		}).catch(()=>{this.transitionTo('iniciar-sesion');});
+	},
 
 	model() {
 		return this.store.findAll('mensaje')
 	},
-
-	afterModel(){
-		if(!this.get('session').get('isAuthenticated')){
-			this.transitionTo('iniciar-sesion');
-		}
-		this.controllerFor('mensajes').set('Admin',this.get('autenticacion').getRol() == 'Admin');
-	}
 });
