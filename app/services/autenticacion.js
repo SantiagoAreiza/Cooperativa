@@ -6,7 +6,7 @@ export default Service.extend({
 	usuario: null,
 	session: service(),
 
-    init(){
+  init(){
 		this._super(...arguments);
 	},
 		
@@ -16,13 +16,5 @@ export default Service.extend({
 
 	setRol(valor){
 		this.set('rol', valor);
-	},
-
-	getUsuario(){
-		return this.get('usuario');
-	},
-
-	setUsuario(usuario){
-		this.set('usuario', usuario);
 	}
 });

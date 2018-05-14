@@ -1,7 +1,30 @@
 {{menu-superior}}
 {{outlet}}
-{{#each model as |prestamo|}}
-    <span>{{prestamo.payment}}</span>
-    <span>{{prestamo.state}}</span>
-    <span>{{prestamo.date}}</span>
-{{/each}}
+<div class='container' >
+	<table class = 'table table-bordered' id='tablaProximasCuotas'>
+		<thead>
+			<tr>
+				<th>Abono</th>
+				<th>Interés</th> 
+				<th>Multa</th>
+				<th>Administracion</th>
+				<th>Fecha</th>
+				<th>Falta por pagar</th>
+				<th>Total</th>
+			</tr>
+		</thead>
+		<tbody>
+			{{#each model as |cuota|}}
+				<tr class="bodyTable">
+					<td>{{cuota.Abono}}</td>
+					<td>{{cuota.Interes}}</td>
+					<td>{{cuota.Multa}}</td>
+					<td>{{cuota.Administracion}}</td>
+					<td>{{cuota.Fecha}}</td>
+					<td>{{cuota.faltaPagar}}</td>
+					<td>{{cuota.Total}}</td>
+				</tr>
+			{{/each}}
+		</tbody>
+	</table>
+</div>

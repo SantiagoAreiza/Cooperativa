@@ -10,7 +10,6 @@ export default Route.extend({
 			.then(()=>{
 				this.store.findRecord('user', this.get('session').get('currentUser').uid)
 					.then((user)=>{
-						this.get('autenticacion').setUsuario(user);
 						this.get('autenticacion').setRol(user.get('role'));
 					})            
 			}).catch(()=>{this.transitionTo('iniciar-sesion');});
