@@ -1,5 +1,6 @@
 import Controller from '@ember/controller';
 import { inject as service } from '@ember/service';
+import { later } from '@ember/runloop';
 
 export default Controller.extend({
 	firebaseApp: service(),
@@ -26,10 +27,10 @@ export default Controller.extend({
 					nuevoUsuario.save();
 					this.set('error', true);
 					this.set('errorMessage','Se creo el usuario espere la confirmacion del administrador');	
-					Ember.run.later((() => {
+					later((() => {
 						this.transitionToRoute('iniciar-sesion');
 						this.set('error', false);
-					  }), 2000);
+					}), 2000);
 
 			}).catch((error) => {
 				this.set('error', true);
