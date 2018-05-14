@@ -18,6 +18,7 @@
 <span id="etiqueta_correo_socio"><strong>Correo:</strong></span> {{input type="email" value=Email}}<br/>
 <span id="etiqueta_contraseña_socio"><strong>Contraseña:</strong> </span> {{input type="password" value=Contrasena}}<br/>
 <button class="class=btn btn-basic btn-md" id="boton_insertar_socio" {{action "crearUsuario"}}>Crear socio</button><br/>
+<button class="class=btn btn-basic btn-md" id="boton_iniciar_secion" {{action "iniciarSesion"}}>Iniciar Sesion</button><br/>
 {{#if error}}
   {{ventana-notificacion mensaje=errorMessage}}
 {{/if}}
