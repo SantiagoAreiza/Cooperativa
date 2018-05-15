@@ -5,7 +5,7 @@ import { later } from '@ember/runloop';
 export default Controller.extend({
 	firebaseApp: service(),
 	disable:false, 
-    error: false,
+  error: false,
 	errorMessage: "Campos incompletos",
 
 	actions: {
@@ -15,8 +15,8 @@ export default Controller.extend({
 			var password = this.get('Contrasena');
 			const auth = this.get('firebaseApp').auth();
 			auth.createUserWithEmailAndPassword(email, password)
-			.then((user) => {
-				var nuevoUsuario = this.store.createRecord('user',{
+				.then((user) => {
+					var nuevoUsuario = this.store.createRecord('user',{
 						id: user.uid,
 						name: nombre,
 						email: user.email,
@@ -32,11 +32,12 @@ export default Controller.extend({
 						this.set('error', false);
 					}), 2000);
 
-			}).catch((error) => {
-				this.set('error', true);
-				this.set('errorMessage',error.message);
-			});
+				}).catch((error) => {
+					this.set('error', true);
+					this.set('errorMessage',error.message);
+				});
 		},
+		
 		iniciarSesion(){
 			this.transitionToRoute('iniciar-sesion');
 		}
