@@ -1,0 +1,46 @@
+import Route from '@ember/routing/route';
+import { inject as service } from '@ember/service';
+
+export default Route.extend({
+
+    session: service(),
+    autenticacion: service(),
+
+    beforeModel() {
+        if(!this.get('session').get('isAuthenticated')){
+          return this.get('session').fetch()
+            .then(()=>{
+              this.store.findRecord('user', this.get('session').get('currentUser').uid)
+                .then((user)=>{
+                  this.get('autenticacion').setRol(user.get('role'));
+                })
+            }).catch(()=>{});
+        }
+      },
+
+
+      model(){       
+    
+       var fechaActual = new Date();
+       var fecha_bono;
+       
+       if(parseInt(fechaActual.getMonth()) >= 7 && parseInt(fechaActual.getMonth()) <= 11){
+           var fecha_bono = true;         
+       }else{         
+           var fecha_bono = false;    
+       }
+       
+       return {
+          'users' : this.store.findAll('user'),
+          'fecha' : fecha_bono,
+          'ahorro' : 
+                    {
+                        'fondo_solidaridad':1000,
+                        'cuota_base':30000,
+                        'bono': 20000,
+                        'fecha_insercion': fechaActual.getDate().toString() + '/' + (fechaActual.getMonth() + 1).toString() + '/' + fechaActual.getFullYear().toString()
+                    }                
+            }
+       },
+
+});

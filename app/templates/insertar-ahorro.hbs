@@ -1,0 +1,50 @@
+
+
+<div class="container">
+
+    <div class="menu"><h1 style="color:white">Insertar ahorro</h1></div>
+    <br>
+    <select value="role" class="form-control" onchange={{action "updateValue" value="target.value"}}>
+        <option value="vacio">No has seleccionado ningún socio</option>
+        {{#each model.users as |role|}}
+        <option value="{{role.id}}">{{role.name}}</option>
+        
+        {{/each}}
+    </select>
+    <br>  
+
+    {{#if model.fecha}}
+        <div><label style="color:white">Detalle ahorro:</label>
+            <label style="color:white">Fondo solidaridad: {{model.ahorro.fondo_solidaridad}}</label><br>
+            <label style="color:white">Cuota base: {{model.ahorro.cuota_base}} </label><br>
+            <label style="color:white">Bono: {{model.ahorro.bono}}</label><br>
+            <label style="color:white">Fecha: {{model.ahorro.fecha_insercion}} </label><br>
+        </div>
+     
+    {{else}}
+        <div><label style="color:white">Detalle ahorro:</label><br>
+            <label style="color:white">Fondo solidaridad: {{model.ahorro.fondo_solidaridad}}</label><br>
+            <label style="color:white">Cuota base: {{model.ahorro.cuota_base}} </label><br>
+            <label style="color:white">Fecha: {{model.ahorro.fecha_insercion}} </label><br>
+        </div>
+
+    {{/if}}
+    {{outlet}}
+
+    <br>
+
+    <div class="advertencia_usuario">
+    <p> <strong>{{advertencia_usuario}}</strong></p>
+    </div>
+ 
+    
+    
+    <button class="btn btn-primary" {{action 'insertarAhorro'}}>Insertar ahorro</button>
+        
+    
+</div>
+
+
+
+
+
