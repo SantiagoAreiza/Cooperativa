@@ -1,2 +1,10 @@
 {{menu-superior}}
+
+{{#each model as |prestamo|}}
+	{{prestamo.date}}
+	{{prestamo.state}}
+	{{prestamo.user}}
+	{{prestamo.value}}
+{{/each}}
+
 {{outlet}}
