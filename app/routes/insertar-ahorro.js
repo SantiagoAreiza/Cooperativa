@@ -34,9 +34,9 @@ export default Route.extend({
        var fecha_bono;
        
        if(parseInt(fechaActual.getMonth()) >= 7 && parseInt(fechaActual.getMonth()) <= 11){
-           var fecha_bono = true;         
+           fecha_bono = true;         
        }else{         
-           var fecha_bono = false;    
+           fecha_bono = false;    
        }
        
        return {
