@@ -20,7 +20,7 @@ export default Route.extend({
         this.store.findRecord('user', this.get('session').get('currentUser').uid)
         .then((user)=>{
           if(user.get('role') != 'Admin'){
-              this.transitionTo('mensajes');
+            this.transitionTo('mensajes');
           }
         })
       }
