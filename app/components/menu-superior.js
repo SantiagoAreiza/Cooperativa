@@ -5,12 +5,26 @@ import { inject as service } from '@ember/service';
 export default Component.extend({
 	session: service(),
 	router: service(),
+	store: service(),
 	autenticacion: service(),
 	Admin: null,
 
 	didReceiveAttrs() {
 		this._super(...arguments);
-		this.set('Admin', this.get('autenticacion').getRol() == 'Admin');
+		if(this.get('session').get('isAuthenticated')){
+			this.get('store').findRecord('user', this.get('session').get('currentUser').uid)
+			.then((user)=>{
+				this.set('Admin', user.get('role') == 'Admin');
+			})
+		}else{
+			this.get('session').fetch()
+			.then(()=>{
+				this.store.findRecord('user', this.get('session').get('currentUser').uid)
+					.then((user)=>{
+						this.set('Admin', user.get('role') == 'Admin');
+					})            
+			}).catch(()=>{});
+		}
 	},
 
 	actions: {

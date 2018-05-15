@@ -47,9 +47,18 @@ export default Route.extend({
           .then(()=>{
             this.store.findRecord('user', this.get('session').get('currentUser').uid)
               .then((user)=>{
-                this.get('autenticacion').setRol(user.get('role'));
+                if(user.get('role') == 'Admin'){
+                  this.transitionTo('mensajes');
+                }
               })
-          }).catch(()=>{});
+          }).catch(()=>{this.transitionTo('mensajes');});
+      }else{
+        this.store.findRecord('user', this.get('session').get('currentUser').uid)
+        .then((user)=>{
+          if(user.get('role') == 'Admin'){
+            this.transitionTo('mensajes');
+          }
+        })
       }
     },
     
@@ -87,10 +96,4 @@ export default Route.extend({
         return this.proximasCuotas(cuota.valorPrestamo, cuota.ultimaCuota, cuota.valorPorPagar);
       });
     },
-
-    afterModel(){
-        if(this.get('autenticacion').getRol() == 'Admin'){
-            this.transitionTo('mensajes');
-        }
-    }
 });
