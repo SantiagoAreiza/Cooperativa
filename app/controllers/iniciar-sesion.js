@@ -69,5 +69,8 @@ export default Controller.extend({
         });
       }
     },
+    createUser (){
+      this.transitionToRoute('insertar-socio');
+    },
   }
 });

@@ -15,7 +15,7 @@
 		</thead>
 		<tbody>
 			{{#each model as |cuota|}}
-				<tr class="bodyTable">
+				<tr class="bodyTable {{cuota.Clase}}">
 					<td>{{cuota.Abono}}</td>
 					<td>{{cuota.Interes}}</td>
 					<td>{{cuota.Multa}}</td>

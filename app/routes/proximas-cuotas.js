@@ -12,7 +12,8 @@ export default Route.extend({
                               'Administracion': ultimaCuota.administration,
                               'Multa': ultimaCuota.fine,
                               'Fecha': ultimaCuota.date,
-                              'Total': ultimaCuota.payment + ultimaCuota.interest + ultimaCuota.administration + ultimaCuota.fine }]
+                              'Total': ultimaCuota.payment + ultimaCuota.interest + ultimaCuota.administration + ultimaCuota.fine,
+                              'Clase': 'primeraCuota' }]
       var indiceUltimaCuota = proximasCuotas.length - 1;
       while(proximasCuotas[indiceUltimaCuota].faltaPagar - (valorPrestamo*0.12) > 0){
         var siguienteMes = Number(proximasCuotas[indiceUltimaCuota].Fecha.split('/')[1]) + 1;
@@ -28,6 +29,15 @@ export default Route.extend({
         proximasCuotas = proximasCuotas.concat(proximaCuota);
         indiceUltimaCuota = indiceUltimaCuota + 1;
       }
+
+      proximasCuotas.forEach((cuota)=>{
+        cuota.faltaPagar = '$' + Number(cuota.faltaPagar).toFixed().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        cuota.Abono = '$' + Number(cuota.Abono).toFixed().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        cuota.Interes = '$' + Number(cuota.Interes).toFixed().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        cuota.Administracion = '$' + Number(cuota.Administracion).toFixed().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        cuota.Multa = '$' + Number(cuota.Multa).toFixed().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        cuota.Total = '$' + Number(cuota.Total).toFixed().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+      })
       return proximasCuotas;
     },
   
@@ -37,9 +47,18 @@ export default Route.extend({
           .then(()=>{
             this.store.findRecord('user', this.get('session').get('currentUser').uid)
               .then((user)=>{
-                this.get('autenticacion').setRol(user.get('role'));
+                if(user.get('role') == 'Admin'){
+                  this.transitionTo('mensajes');
+                }
               })
-          }).catch(()=>{});
+          }).catch(()=>{this.transitionTo('mensajes');});
+      }else{
+        this.store.findRecord('user', this.get('session').get('currentUser').uid)
+        .then((user)=>{
+          if(user.get('role') == 'Admin'){
+            this.transitionTo('mensajes');
+          }
+        })
       }
     },
     
@@ -72,15 +91,9 @@ export default Route.extend({
           return new Date(b.date.split('/')[2], b.date.split('/')[1], b.date.split('/')[0]) - 
             new Date(a.date.split('/')[2], a.date.split('/')[1], a.date.split('/')[0])
         });
-        return {ultimaCuota: cuotasTemporales[0], valorPrestamo: valorPrestamo, valorPorPagar: valorPorPagar};
+        return {valorPrestamo: valorPrestamo, ultimaCuota: cuotasTemporales[0], valorPorPagar: valorPorPagar};
       }).then((cuota)=>{
         return this.proximasCuotas(cuota.valorPrestamo, cuota.ultimaCuota, cuota.valorPorPagar);
       });
     },
-
-    afterModel(){
-        if(this.get('autenticacion').getRol() == 'Admin'){
-            this.transitionTo('mensajes');
-        }
-    }
 });

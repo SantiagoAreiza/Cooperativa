@@ -8,6 +8,8 @@ export default Controller.extend({
 	autenticacion: service(),
 	Admin: false,
 
+
+	
 	camposInvalidos(arregloComponentes){
 		for (var i = 0; i < arregloComponentes.length; i++) { 
 			if(arregloComponentes[i] === "" ||typeof(arregloComponentes[i])=="undefined"){

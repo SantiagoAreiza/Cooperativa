@@ -10,15 +10,9 @@ export default Route.extend({
 			.then(()=>{
 				this.store.findRecord('user', this.get('session').get('currentUser').uid)
 					.then((user)=>{
-						this.get('autenticacion').setRol(user.get('rol'));
+            this.transitionTo('mensajes');
 					})            
 			}).catch(()=>{});
   },
-
-  afterModel(){
-    if(this.get('session').get('isAuthenticated')){
-      this.transitionTo('mensajes');
-		}
-  }
 
 });
