@@ -31,10 +31,13 @@ export default Controller.extend({
                     
                     this.store.findRecord('user',usuario_ahorro).then(function(socio_encontrado){
                         socio_encontrado.get('savings').addObject(cuota_ahorro);
-                        cuota_ahorro.save().then(function(){
-                            return socio_encontrado.save();
-                        })
-                    });
+                        cuota_ahorro.save().then(() =>{
+                            return socio_encontrado.save().then(()=>{
+                                    console.log('inserción exitosa');
+                               })
+                            })
+                        });
+                  
                  
                 }else{
                     var cuota_ahorro = this.get('store').createRecord('saving',{
@@ -48,19 +51,14 @@ export default Controller.extend({
 
                     this.store.findRecord('user',usuario_ahorro).then(function(socio_encontrado){
                         socio_encontrado.get('savings').addObject(cuota_ahorro);
-                        cuota_ahorro.save().then(function(){
-                            return socio_encontrado.save();
-                        })
-                    });                    
-              
+                        cuota_ahorro.save().then(() =>{
+                            return socio_encontrado.save().then(()=>{                                
+                                  console.log('inserción exitosa');
+                               })
+                            })
+                        });               
                 }
-          
-
-            }
-                        
-            
-            
-            
+            }            
         }
     }    
 });
