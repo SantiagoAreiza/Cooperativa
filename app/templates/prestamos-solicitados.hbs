@@ -4,30 +4,31 @@
 		<div class="container">
 			{{ventana-notificacion mensaje=errorMessage}}
 		</div>
+	{{else}}
+		<table class = 'table table-bordered' id='tablaProximasCuotas'>
+			<thead>
+				<tr>
+					<th>Socio</th>
+					<th>Fecha</th> 
+					<th>Valor</th>
+					<th>Acciones</th>
+				</tr>
+			</thead>
+			<tbody>
+				{{#each model as |prestamo|}}
+				<tr class = "bodyTable">
+					<td>{{prestamo.user.name}}</td>
+					<td>{{prestamo.date}}</td>
+					<td>${{prestamo.value}}</td>
+					<td style="text-align: center">
+						<button class="btn btn-danger" {{action "rechazar" prestamo}}>Rechazar</button>&nbsp;&nbsp;
+						<button class="btn btn-success" {{action "aprobar" prestamo}}>Aprobar</button>
+					</td>
+				</tr>
+				{{/each}}
+			</tbody>
+		</table>
 	{{/if}}
-	<table class = 'table table-bordered' id='tablaProximasCuotas'>
-		<thead>
-			<tr>
-				<th>Socio</th>
-				<th>Fecha</th> 
-				<th>Valor</th>
-				<th>Acciones</th>
-			</tr>
-		</thead>
-		<tbody>
-			{{#each model as |prestamo|}}
-			<tr class = "bodyTable">
-				<td>{{prestamo.user.name}}</td>
-				<td>{{prestamo.date}}</td>
-				<td>${{prestamo.value}}</td>
-				<td style="text-align: center">
-					<button class="btn btn-danger" {{action "rechazar" prestamo}}>Rechazar</button>&nbsp;&nbsp;
-					<button class="btn btn-success" {{action "aprobar" prestamo}}>Aprobar</button>
-				</td>
-			</tr>
-			{{/each}}
-		</tbody>
-	</table>
 </div>
 
 {{outlet}}

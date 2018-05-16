@@ -74,7 +74,6 @@ export default Route.extend({
 			var valorPorPagar = 0;
 			usuario.get('loans').forEach((prestamo)=>{
 				if(prestamo.get('state') && prestamo.get('date').split("/")[1] < mesActual){
-					console.log(prestamo);
 					valorPrestamo = prestamo.get('value');
 					valorPorPagar = prestamo.get('value');
 					prestamo.get('fees').forEach((cuota) => {

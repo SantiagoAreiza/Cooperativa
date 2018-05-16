@@ -26,6 +26,14 @@ export default Route.extend({
 		return this.store.query('loan', {
 			orderBy: 'state',
 			equalTo: false
+		}).then((prestamos)=>{
+			if(prestamos._length == 0){
+				this.controllerFor('prestamos-solicitados').set('error', true);
+				this.controllerFor('prestamos-solicitados').set('errorMessage', "No existen préstamos solicitados");
+			}else{
+				return prestamos;
+			}
+			return prestamos
 		});
 	}
 });
