@@ -35,15 +35,15 @@
     {{outlet}}
 
     <br>
-
-    <div class="advertencia_usuario">
-    <p> <strong>{{advertencia_usuario}}</strong></p>
-    </div>
- 
-    
-    
     <button class="btn btn-primary" {{action 'insertarAhorro'}}>Insertar ahorro</button>
-        
+
+		<br>
+		<br>
+    {{#if error}} 
+        <div class="container">
+        {{ventana-notificacion mensaje=errorMessage}}
+        </div>
+    {{/if}}
     
 </div>
 

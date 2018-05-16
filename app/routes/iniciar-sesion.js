@@ -9,7 +9,7 @@ export default Route.extend({
     return this.get('session').fetch()
 			.then(()=>{
 				this.store.findRecord('user', this.get('session').get('currentUser').uid)
-					.then((user)=>{
+					.then(()=>{
             this.transitionTo('mensajes');
 					})            
 			}).catch(()=>{});

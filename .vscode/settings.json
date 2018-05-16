@@ -1,0 +1,8 @@
+{
+  "editor.tabSize": 2,
+  "editor.renderWhitespace": "all",
+  "editor.autoIndent": false,
+  "editor.detectIndentation": false,
+  "editor.insertSpaces": false,
+  "workbench.startupEditor": "newUntitledFile",
+}
