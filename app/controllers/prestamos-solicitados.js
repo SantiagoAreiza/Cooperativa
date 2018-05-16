@@ -11,7 +11,10 @@ export default Controller.extend({
 					prestamo.destroyRecord().then(() => {
 						usuario.save().then(()=>{
 							this.set('error', true);
-							this.set('errorMessage', 'Exito el préstamo ha sido rechazado');
+							this.set('errorMessage', 'Éxito el préstamo ha sido rechazado');
+						}).catch(() => {
+							this.set('error', true);
+							this.set('errorMessage', 'Error: El préstamo no pudo ser rechazado');
 						});
 					});
 				});
@@ -22,7 +25,10 @@ export default Controller.extend({
 				prestamo.set('state', true);
 				prestamo.save().then(()=>{
 					this.set('error', true);
-					this.set('errorMessage', 'Exito el préstamo ha sido aprobado');
+					this.set('errorMessage', 'Éxito el préstamo ha sido aprobado');
+				}).catch(() => {
+					this.set('error', true);
+					this.set('errorMessage', 'Error: El préstamo no pudo ser aprobado');
 				});
 			});
 		}

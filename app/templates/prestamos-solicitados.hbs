@@ -8,8 +8,8 @@
 	<table class = 'table table-bordered' id='tablaProximasCuotas'>
 		<thead>
 			<tr>
-				<th>Fecha</th>
-				<th>Socio</th> 
+				<th>Socio</th>
+				<th>Fecha</th> 
 				<th>Valor</th>
 				<th>Acciones</th>
 			</tr>
@@ -17,8 +17,8 @@
 		<tbody>
 			{{#each model as |prestamo|}}
 			<tr class = "bodyTable">
-				<td>{{prestamo.date}}</td>
 				<td>{{prestamo.user.name}}</td>
+				<td>{{prestamo.date}}</td>
 				<td>${{prestamo.value}}</td>
 				<td style="text-align: center">
 					<button class="btn btn-danger" {{action "rechazar" prestamo}}>Rechazar</button>&nbsp;&nbsp;
