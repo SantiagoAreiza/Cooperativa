@@ -8,6 +8,16 @@ export default Controller.extend({
 	actions:{
 		updateValue: function(value) {
 			this.set('user', value);
+
+			const usuarioSeleccionado = this.get('user');
+			console.log(usuarioSeleccionado);
+
+			this.store.findRecord('user',usuarioSeleccionado).then((usuarioEncontrado)=> {
+				var prestamosUsuario =  usuarioEncontrado.get('loans');
+				console.log(prestamosUsuario);
+
+			});
+
 		},
 			
 		insertarAhorro(){
