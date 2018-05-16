@@ -1,0 +1,18 @@
+{
+	"loans":{
+		".write":"auth.uid != null"
+	},
+	"messages":{
+		".write":"root.child('users').child(auth.uid).child('role').val() === 'Admin'"
+	},
+	"users":{
+		".write":"true"
+	},
+	"fees":{
+		".write":"root.child('users').child(auth.uid).child('role').val() === 'Admin'"
+	},
+	"savings":{
+		".write":"root.child('users').child(auth.uid).child('role').val() === 'Admin'"
+	},
+	".read":"auth.uid != null"
+}
