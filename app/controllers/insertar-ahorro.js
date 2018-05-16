@@ -14,7 +14,7 @@ export default Controller.extend({
 
 			this.store.findRecord('user',usuarioSeleccionado).then((usuarioEncontrado)=> {
 				var prestamosUsuario =  usuarioEncontrado.get('loans');
-				console.log(prestamosUsuario);
+				console.log(prestamosUsuario_length);
 
 			});
 
