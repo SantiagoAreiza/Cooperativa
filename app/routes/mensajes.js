@@ -4,6 +4,7 @@ import { inject as service } from '@ember/service';
 export default Route.extend({
 	autenticacion: service(),
 	session: service(),
+
 	beforeModel() {
 		if(!this.get('session').get('isAuthenticated')){
 			return this.get('session').fetch()
