@@ -8,10 +8,10 @@
 <br>
 
 <div class="row">
-  <div class="col-sm-12">
-      <span class="glyphicon glyphicon-plus" id="icono_suma_insertar_socio"></span>
-      <span class="glyphicon glyphicon-user" id="icono_usuario_insertar_socio"></span><br/>
-  </div> 
+	<div class="col-sm-12">
+			<span class="glyphicon glyphicon-plus" id="icono_suma_insertar_socio"></span>
+			<span class="glyphicon glyphicon-user" id="icono_usuario_insertar_socio"></span><br/>
+	</div> 
 </div>
 
 <span id="etiqueta_nombre_socio"><strong>Nombre:</strong></span> {{input type="text" value=Nombre}}<br/>
@@ -19,8 +19,9 @@
 <span id="etiqueta_contraseña_socio"><strong>Contraseña:</strong> </span> {{input type="password" value=Contrasena}}<br/>
 <button class="class=btn btn-basic btn-md" id="boton_insertar_socio" {{action "crearUsuario"}}>Crear socio</button><br/>
 <button class="class=btn btn-basic btn-md" id="boton_iniciar_secion" {{action "iniciarSesion"}}>Iniciar Sesion</button><br/>
+
 {{#if error}}
-  {{ventana-notificacion mensaje=errorMessage}}
+	{{ventana-notificacion mensaje=errorMessage}}
 {{/if}}
 </div>
 

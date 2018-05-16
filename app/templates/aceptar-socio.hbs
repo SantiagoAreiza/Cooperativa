@@ -1,14 +1,12 @@
 {{menu-superior}}
 {{#if Admin}}
-<div class="container" id="contenedor_insertar_mensaje">
-  <h4 id="etiqueta_publicar_mensaje"><strong >Publicar Mensaje</strong></h4>
-  <div class="publicar">
-    {{rol}}
-    {{textarea class="publicarMensaje" value=mensaje}}
-    <button class="btn btn-default" id="boton_publicar_mensaje" {{action "publicarMensaje"}}><span class="glyphicon glyphicon-envelope"></span> Publicar</button>
-    
-  </div>
-</div>
+	<div class="container" id="contenedor_insertar_mensaje">
+		<h4 id="etiqueta_publicar_mensaje"><strong >Publicar Mensaje</strong></h4>
+		<div class="publicar">
+			{{rol}}
+			{{textarea class="publicarMensaje" value=mensaje}}
+			<button class="btn btn-default" id="boton_publicar_mensaje" {{action "publicarMensaje"}}><span class="glyphicon glyphicon-envelope"></span> Publicar</button>
+		</div>
+	</div>
 {{/if}}
-
 {{outlet}}

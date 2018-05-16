@@ -1,45 +1,45 @@
 {{menu-superior}}
 {{#if Admin}}
-<div class="container" id="contenedor_insertar_mensaje">
-  <h4 id="etiqueta_publicar_mensaje"><strong >Publicar Mensaje</strong></h4>
-  <div class="publicar">
-    {{rol}}
-    {{textarea class="publicarMensaje" value=mensaje}}
-    <button class="btn btn-default" id="boton_publicar_mensaje" {{action "publicarMensaje"}}><span class="glyphicon glyphicon-envelope"></span> Publicar</button>
-    
-  </div>
-</div>
+	<div class="container" id="contenedor_insertar_mensaje">
+		<h4 id="etiqueta_publicar_mensaje"><strong >Publicar Mensaje</strong></h4>
+		<div class="publicar">
+			{{rol}}
+			{{textarea class="publicarMensaje" value=mensaje}}
+			<button class="btn btn-default" id="boton_publicar_mensaje" {{action "publicarMensaje"}}><span class="glyphicon glyphicon-envelope"></span> Publicar</button>
+		</div>
+	</div>
 {{/if}}
+
 <br>
 <div class="container" id="contenedor_mensajes">
-  {{#if error}} 
-    <div class="container">
-      {{ventana-notificacion mensaje=errorMessage}}
-    </div>
-  {{/if}}
-  <div class="buscar">
-    <br>
-    {{textarea class="buscarMensaje" value=buscarMensaje}}
-    <button class="btn btn-default" id="boton_buscar_mensaje" {{action "buscarMensaje"}}> <span class="glyphicon glyphicon-search"></span> Buscar </button> 
-  </div>
-  <div class="publicaciones">
-    <h4><strong>Publicaciones </strong></h4>
-    <div class="estetica" id="estetica_mensajes">
-      <div>
-        {{#each model as |mensaje|}}
-          <div class="ubicacionFecha">          
-            <h4>
-              <span class="label label-default label-lg" id="etiqueta_fecha_mensaje">            
-                <h6 class="glyphicon glyphicon-calendar"><span> </span> {{mensaje.date}}</h6>   
-              </span>
-            </h4>
-          </div>   
-          <p class="glyphicon glyphicon-envelope " id="etiqueta_mensaje"><span> </span><span>{{mensaje.text}}</span></p>
-          <hr id="lineas_separacion">   
-        {{/each}} 
-      </div>        
-    </div>
-    <br>
-  </div>
+	{{#if error}} 
+		<div class="container">
+			{{ventana-notificacion mensaje=errorMessage}}
+		</div>
+	{{/if}}
+	<div class="buscar">
+		<br>
+		{{textarea class="buscarMensaje" value=buscarMensaje}}
+		<button class="btn btn-default" id="boton_buscar_mensaje" {{action "buscarMensaje"}}> <span class="glyphicon glyphicon-search"></span> Buscar </button> 
+	</div>
+	<div class="publicaciones">
+		<h4><strong>Publicaciones </strong></h4>
+		<div class="estetica" id="estetica_mensajes">
+			<div>
+				{{#each model as |mensaje|}}
+					<div class="ubicacionFecha">
+						<h4>
+							<span class="label label-default label-lg" id="etiqueta_fecha_mensaje">
+								<h6 class="glyphicon glyphicon-calendar"><span> </span> {{mensaje.date}}</h6> 
+							</span>
+						</h4>
+					</div>
+					<p class="glyphicon glyphicon-envelope " id="etiqueta_mensaje"><span> </span><span>{{mensaje.text}}</span></p>
+					<hr id="lineas_separacion">
+				{{/each}}
+			</div>
+		</div>
+		<br>
+	</div>
 </div>
 {{outlet}}

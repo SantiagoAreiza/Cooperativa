@@ -1,10 +1,6 @@
 import Route from '@ember/routing/route';
-import { inject as service } from '@ember/service';
 
 export default Route.extend({
-	session: service(),
-	autenticacion: service(),
-
 	beforeModel() {
 		if(!this.get('session').get('isAuthenticated')){
 			return this.get('session').fetch()
@@ -12,7 +8,7 @@ export default Route.extend({
 					this.store.findRecord('user', this.get('session').get('currentUser').uid)
 						.then((user)=>{
 							if(user.get('role') != 'Admin'){
-									this.transitionTo('mensajes');
+								this.transitionTo('mensajes');
 							}
 						})
 				}).catch(()=>{this.transitionTo('mensajes');});
@@ -20,9 +16,25 @@ export default Route.extend({
 			this.store.findRecord('user', this.get('session').get('currentUser').uid)
 			.then((user)=>{
 				if(user.get('role') != 'Admin'){
-						this.transitionTo('mensajes');
+					this.transitionTo('mensajes');
 				}
 			})
 		}
 	},
+
+	model(){
+		return this.store.query('loan', {
+			orderBy: 'state',
+			equalTo: false
+		}).then((prestamos)=>{
+			if(prestamos._length == 0){
+				this.controllerFor('prestamos-solicitados').set('tabla', false);
+				this.controllerFor('prestamos-solicitados').set('error', true);
+				this.controllerFor('prestamos-solicitados').set('errorMessage', "No existen préstamos solicitados");
+			}else{
+				return prestamos;
+			}
+			return prestamos
+		});
+	}
 });

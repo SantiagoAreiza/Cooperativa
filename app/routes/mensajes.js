@@ -4,6 +4,7 @@ import { inject as service } from '@ember/service';
 export default Route.extend({
 	autenticacion: service(),
 	session: service(),
+
 	beforeModel() {
 		if(!this.get('session').get('isAuthenticated')){
 			return this.get('session').fetch()
@@ -12,6 +13,10 @@ export default Route.extend({
 					.then((user)=>{
 						this.get('autenticacion').setRol(user.get('role'));
 						this.controllerFor('mensajes').set('Admin',user.get('role') == 'Admin');
+						this.controllerFor('mensajes').set('error',false);
+						if(!user.get('acepted')){
+							this.get('session').close().then(()=>{this.transitionTo('iniciar-sesion'); });
+						}
 					});
 			}).catch(()=>{this.transitionTo('iniciar-sesion');});
 		}else{

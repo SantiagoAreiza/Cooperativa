@@ -5,11 +5,8 @@ export default Controller.extend({
 	error: false,
 	errorMessage: null,
 	firebaseApp: service(),
-	autenticacion: service(),
 	Admin: false,
 
-
-	
 	camposInvalidos(arregloComponentes){
 		for (var i = 0; i < arregloComponentes.length; i++) { 
 			if(arregloComponentes[i] === "" ||typeof(arregloComponentes[i])=="undefined"){
@@ -17,6 +14,7 @@ export default Controller.extend({
 			}
 		}
 	},
+
 	actions: {
 		publicarMensaje() {
 			this.set('error', false);
@@ -42,6 +40,7 @@ export default Controller.extend({
 				this.set('errorMessage',"Exito: Mensaje publicado con éxito");
 			}
 		},
+
 		buscarMensaje(){
 			this.set('error', false);
 			var textoBuscar = this.get('buscarMensaje');
@@ -59,7 +58,5 @@ export default Controller.extend({
 				})
 			}
 		}
-
 	}
-
 });
