@@ -28,6 +28,7 @@ export default Route.extend({
 			equalTo: false
 		}).then((prestamos)=>{
 			if(prestamos._length == 0){
+				this.controllerFor('prestamos-solicitados').set('tabla', false);
 				this.controllerFor('prestamos-solicitados').set('error', true);
 				this.controllerFor('prestamos-solicitados').set('errorMessage', "No existen préstamos solicitados");
 			}else{
