@@ -5,7 +5,6 @@ export default Controller.extend({
 	error: false,
 	errorMessage: null,
 	firebaseApp: service(),
-	autenticacion: service(),
 	Admin: false,
 
 	camposInvalidos(arregloComponentes){

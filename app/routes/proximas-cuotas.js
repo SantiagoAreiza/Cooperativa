@@ -66,13 +66,15 @@ export default Route.extend({
 	model(){
 	this.store.findAll('fee');
 	this.store.findAll('loan');
+	var mesActual = (new Date()).getMonth();
 	return this.store.findRecord('user', this.get('session').get('currentUser').uid)
 		.then((usuario)=>{
 			var cuotasTemporales = [];
 			var valorPrestamo = 0;
 			var valorPorPagar = 0;
 			usuario.get('loans').forEach((prestamo)=>{
-				if(prestamo.get('state')){
+				if(prestamo.get('state') && prestamo.get('date').split("/")[1] < mesActual){
+					console.log(prestamo);
 					valorPrestamo = prestamo.get('value');
 					valorPorPagar = prestamo.get('value');
 					prestamo.get('fees').forEach((cuota) => {

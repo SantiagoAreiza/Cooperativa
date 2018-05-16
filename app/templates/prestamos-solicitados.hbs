@@ -1,10 +1,33 @@
 {{menu-superior}}
-
-{{#each model as |prestamo|}}
-	{{prestamo.date}}
-	{{prestamo.state}}
-	{{prestamo.user}}
-	{{prestamo.value}}
-{{/each}}
+<div class="container">
+	{{#if error}} 
+		<div class="container">
+			{{ventana-notificacion mensaje=errorMessage}}
+		</div>
+	{{/if}}
+	<table class = 'table table-bordered' id='tablaProximasCuotas'>
+		<thead>
+			<tr>
+				<th>Fecha</th>
+				<th>Socio</th> 
+				<th>Valor</th>
+				<th>Acciones</th>
+			</tr>
+		</thead>
+		<tbody>
+			{{#each model as |prestamo|}}
+			<tr class = "bodyTable">
+				<td>{{prestamo.date}}</td>
+				<td>{{prestamo.user.name}}</td>
+				<td>${{prestamo.value}}</td>
+				<td style="text-align: center">
+					<button class="btn btn-danger" {{action "rechazar" prestamo}}>Rechazar</button>&nbsp;&nbsp;
+					<button class="btn btn-success" {{action "aprobar" prestamo}}>Aprobar</button>
+				</td>
+			</tr>
+			{{/each}}
+		</tbody>
+	</table>
+</div>
 
 {{outlet}}

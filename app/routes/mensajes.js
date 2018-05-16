@@ -13,6 +13,7 @@ export default Route.extend({
 					.then((user)=>{
 						this.get('autenticacion').setRol(user.get('role'));
 						this.controllerFor('mensajes').set('Admin',user.get('role') == 'Admin');
+						this.controllerFor('mensajes').set('error',false);
 						if(!user.get('acepted')){
 							this.get('session').close().then(()=>{this.transitionTo('iniciar-sesion'); });
 						}
