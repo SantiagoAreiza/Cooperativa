@@ -1,29 +1,28 @@
 {{#bs-navbar type=(if inverse 'inverse') fluid=fluid collapsed=collapsed onCollapse=(action (mut collapsed) true) onExpand=(action (mut collapsed) false) as |navbar|}}
-  <div class="navbar-header">
-    {{navbar.toggle}}
-    {{#link-to "mensajes" class="navbar-brand"}} <strong><span>Cooperativa</span></strong> {{/link-to}}
-  </div>
-  <div class="navbar-content">
-  {{#navbar.content}}
-    {{#navbar.nav as |nav|}}
-      {{#if session.isAuthenticated}}
-        {{#if Admin}}
-          {{#nav.item}}{{#link-to "mensajes"}}Mensajes{{/link-to}}{{/nav.item}}
-          {{#nav.item}}{{#link-to "prestamos-solicitados"}}Prestamos solicitados{{/link-to}}{{/nav.item}}
-          {{#nav.item}}{{#link-to "insertar-ahorro"}}Insertar Ahorro{{/link-to}}{{/nav.item}}
-        {{else}}
-          {{#nav.item}}{{#link-to "mensajes"}}Mensajes{{/link-to}}{{/nav.item}}
-          {{#nav.item}}{{#link-to "proximas-cuotas"}}Próximas cuotas{{/link-to}}{{/nav.item}}
-        {{/if}}
-      {{else}}
-        {{#nav.item}}Cooperativa{{/nav.item}}
-      {{/if}}
-    {{/navbar.nav}}
-  {{/navbar.content}}
-  </div>
-  {{#if session.isAuthenticated}}
-    <div class="salir">
-        <button class="btn btn-default" {{action "signOut"}}> <span class="glyphicon glyphicon-log-out"></span> Sign out </button>
-    </div>
-  {{/if}}
+	<div class="navbar-header">
+		{{navbar.toggle}}
+		{{#link-to "mensajes" class="navbar-brand"}} <strong><span>Cooperativa</span></strong> {{/link-to}}
+	</div>
+	<div class="navbar-content">
+		{{#navbar.content}}
+			{{#navbar.nav as |nav|}}
+				{{#if session.isAuthenticated}}
+					{{#if Admin}}
+						{{#nav.item}}{{#link-to "mensajes"}}Mensajes{{/link-to}}{{/nav.item}}
+						{{#nav.item}}{{#link-to "insertar-ahorro"}}Insertar Ahorro{{/link-to}}{{/nav.item}}
+					{{else}}
+						{{#nav.item}}{{#link-to "mensajes"}}Mensajes{{/link-to}}{{/nav.item}}
+						{{#nav.item}}{{#link-to "proximas-cuotas"}}Próximas cuotas{{/link-to}}{{/nav.item}}
+					{{/if}}
+				{{else}}
+					{{#nav.item}}Cooperativa{{/nav.item}}
+				{{/if}}
+			{{/navbar.nav}}
+		{{/navbar.content}}
+	</div>
+	{{#if session.isAuthenticated}}
+		<div class="salir">
+				<button class="btn btn-default" {{action "signOut"}}> <span class="glyphicon glyphicon-log-out"></span> Sign out </button>
+		</div>
+	{{/if}}
 {{/bs-navbar}}

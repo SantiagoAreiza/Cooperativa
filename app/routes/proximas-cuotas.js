@@ -55,14 +55,14 @@ export default Route.extend({
 				}).catch(()=>{this.transitionTo('mensajes');});
 		}else{
 			this.store.findRecord('user', this.get('session').get('currentUser').uid)
-				.then((user)=>{
-					if(user.get('role') == 'Admin'){
-						this.transitionTo('mensajes');
-					}
-				})
+			.then((user)=>{
+				if(user.get('role') == 'Admin'){
+					this.transitionTo('mensajes');
+				}
+			})
 		}
 	},
-	
+
 	model(){
 	this.store.findAll('fee');
 	this.store.findAll('loan');

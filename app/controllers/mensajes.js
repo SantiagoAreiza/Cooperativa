@@ -41,6 +41,7 @@ export default Controller.extend({
 				this.set('errorMessage',"Exito: Mensaje publicado con éxito");
 			}
 		},
+
 		buscarMensaje(){
 			this.set('error', false);
 			var textoBuscar = this.get('buscarMensaje');

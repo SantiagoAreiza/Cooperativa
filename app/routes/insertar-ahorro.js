@@ -46,7 +46,7 @@ export default Route.extend({
 								'cuota_base':30000,
 								'bono': 20000,
 								'fecha_insercion': fechaActual.getDate().toString() + '/' + (fechaActual.getMonth() + 1).toString() + '/' + fechaActual.getFullYear().toString()
-							}                
+							}
 		}
 	},
 });
