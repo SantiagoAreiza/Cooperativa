@@ -23,20 +23,6 @@ export default Route.extend({
 	},
 
 	model(){
-		/*var prestamo = this.store.createRecord('loan', {
-        value: 10000,
-        state: false,
-        date: "18/02/2018"
-      });
-
-      this.store.findRecord('user', 'tKwcW1YoECQC02Gcj4NZs5P8Ul63')
-        .then((user)=>{
-          prestamo.set('user', user);
-          user.get('loans').addObject(prestamo);
-          prestamo.save().then(function () {
-            return user.save();
-          });
-        });*/
 		return this.store.query('loan', {
 			orderBy: 'state',
 			equalTo: false
