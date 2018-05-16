@@ -88,13 +88,16 @@ export default Route.extend({
 					})
 				}
 			});
-			cuotasTemporales.sort(function(a,b){
+			if(cuotasTemporales.length == 0){
+				return {error: true,
+								errorMessage: "No tienes deudas en este momento",}
+			}else{
+				cuotasTemporales.sort(function(a,b){
 				return new Date(b.date.split('/')[2], b.date.split('/')[1], b.date.split('/')[0]) - 
 					new Date(a.date.split('/')[2], a.date.split('/')[1], a.date.split('/')[0])
-			});
-			return {valorPrestamo: valorPrestamo, ultimaCuota: cuotasTemporales[0], valorPorPagar: valorPorPagar};
-		}).then((cuota)=>{
-			return this.proximasCuotas(cuota.valorPrestamo, cuota.ultimaCuota, cuota.valorPorPagar);
+				});
+				return this.proximasCuotas(valorPrestamo, cuotasTemporales[0], valorPorPagar);
+			}
 		});
 	},
 });
