@@ -1,0 +1,53 @@
+
+{{menu-superior}}
+<div class="container">
+
+    <div class="menu"><h3 style="color:white">Insertar ahorro</h3></div>
+    
+    <select value="role" class="form-control" onchange={{action "updateValue" value="target.value"}}>
+        <option value="vacio">No has seleccionado ningún socio</option>
+        {{#each model.users as |role|}}
+        <option value="{{role.id}}">{{role.name}}</option>
+        
+        {{/each}}
+    </select>
+    <br>  
+
+    {{#if model.fecha}}
+        <div>
+            <h2 style="color:white">Detalle ahorro:</h2>
+            <label style="color:white">Fondo solidaridad: {{model.ahorro.fondo_solidaridad}}</label><br>
+            <label style="color:white">Cuota base: {{model.ahorro.cuota_base}} </label><br>
+            <label style="color:white">Bono: {{model.ahorro.bono}}</label><br>
+            <label style="color:white">Fecha: {{model.ahorro.fecha_insercion}} </label><br>
+            <strong style="color:white">Total: <label>$51.000</label></strong>
+        </div>
+     
+    {{else}}
+        <div><label style="color:white">Detalle ahorro:</label><br>
+            <label style="color:white">Fondo solidaridad: {{model.ahorro.fondo_solidaridad}}</label><br>
+            <label style="color:white">Cuota base: {{model.ahorro.cuota_base}} </label><br>
+            <label style="color:white">Fecha: {{model.ahorro.fecha_insercion}} </label><br>
+            <strong style="color:white">Total:<label>$31.000</label></strong>
+        </div>
+
+    {{/if}}
+    {{outlet}}
+
+    <br>
+    <button class="btn btn-primary" {{action 'insertarAhorro'}}>Insertar ahorro</button>
+
+		<br>
+		<br>
+    {{#if error}} 
+        <div class="container">
+        {{ventana-notificacion mensaje=errorMessage}}
+        </div>
+    {{/if}}
+    
+</div>
+
+
+
+
+
