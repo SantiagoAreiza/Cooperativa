@@ -10,20 +10,52 @@
 </div>
 
 <br>
-<div class="container" id="container_fees">
-	<div class="fees">
-		<h4><strong>Cuotas</strong></h4>
-		<div class="estetica" id="estetica_fees">
-			<div>
-				{{#each model as |cuota|}}
-					<p id="label_fee"><span> </span><span>{{cuota.payment}}</span></p>
-					<p id="label_fee"><span> </span><span>{{cuota.interest}}</span></p>
-					<p id="label_fee"><span> </span><span>{{cuota.fine}}</span></p>
-					<p id="label_fee"><span> </span><span>{{cuota.administration}}</span></p>
-					<hr id="lineas_separacion">
-				{{/each}}
-			</div>
+{{#if seeByMonth}}
+	{{#if error}}
+		<div class="container">
+			{{ventana-notificacion mensaje=errorMessage}}
 		</div>
-		<br>
+	{{/if}}
+	<div class="container" id="container_fees">
+		<div class="fees">
+			<h4><strong>Cuotas</strong></h4>
+			<div class="estetica" id="estetica_fees">
+				<div>
+					{{#each model as |cuota|}}
+						<p id="label_fee"><span> </span><span>{{cuota.payment}}</span></p>
+						<p id="label_fee"><span> </span><span>{{cuota.interest}}</span></p>
+						<p id="label_fee"><span> </span><span>{{cuota.fine}}</span></p>
+						<p id="label_fee"><span> </span><span>{{cuota.administration}}</span></p>
+						<hr id="lineas_separacion">
+					{{/each}}
+				</div>
+			</div>
+			<br>
+		</div>
 	</div>
-</div>
+{{/if}}
+
+{{#if seeByPartner}}
+	{{#if error}}
+		<div class="container">
+			{{ventana-notificacion mensaje=errorMessage}}
+		</div>
+	{{/if}}
+	<div class="container" id="container_fees">
+		<div class="fees">
+			<h4><strong>Cuotas</strong></h4>
+			<div class="estetica" id="estetica_fees">
+				<div>
+					{{#each model as |cuota|}}
+						<p id="label_fee"><span> </span><span>{{cuota.payment}}</span></p>
+						<p id="label_fee"><span> </span><span>{{cuota.interest}}</span></p>
+						<p id="label_fee"><span> </span><span>{{cuota.fine}}</span></p>
+						<p id="label_fee"><span> </span><span>{{cuota.administration}}</span></p>
+						<hr id="lineas_separacion">
+					{{/each}}
+				</div>
+			</div>
+			<br>
+		</div>
+	</div>
+{{/if}}
