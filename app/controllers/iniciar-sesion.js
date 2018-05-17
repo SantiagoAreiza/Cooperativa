@@ -20,7 +20,7 @@ export default Controller.extend({
 			this.set('error', false);
 			var Email = this.get('email');
 			var Password = this.get('Contrasena');
-			var Regex = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+			var Regex = /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/i;
 			if(this.camposInvalidos([Email,Password])){
 				this.set('error', true);
 				this.set('errorMessage' , 'Campos incompletos');

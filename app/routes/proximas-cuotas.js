@@ -5,7 +5,7 @@ export default Route.extend({
 	session: service(),
 	autenticacion: service(),
 
-	proximasCuotas(valorPrestamo, ultimaCuota, valorPorPagar){
+	calcularProximasCuotas(valorPrestamo, ultimaCuota, valorPorPagar){
 		var proximasCuotas = [{'faltaPagar': valorPorPagar,
 														'Abono': ultimaCuota.payment,
 														'Interes': ultimaCuota.interest, 
@@ -64,19 +64,19 @@ export default Route.extend({
 	},
 
 	model(){
-	this.store.findAll('fee');
-	this.store.findAll('loan');
-	var mesActual = (new Date()).getMonth();
-	return this.store.findRecord('user', this.get('session').get('currentUser').uid)
-		.then((usuario)=>{
-			var cuotasTemporales = [];
-			var valorPrestamo = 0;
-			var valorPorPagar = 0;
-			usuario.get('loans').forEach((prestamo)=>{
-				if(prestamo.get('state') && prestamo.get('date').split("/")[1] < mesActual){
-					valorPrestamo = prestamo.get('value');
-					valorPorPagar = prestamo.get('value');
-					prestamo.get('fees').forEach((cuota) => {
+		return this.store.findRecord('user', this.get('session').get('currentUser').uid).then((usuario)=>{
+			return usuario.get('loans').then((prestamos)=>{
+				var prestamoCorrecto;
+				prestamos.forEach((prestamo) => {
+					if(prestamo.get('state')){
+						prestamoCorrecto = prestamo;
+					}
+				});
+				return prestamoCorrecto.get('fees').then((cuotas)=>{
+					var cuotasTemporales = []
+					var valorPrestamo = prestamoCorrecto.get('value');
+					var valorPorPagar = valorPrestamo;
+					cuotas.forEach((cuota) => {
 						valorPorPagar = valorPorPagar - cuota.get('payment'); 
 						var nuevaCuota = {
 							payment: cuota.get('payment'),
@@ -87,18 +87,13 @@ export default Route.extend({
 						};
 						cuotasTemporales = cuotasTemporales.concat(nuevaCuota);
 					})
-				}
-			});
-			if(cuotasTemporales.length == 0){
-				return {error: true,
-								errorMessage: "No tienes deudas en este momento",}
-			}else{
-				cuotasTemporales.sort(function(a,b){
-				return new Date(b.date.split('/')[2], b.date.split('/')[1], b.date.split('/')[0]) - 
-					new Date(a.date.split('/')[2], a.date.split('/')[1], a.date.split('/')[0])
+					cuotasTemporales.sort(function(a,b){
+					return new Date(b.date.split('/')[2], b.date.split('/')[1], b.date.split('/')[0]) - 
+						new Date(a.date.split('/')[2], a.date.split('/')[1], a.date.split('/')[0])
+					});
+					return this.calcularProximasCuotas(valorPrestamo, cuotasTemporales[0], valorPorPagar);
 				});
-				return this.proximasCuotas(valorPrestamo, cuotasTemporales[0], valorPorPagar);
-			}
+			});
 		});
 	},
 });
