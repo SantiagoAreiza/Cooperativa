@@ -6,16 +6,13 @@ export default Route.extend({
 	session: service(),
 
 	beforeModel(){
-		return this.get('session').fetch()
-			.then(()=>{
-				debugger;
-				return this.store.findRecord('user', this.get('session').get('currentUser').uid)
-					.then((usuario)=>{
-						return this.get('autenticacion').setUsuario(usuario);
-					})
-			}).catch(()=>{
-				debugger;
+		console.log('Entro', "beforeModel","application",(new Date).getMinutes(), (new Date).getSeconds());
+		return this.get('session').fetch().catch(()=>{
 				this.transitionTo('iniciar-sesion');
 			});
+	},
+
+	model(){
+		return this.store.findRecord('user', this.get('session').get('currentUser').uid);
 	}
 });
