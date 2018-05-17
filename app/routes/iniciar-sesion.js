@@ -6,13 +6,9 @@ export default Route.extend({
 	autenticacion: service(),
 
   beforeModel() {
-    return this.get('session').fetch()
-			.then(()=>{
-				this.store.findRecord('user', this.get('session').get('currentUser').uid)
-					.then(()=>{
-            this.transitionTo('mensajes');
-					})
-			}).catch(()=>{});
+		if(this.get('autenticacion').getUsuario() != null){
+			this.transitionTo('mensajes');
+		}
 	},
 
 });
