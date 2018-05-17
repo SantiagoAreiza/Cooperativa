@@ -7,7 +7,7 @@ export default Route.extend({
 
 	beforeModel() {
 		if(!this.get('autenticacion').getUsuario().get('acepted')){
-			this.get('session').close()
+			return this.get('session').close()
 				.then(()=>{
 					this.get('autenticacion').setUsuario(null);
 					this.get('router').transitionTo('iniciar-sesion');
