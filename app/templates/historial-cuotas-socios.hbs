@@ -1,0 +1,29 @@
+{{menu-superior}}
+{{outlet}}
+
+<div class="container" id="container_filter_fees">
+	<h4 id="label_filter_fees"><strong>Historial de Cuotas</strong></h4>
+	<div class="filter_fees">
+		<button class="btn btn-primary" id="boton_ver_por_mes" {{action "verMes"}}><span class="glyphicon glyphicon-search"></span>Ver por Mes</button>
+		<button class="btn btn-primary" id="boton_ver_por_socios" {{action "verSocios"}}><span class="glyphicon glyphicon-search"></span>Ver por Socios</button>
+	</div>
+</div>
+
+<br>
+<div class="container" id="container_fees">
+	<div class="fees">
+		<h4><strong>Cuotas</strong></h4>
+		<div class="estetica" id="estetica_fees">
+			<div>
+				{{#each model as |cuota|}}
+					<p id="label_fee"><span> </span><span>{{cuota.payment}}</span></p>
+					<p id="label_fee"><span> </span><span>{{cuota.interest}}</span></p>
+					<p id="label_fee"><span> </span><span>{{cuota.fine}}</span></p>
+					<p id="label_fee"><span> </span><span>{{cuota.administration}}</span></p>
+					<hr id="lineas_separacion">
+				{{/each}}
+			</div>
+		</div>
+		<br>
+	</div>
+</div>

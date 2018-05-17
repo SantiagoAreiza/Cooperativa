@@ -170,3 +170,37 @@ thead{
 	color:#12225C; 
 	margin: 0px 0px 5px;
 }
+
+#container_filter_fees{
+	border:1px solid #6d6261; 
+	border-radius: 5px; 
+	background-color: rgba(230,230,230);
+}
+
+#label_filter_fees{
+	color: rgb(50,50,50)
+}
+
+#boton_ver_por_mes{
+	margin: 0px 0px 5px;
+}
+
+#boton_ver_por_socios{
+	margin: 0px 0px 5px;
+}
+
+#estetica_fees{
+	border:1px solid #6d6261; 
+	border-radius: 5px;
+}
+
+#label_fee{
+	margin: 0px 10px;
+	font-family: sans-serif;
+}
+
+#container_fees{
+	border:1px solid #6d6261; 
+	border-radius: 5px; 
+	background-color: #FAFAFD;
+}
