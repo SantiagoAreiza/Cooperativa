@@ -18,11 +18,11 @@ export default Route.extend({
 			if(prestamos._length == 0){
 				this.controllerFor('prestamos-solicitados').set('tabla', false);
 				this.controllerFor('prestamos-solicitados').set('error', true);
-				this.controllerFor('prestamos-solicitados').set('errorMessage', "No existen préstamos solicitados");
+				this.controllerFor('prestamos-solicitado').set('errorMessage', "No existen préstamos solicitados");
+				return prestamos;
 			}else{
 				return prestamos;
 			}
-			return prestamos
 		});
 	}
 });
