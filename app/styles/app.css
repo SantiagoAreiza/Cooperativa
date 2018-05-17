@@ -48,8 +48,10 @@ container{
 
 div.salir{
 	float: right;
-	position: absolute;
+	position: relative;
 	right: 0;
+	vertical-align: middle;
+	display: table-cell;
 }
 
 #contenedor_sesion{
@@ -132,6 +134,11 @@ div.salir{
 
 .bodyTable:hover{
 	background-color: #6E6E6E;
+}
+
+.prestamosSolicitados{
+	text-align: center;
+	color:#f0f0f0
 }
 
 .primeraCuota{
