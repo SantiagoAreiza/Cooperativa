@@ -22,6 +22,7 @@
 			<div class="estetica" id="estetica_fees">
 				<div>
 					{{#each model as |cuota|}}
+						<p id="label_fee"><span> </span><span>{{cuota.date}}</span></p>
 						<p id="label_fee"><span> </span><span>{{cuota.payment}}</span></p>
 						<p id="label_fee"><span> </span><span>{{cuota.interest}}</span></p>
 						<p id="label_fee"><span> </span><span>{{cuota.fine}}</span></p>
@@ -47,6 +48,7 @@
 			<div class="estetica" id="estetica_fees">
 				<div>
 					{{#each model as |cuota|}}
+						<p id="label_fee"><span> </span><span>{{cuota.date}}</span></p>
 						<p id="label_fee"><span> </span><span>{{cuota.payment}}</span></p>
 						<p id="label_fee"><span> </span><span>{{cuota.interest}}</span></p>
 						<p id="label_fee"><span> </span><span>{{cuota.fine}}</span></p>
