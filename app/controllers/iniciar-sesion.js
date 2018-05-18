@@ -7,7 +7,7 @@ export default Controller.extend({
 	error: false,
 	errorMessage: null,
 
-	camposInvalidos(arregloComponentes){
+	camposIncompletos(arregloComponentes){
 		for (var i = 0; i < arregloComponentes.length; i++) {
 			if(arregloComponentes[i] === "" ||typeof(arregloComponentes[i])=="undefined"){
 				return true;
@@ -16,12 +16,12 @@ export default Controller.extend({
 	},
 
 	actions: {
-		signIn() {
+		iniciarSesion() {
 			this.set('error', false);
 			var Email = this.get('email');
 			var Password = this.get('Contrasena');
 			var Regex = /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/i;
-			if(this.camposInvalidos([Email,Password])){
+			if(this.camposIncompletos([Email,Password])){
 				this.set('error', true);
 				this.set('errorMessage' , 'Campos incompletos');
 			}else if(!(Regex.test(Email))){
@@ -64,7 +64,7 @@ export default Controller.extend({
 			}
 		},
 		
-		createUser (){
+		crearUsuario(){
 			this.transitionToRoute('insertar-socio');
 		},
 	}

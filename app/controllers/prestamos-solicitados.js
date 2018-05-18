@@ -6,7 +6,7 @@ export default Controller.extend({
 	errorMessage: null,
 
 	actions: {
-		rechazar(prestamo){
+		rechazarPrestamo(prestamo){
 			this.store.findRecord('user', prestamo.get('user').get('id'))
 				.then((usuario) => {
 					prestamo.destroyRecord().then(() => {
@@ -21,7 +21,7 @@ export default Controller.extend({
 				});
 		},
 
-		aprobar(prestamo){
+		aprobarPrestamo(prestamo){
 			this.store.findRecord('loan', prestamo.id).then((prestamo)=> {
 				prestamo.set('state', true);
 				prestamo.save().then(()=>{

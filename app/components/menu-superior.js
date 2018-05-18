@@ -17,7 +17,7 @@ export default Component.extend({
 	},
 
 	actions: {
-		signOut: function() {
+		cerrarSesion() {
 			this.get('session').close()
 				.then(()=>{
 					this.get('autenticacion').setUsuario(null);

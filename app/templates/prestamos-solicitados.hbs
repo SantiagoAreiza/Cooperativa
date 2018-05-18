@@ -23,8 +23,8 @@
 					<td>{{prestamo.date}}</td>
 					<td>${{prestamo.value}}</td>
 					<td style="text-align: center">
-						<button class="btn btn-danger" {{action "rechazar" prestamo}}>Rechazar</button>&nbsp;&nbsp;
-						<button class="btn btn-success" {{action "aprobar" prestamo}}>Aprobar</button>
+						<button class="btn btn-danger" {{action "rechazarPrestamo" prestamo}}>Rechazar</button>&nbsp;&nbsp;
+						<button class="btn btn-success" {{action "aprobarPrestamo" prestamo}}>Aprobar</button>
 					</td>
 				</tr>
 				{{/each}}
