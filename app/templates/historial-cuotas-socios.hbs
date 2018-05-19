@@ -21,14 +21,28 @@
 			<h4><strong>Cuotas</strong></h4>
 			<div class="estetica" id="estetica_fees">
 				<div>
-					{{#each model as |cuota|}}
-						<p id="label_fee"><span> </span><span>{{cuota.date}}</span></p>
-						<p id="label_fee"><span> </span><span>{{cuota.payment}}</span></p>
-						<p id="label_fee"><span> </span><span>{{cuota.interest}}</span></p>
-						<p id="label_fee"><span> </span><span>{{cuota.fine}}</span></p>
-						<p id="label_fee"><span> </span><span>{{cuota.administration}}</span></p>
-						<hr id="lineas_separacion">
-					{{/each}}
+					<table class="table">
+						<thead>
+							<tr>
+								<th>Mes</th>
+								<th>Administración</th>
+								<th>Abonos</th>
+								<th>Intereses</th>
+								<th>Multas</th>
+							</tr>
+						</thead>
+						<tbody>
+							{{#each model as |mes|}}
+							<tr>
+								<td><strong>{{mes.mes}}</strong></td>
+								<td>{{mes.administracion}}</td>
+								<td>{{mes.abono}}</td>
+								<td>{{mes.interes}}</td>
+								<td>{{mes.multa}}</td>
+							</tr>
+							{{/each}}
+						</tbody>
+					</table>
 				</div>
 			</div>
 			<br>
