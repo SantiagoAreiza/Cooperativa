@@ -1,5 +1,5 @@
 body {
-	background-color: rgb(69,69,69);
+	background-color:white;
 }
 
 div.navbar-header {
@@ -55,9 +55,9 @@ div.salir{
 }
 
 #contenedor_sesion{
-	border:1px solid #6d6261;
+	border:1px solid #d8cbca;
 	border-radius: 20px;
-	background-color:rgb(200,200,200); 
+	background-color:rgb(230, 218, 218); 
 	width: 350px;
 	min-height:300px;
 }
@@ -73,9 +73,9 @@ div.salir{
 }
 
 #contenedor_insertar_socio{
-	border:1px solid #6d6261; 
+	border:1px solid #e6dedd; 
 	border-radius: 20px; 
-	background-color:rgb(200,200,200); 
+	background-color:rgb(250, 244, 244); 
 	width: 320px; min-height:270px;
 }
 
@@ -102,13 +102,13 @@ div.salir{
 }
 
 #boton_insertar_socio{
-	margin: 10px 0px 10px 100px;
+	margin: 10px 40px 10px 20px;
 }
 
 #contenedor_insertar_mensaje{
-	border:1px solid #6d6261; 
+	border:1px solid #f8f8f8; 
 	border-radius: 5px; 
-	background-color: rgba(230,230,230);
+	background-color: rgb(250, 246, 246);
 }
 
 #etiqueta_publicar_mensaje{
@@ -121,7 +121,7 @@ div.salir{
 }
 
 #contenedor_mensajes{
-	border:1px solid #6d6261; 
+	border:1px solid #eee6e6; 
 	border-radius: 5px; 
 	background-color: #FAFAFD;
 }
@@ -133,12 +133,12 @@ div.salir{
 }
 
 .bodyTable:hover{
-	background-color: #6E6E6E;
+	background-color: rgb(213, 204, 204);
 }
 
 .prestamosSolicitados{
 	text-align: center;
-	color:#f0f0f0
+	color:#000000
 }
 
 .primeraCuota{
@@ -179,11 +179,12 @@ thead{
 }
 
 #ahorro {
-	border:1px solid #6d6261;
-	border-radius: 10px;
+	border:1px solid #e1dad9;
+	border-radius: 5px;
 	width: 250px;
 	min-height:100px;
 	text-align: justify;
+	background-color: #f9f7f7;
 }
 
 #valorSolicitado {

@@ -1,7 +1,7 @@
 {{menu-superior}}
 
 <div class="container">
-	<div class="menu"><h3 style="color:white">Insertar ahorro</h3></div>
+	<div class="menu"><h3 >Insertar ahorro</h3></div>
 	<br>
 	<div class="row">
 		<div class="col-sm-6">
@@ -19,19 +19,19 @@
 		<div class="col-sm-6">
 		{{#if model.fecha}}
 				<div class="container" id="ahorro">
-						<h2 style="color:white">Detalle ahorro:</h2>
-						<label style="color:white">Fondo solidaridad: $1.000</label><br>
-						<label style="color:white">Cuota base: $30.000 </label><br>
-						<label style="color:white">Bono: $20.000</label><br>
-						<label style="color:white">Fecha: {{model.ahorro.fecha_insercion}} </label><br>
-						<strong style="color:white">Total: <label>$51.000</label></strong>
+						<h2>Detalle ahorro:</h2>
+						<label >Fondo solidaridad: $1.000</label><br>
+						<label >Cuota base: $30.000 </label><br>
+						<label >Bono: $20.000</label><br>
+						<label >Fecha: {{model.ahorro.fecha_insercion}} </label><br>
+						<strong>Total: <label>$51.000</label></strong>
 				</div>
 		{{else}}
-				<div class="container" id="ahorro"><label style="color:white">Detalle ahorro:</label><br>
-						<label style="color:white">Fondo solidaridad: $1.000</label><br>
-						<label style="color:white">Cuota base: $30.000 </label><br>
-						<label style="color:white">Fecha: {{model.ahorro.fecha_insercion}} </label><br>
-						<strong style="color:white">Total: <label>$31.000</label></strong>
+				<div class="container" id="ahorro"><label >Detalle ahorro:</label><br>
+						<label >Fondo solidaridad: $1.000</label><br>
+						<label >Cuota base: $30.000 </label><br>
+						<label >Fecha: {{model.ahorro.fecha_insercion}} </label><br>
+						<strong >Total: <label>$31.000</label></strong>
 				</div>
 		{{/if}}
 
@@ -47,17 +47,17 @@
 	{{/if}}
 
 	<hr>
-	<h3 style="color:white">Insertar cuota</h3>
+	<h3 >Insertar cuota</h3>
 
 	<div class="row">
 		<div class="col-sm-4">
 			{{#if verCuota}}
 
-			<label style="color:white;">{{valorPrestamo}}</label><br>
-			<label style="color:white;">{{fechaPrestamo}}</label><br>
-			<label style="color:white;">{{montoParcial}}</label><br><br>
+			<label >{{valorPrestamo}}</label><br>
+			<label >{{fechaPrestamo}}</label><br>
+			<label >{{montoParcial}}</label><br><br>
 
-			{{input type="checkbox" name="multa" checked=multa}} <label style="color:white;">Multa</label> <br>
+			{{input type="checkbox" name="multa" checked=multa}} <label >Multa</label> <br>
 			<button class="btn btn-primary" {{action 'insertarCuota'}}>Insertar Cuota</button>
 
 			{{/if}}
@@ -67,13 +67,13 @@
 		<div class="col-sm-4">
 
 			{{#if verCuota}}
-			<i style="color:red">{{sinCuotas}}</i> <i style="color:white">{{detalleCuota}}</i><br>
+			<i style="color:red">{{sinCuotas}}</i> <i>{{detalleCuota}}</i><br>
 		
 
-			<label style="color:white;">{{valorAbono}} </label><br>
-			<label style="color:white;">{{valorInteres}}</label><br>
-			<label style="color:white;">{{valorMulta}}</label><br>
-			<label style="color:white;">{{valorAdministracion}}</label><br>		
+			<label >{{valorAbono}} </label><br>
+			<label >{{valorInteres}}</label><br>
+			<label >{{valorMulta}}</label><br>
+			<label >{{valorAdministracion}}</label><br>		
 				
 			{{/if}}
 		</div>

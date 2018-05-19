@@ -1,13 +1,13 @@
 {{menu-superior}}
 <div class="container">
-	<label style="color:white;" >Valor a solicitar: </label>
+	<label >Valor a solicitar: </label><br><br>
+	
 	<div class="form-group">
 			<input type=number value=valorSolicitado  class="form-control" id="valorSolicitado">
-
 	</div>
-
+	
 	<br>
-	<button class="class=btn btn-basic btn-md" id="boton_solicitar" {{action "solicitarPrestamo" valorSolicitado}}>Solicitar Préstamo</button><br/><br>
-	<label class="notificacion" style="color:white;">{{notificacionSolicitud}}</label>
+	<button class="btn btn-primary btn-md" id="boton_solicitar" {{action "solicitarPrestamo" valorSolicitado}}>Solicitar Préstamo</button><br/><br>
+	<label class="notificacion">{{notificacionSolicitud}}</label>
 	{{outlet}}
 </div>

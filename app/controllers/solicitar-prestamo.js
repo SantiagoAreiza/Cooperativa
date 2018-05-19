@@ -29,8 +29,7 @@ export default Controller.extend({
 								var solicitudPrestamo = this.get('store').createRecord('loan',{
 								value: parseInt(valorSolicitado),
 								state: false,
-								date: fechaActual.getDate().toString() + '/' + (fechaActual.getMonth() + 1).toString() + '/' + fechaActual.getFullYear().toString(),
-								
+								date: fechaActual.getDate().toString() + '/' + (fechaActual.getMonth() + 1).toString() + '/' + fechaActual.getFullYear().toString(),								
 						});
 
 						this.store.findRecord('user',this.get('session').get('currentUser').uid).then((usuarioEncontrado) => {
