@@ -3,6 +3,7 @@ import Controller from '@ember/controller';
 export default Controller.extend({
 
 	actions:{
+
 		solicitarPrestamo(){
 			var estadoPrestamo = false;
 			var valorSolicitado = document.getElementById('valorSolicitado').value;

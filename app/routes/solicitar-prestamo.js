@@ -24,12 +24,5 @@ export default Route.extend({
 				}
 			})
 		}
-	},
-
-	model(){
-		
 	}
-
-
-
 });
