@@ -170,3 +170,15 @@ thead{
 	color:#12225C; 
 	margin: 0px 0px 5px;
 }
+
+#ahorro {
+	border:1px solid #6d6261;
+	border-radius: 10px;
+	width: 250px;
+	min-height:100px;
+	text-align: justify;
+}
+
+#valorSolicitado {
+	width: 300px;
+}

@@ -2,44 +2,82 @@
 
 <div class="container">
 	<div class="menu"><h3 style="color:white">Insertar ahorro</h3></div>
-
-	<select value="role" class="form-control" onchange={{action "updateValue" value="target.value"}}>
-			<option value="vacio">No has seleccionado ningún socio</option>
-			{{#each model.users as |role|}}
-				<option value="{{role.id}}">{{role.name}}</option>
-			{{/each}}
-	</select>
-	<br>  
-
-	{{#if model.fecha}}
-			<div>
-					<h2 style="color:white">Detalle ahorro:</h2>
-					<label style="color:white">Fondo solidaridad: {{model.ahorro.fondo_solidaridad}}</label><br>
-					<label style="color:white">Cuota base: {{model.ahorro.cuota_base}} </label><br>
-					<label style="color:white">Bono: {{model.ahorro.bono}}</label><br>
-					<label style="color:white">Fecha: {{model.ahorro.fecha_insercion}} </label><br>
-					<strong style="color:white">Total: <label>$51.000</label></strong>
-			</div>
-	{{else}}
-			<div><label style="color:white">Detalle ahorro:</label><br>
-					<label style="color:white">Fondo solidaridad: {{model.ahorro.fondo_solidaridad}}</label><br>
-					<label style="color:white">Cuota base: {{model.ahorro.cuota_base}} </label><br>
-					<label style="color:white">Fecha: {{model.ahorro.fecha_insercion}} </label><br>
-					<strong style="color:white">Total:<label>$31.000</label></strong>
-			</div>
-	{{/if}}
-	{{outlet}}
-
 	<br>
-	<button class="btn btn-primary" {{action 'insertarAhorro'}}>Insertar ahorro</button>
-	<br>
-	<br>
+	<div class="row">
+		<div class="col-sm-6">
+			<select value="role" class="form-control" onchange={{action "updateValue" value="target.value"}}>
+				<option value="vacio">No has seleccionado ningún socio</option>
+				{{#each model.users as |role|}}
+					<option value="{{role.id}}">{{role.name}}</option>
+				{{/each}}
+			</select>
+			<br><br>		
+			<button class="btn btn-primary" {{action 'insertarAhorro'}}>Insertar ahorro</button>
+		
+		</div> 
+		
+		<div class="col-sm-6">
+		{{#if model.fecha}}
+				<div class="container" id="ahorro">
+						<h2 style="color:white">Detalle ahorro:</h2>
+						<label style="color:white">Fondo solidaridad: $1.000</label><br>
+						<label style="color:white">Cuota base: $30.000 </label><br>
+						<label style="color:white">Bono: $20.000</label><br>
+						<label style="color:white">Fecha: {{model.ahorro.fecha_insercion}} </label><br>
+						<strong style="color:white">Total: <label>$51.000</label></strong>
+				</div>
+		{{else}}
+				<div class="container" id="ahorro"><label style="color:white">Detalle ahorro:</label><br>
+						<label style="color:white">Fondo solidaridad: $1.000</label><br>
+						<label style="color:white">Cuota base: $30.000 </label><br>
+						<label style="color:white">Fecha: {{model.ahorro.fecha_insercion}} </label><br>
+						<strong style="color:white">Total: <label>$31.000</label></strong>
+				</div>
+		{{/if}}
+
+		</div>
+		{{outlet}}
+		<br>
+	</div>	
 
 	{{#if error}} 
 			<div class="container">
 			{{ventana-notificacion mensaje=errorMessage}}
 			</div>
 	{{/if}}
+
+	<hr>
+	<h3 style="color:white">Insertar cuota</h3>
+
+	<div class="row">
+		<div class="col-sm-4">
+			{{#if verCuota}}
+
+			<label style="color:white;">{{valorPrestamo}}</label><br>
+			<label style="color:white;">{{fechaPrestamo}}</label><br>
+			<label style="color:white;">{{montoParcial}}</label><br><br>
+
+			{{input type="checkbox" name="multa" checked=multa}} <label style="color:white;">Multa</label> <br>
+			<button class="btn btn-primary" {{action 'insertarCuota'}}>Insertar Cuota</button>
+
+			{{/if}}
+
+		</div>
+
+		<div class="col-sm-4">
+
+			{{#if verCuota}}
+			<i style="color:red">{{sinCuotas}}</i> <i style="color:white">{{detalleCuota}}</i><br>
+		
+
+			<label style="color:white;">{{valorAbono}} </label><br>
+			<label style="color:white;">{{valorInteres}}</label><br>
+			<label style="color:white;">{{valorMulta}}</label><br>
+			<label style="color:white;">{{valorAdministracion}}</label><br>		
+				
+			{{/if}}
+		</div>
+	</div>
 </div>
 
 

@@ -11,9 +11,10 @@ Router.map(function() {
   this.route('insertar-socio');
   this.route('iniciar-sesion');
   this.route('proximas-cuotas');
-  this.route('insertar-ahorro');
   this.route('aceptar-socio');
   this.route('prestamos-solicitados');
+  this.route('insertar-ahorro');
+  this.route('solicitar-prestamo');
 });
 
 export default Router;
