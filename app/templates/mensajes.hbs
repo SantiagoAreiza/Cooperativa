@@ -5,7 +5,7 @@
 		<div class="publicar">
 			{{rol}}
 			{{textarea class="publicarMensaje" value=mensaje}}
-			<button class="btn btn-default" id="boton_publicar_mensaje" {{action "publicarMensaje"}}><span class="glyphicon glyphicon-envelope"></span> Publicar</button>
+			<button class="btn btn-primary" id="boton_publicar_mensaje"  style="color:white;" {{action "publicarMensaje"}}><span class="glyphicon glyphicon-envelope"></span> Publicar</button>
 		</div>
 	</div>
 {{/if}}
@@ -20,7 +20,7 @@
 	<div class="buscar">
 		<br>
 		{{textarea class="buscarMensaje" value=buscarMensaje}}
-		<button class="btn btn-default" id="boton_buscar_mensaje" {{action "buscarMensaje"}}> <span class="glyphicon glyphicon-search"></span> Buscar </button> 
+		<button class="btn btn-primary" style="color:white" id="boton_buscar_mensaje" {{action "buscarMensaje"}}> <span class="glyphicon glyphicon-search"></span> Buscar </button> 
 	</div>
 	<div class="publicaciones">
 		<h4><strong>Publicaciones </strong></h4>
@@ -29,7 +29,7 @@
 				{{#each model as |mensaje|}}
 					<div class="ubicacionFecha">
 						<h4>
-							<span class="label label-default label-lg" id="etiqueta_fecha_mensaje">
+							<span class="label label-info label-lg" id="etiqueta_fecha_mensaje">
 								<h6 class="glyphicon glyphicon-calendar"><span> </span> {{mensaje.date}}</h6> 
 							</span>
 						</h4>

@@ -1,0 +1,9 @@
+diff a/app/controllers/solicitar-prestamo.js b/app/controllers/solicitar-prestamo.js	(rejected hunks)
+@@ -3,7 +3,6 @@
+ export default Controller.extend({
+ 
+ 	actions:{
+-
+ 		solicitarPrestamo(){
+ 			var estadoPrestamo = false;
+ 			var valorSolicitado = document.getElementById('valorSolicitado').value;

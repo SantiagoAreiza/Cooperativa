@@ -1,0 +1,13 @@
+{{menu-superior}}
+<div class="container">
+	<label >Valor a solicitar: </label><br><br>
+	
+	<div class="form-group">
+			<input type=number value=valorSolicitado  class="form-control" id="valorSolicitado">
+	</div>
+	
+	<br>
+	<button class="btn btn-primary btn-md" id="boton_solicitar" {{action "solicitarPrestamo" valorSolicitado}}>Solicitar Préstamo</button><br/><br>
+	<label class="notificacion">{{notificacionSolicitud}}</label>
+	{{outlet}}
+</div>
