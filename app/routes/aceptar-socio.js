@@ -12,7 +12,7 @@ export default Route.extend({
 	},
 
 	model() {
-		return  this.store.query('user', {orderBy: 'acepted',	equalTo: false})
+		return  this.store.query('user', {orderBy: 'waiting',	equalTo: true})
 			.then((usuarios)=>{
 			if(usuarios._length == 0){
 				this.controllerFor('aceptar-socio').set('error', true);

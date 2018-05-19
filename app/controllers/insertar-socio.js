@@ -44,7 +44,8 @@ export default Controller.extend({
 							email: user.email,
 							role: "Socio",
 							type: "Nuevo",
-							acepted: false
+							acepted: false,
+							waiting: true
 						});
 						nuevoUsuario.save();
 						this.set('error', true);
