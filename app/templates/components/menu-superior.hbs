@@ -23,7 +23,7 @@
 	</div>
 	{{#if session.isAuthenticated}}
 		<div class="salir">
-				<button class="btn btn-danger" {{action "signOut"}}> <span class="glyphicon glyphicon-log-out"></span> Sign out </button>
+				<button class="btn btn-danger" {{action "cerrarSesion"}}> <span class="glyphicon glyphicon-log-out"></span> Sign out </button>
 		</div>
 	{{/if}}
 {{/bs-navbar}}

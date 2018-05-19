@@ -6,28 +6,15 @@ export default Route.extend({
 	session: service(),
 
 	beforeModel() {
-		if(!this.get('session').get('isAuthenticated')){
-			return this.get('session').fetch()
-			.then(()=>{
-				this.store.findRecord('user', this.get('session').get('currentUser').uid)
-					.then((user)=>{
-						this.get('autenticacion').setRol(user.get('role'));
-						this.controllerFor('mensajes').set('Admin',user.get('role') == 'Admin');
-						this.controllerFor('mensajes').set('error',false);
-						if(!user.get('acepted')){
-							this.get('session').close().then(()=>{this.transitionTo('iniciar-sesion'); });
-						}
-					});
-			}).catch(()=>{this.transitionTo('iniciar-sesion');});
-		}else{
-			this.store.findRecord('user', this.get('session').get('currentUser').uid)
-			.then((user)=>{
-				this.controllerFor('mensajes').set('Admin',user.get('role') == 'Admin');
-				if(!user.get('acepted')){
-					this.get('session').close().then(()=>{this.transitionTo('iniciar-sesion'); });
-				}
-			});
+		if(!this.get('autenticacion').getUsuario().get('acepted')){
+			return this.get('session').close()
+				.then(()=>{
+					this.get('autenticacion').setUsuario(null);
+					this.get('router').transitionTo('iniciar-sesion');
+				});
 		}
+		this.controllerFor('mensajes').set('Admin',this.get('autenticacion').getUsuario().get('role') == 'Admin');
+		this.controllerFor('mensajes').set('error',false);
 	},
 
 	model() {

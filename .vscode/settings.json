@@ -5,4 +5,5 @@
   "editor.detectIndentation": false,
   "editor.insertSpaces": false,
   "workbench.startupEditor": "newUntitledFile",
+	"git.autofetch": true
 }

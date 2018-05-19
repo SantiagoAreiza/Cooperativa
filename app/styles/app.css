@@ -48,8 +48,10 @@ container{
 
 div.salir{
 	float: right;
-	position: absolute;
+	position: relative;
 	right: 0;
+	vertical-align: middle;
+	display: table-cell;
 }
 
 #contenedor_sesion{
@@ -134,12 +136,17 @@ div.salir{
 	background-color: #6E6E6E;
 }
 
+.prestamosSolicitados{
+	text-align: center;
+	color:#f0f0f0
+}
+
 .primeraCuota{
-	background-color: #819FF7;
+	background-color: rgb(89, 187, 118);
 }
 
 thead{
-	background: #FA5858;
+	background: #4aa7e6;
 }
 
 #estetica_mensajes{

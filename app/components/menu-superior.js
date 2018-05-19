@@ -11,27 +11,16 @@ export default Component.extend({
 
 	didReceiveAttrs() {
 		this._super(...arguments);
-		if(this.get('session').get('isAuthenticated')){
-			this.get('store').findRecord('user', this.get('session').get('currentUser').uid)
-			.then((user)=>{
-				this.set('Admin', user.get('role') == 'Admin');
-			})
-		}else{
-			this.get('session').fetch()
-			.then(()=>{
-				this.store.findRecord('user', this.get('session').get('currentUser').uid)
-					.then((user)=>{
-						this.set('Admin', user.get('role') == 'Admin');
-					})            
-			}).catch(()=>{});
+		if(this.get('autenticacion').getUsuario() != null){
+			this.set('Admin', this.get('autenticacion').getUsuario().get('role') == 'Admin');
 		}
 	},
 
 	actions: {
-		signOut: function() {
+		cerrarSesion() {
 			this.get('session').close()
 				.then(()=>{
-					this.get('autenticacion').setRol(null);
+					this.get('autenticacion').setUsuario(null);
 					this.get('router').transitionTo('iniciar-sesion');
 				});
 		}

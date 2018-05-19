@@ -1,12 +1,12 @@
 import Route from '@ember/routing/route';
+import { inject as service } from '@ember/service';
 
 export default Route.extend({
+	autenticacion: service(),
+
 	beforeModel() {
-		if(!this.get('session').get('isAuthenticated')){
-			return this.get('session').fetch()
-				.then(()=>{
-					this.transitionTo('mensajes');
-				}).catch(()=>{});
+		if(this.get('autenticacion').getUsuario() != null){
+			this.transitionTo('mensajes');
 		}
 	},
 });
