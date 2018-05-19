@@ -1,12 +1,32 @@
 {{menu-superior}}
-{{#if Admin}}
-	<div class="container" id="contenedor_insertar_mensaje">
-		<h4 id="etiqueta_publicar_mensaje"><strong >Publicar Mensaje</strong></h4>
-		<div class="publicar">
-			{{rol}}
-			{{textarea class="publicarMensaje" value=mensaje}}
-			<button class="btn btn-default" id="boton_publicar_mensaje" {{action "publicarMensaje"}}><span class="glyphicon glyphicon-envelope"></span> Publicar</button>
+<div class="container">
+		{{#if error}} 
+		<div class="container">
+			{{ventana-notificacion mensaje=errorMessage}}
 		</div>
+	{{/if}}
+	<div class="col-12">
+		<table class='table table-bordered' id='tablaProximasCuotas'>
+			<thead>
+				<tr>
+					<th  style="text-align: center">Socio</th>
+					<th  style="text-align: center">Correo</th>
+					<th  style="text-align: center ">Aceptar</th>
+				</tr>
+			</thead>
+			<tbody>
+				{{#each model as |user|}}
+				<tr class="bodyTable">
+					<td>{{user.name}}</td>
+					<td>{{user.email}}</td>
+					<td style="text-align: center">
+						<button class="btn btn-danger" {{action "rechazarUsuario" user}}>Rechazar</button>
+						<button class="btn btn-success" {{action "aprobarUsuario" user}}>Aprobar</button>
+					</td>
+				</tr>
+				{{/each}}
+			</tbody>
+		</table>
 	</div>
-{{/if}}
+</div>
 {{outlet}}
