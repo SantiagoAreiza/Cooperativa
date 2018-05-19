@@ -1,3 +1,4 @@
+{{menu-superior}}
 <br>
 <br>
 <br>
@@ -17,12 +18,12 @@
 <span id="etiqueta_nombre_socio"><strong>Nombre:</strong></span> {{input type="text" value=Nombre}}<br/>
 <span id="etiqueta_correo_socio"><strong>Correo:</strong></span> {{input type="email" value=Email}}<br/>
 <span id="etiqueta_contraseña_socio"><strong>Contraseña:</strong> </span> {{input type="password" value=Contrasena}}<br/><br>
-
-<button class="btn btn-success btn-md" id="boton_insertar_socio" type="submit" {{action "crearUsuario"}}>Crear socio</button>
-<button class="btn btn-primary btn-md" id="boton_iniciar_secion" type="submit" {{action "iniciarSesion"}}>Iniciar Sesion</button><br/>
-
 {{#if error}}
 	{{ventana-notificacion mensaje=errorMessage}}
 {{/if}}
+<button class="btn btn-success btn-md" id="boton_insertar_socio" type="submit" {{action "crearUsuario"}}>Crear socio</button>
+<button class="btn btn-primary btn-md" id="boton_iniciar_secion" type="submit" {{action "iniciarSesion"}}>Volver a Iniciar Sesion</button><br/>
+
+
 </div>
 
