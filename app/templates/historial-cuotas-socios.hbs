@@ -10,7 +10,7 @@
 </div>
 
 <br>
-{{#if seeByMonth}}
+{{#if table}}
 	{{#if error}}
 		<div class="container">
 			{{ventana-notificacion mensaje=errorMessage}}
@@ -24,7 +24,12 @@
 					<table class = 'table table-bordered' id='tablaCuotasPorMes'>
 						<thead>
 							<tr>
-								<th>Mes</th>
+								{{#if seeByMonth}}
+									<th>Mes</th>
+								{{/if}}
+								{{#if seeByPartner}}
+									<th>Socio</th>
+								{{/if}}
 								<th>Administración</th>
 								<th>Abonos</th>
 								<th>Intereses</th>
@@ -34,7 +39,12 @@
 						<tbody>
 							{{#each model as |mes|}}
 							<tr>
-								<td><strong>{{mes.mes}}</strong></td>
+								{{#if seeByMonth}}
+									<td><strong>{{mes.mes}}</strong></td>
+								{{/if}}
+								{{#if seeByPartner}}
+									<td><strong>{{mes.nombreSocio}}</strong></td>
+								{{/if}}
 								<td>{{mes.administracion}}</td>
 								<td>{{mes.abono}}</td>
 								<td>{{mes.interes}}</td>
@@ -45,32 +55,6 @@
 					</table>
 				</div>
 			</div>
-		</div>
-	</div>
-{{/if}}
-
-{{#if seeByPartner}}
-	{{#if error}}
-		<div class="container">
-			{{ventana-notificacion mensaje=errorMessage}}
-		</div>
-	{{/if}}
-	<div class="container" id="container_fees">
-		<div class="fees">
-			<div class="tituloCuotas"><h4><strong>Cuotas</strong></h4></div>
-			<div class="estetica" id="estetica_fees">
-				<div>
-					{{#each model as |cuota|}}
-						<p id="label_fee"><span> </span><span>{{cuota.date}}</span></p>
-						<p id="label_fee"><span> </span><span>{{cuota.payment}}</span></p>
-						<p id="label_fee"><span> </span><span>{{cuota.interest}}</span></p>
-						<p id="label_fee"><span> </span><span>{{cuota.fine}}</span></p>
-						<p id="label_fee"><span> </span><span>{{cuota.administration}}</span></p>
-						<hr id="lineas_separacion">
-					{{/each}}
-				</div>
-			</div>
-			<br>
 		</div>
 	</div>
 {{/if}}
