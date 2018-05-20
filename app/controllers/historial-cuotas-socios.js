@@ -102,14 +102,16 @@ export default Controller.extend({
 					socio.get('loans').then((prestamos)=>{
 						if(prestamos.length > 0){
 							prestamos.forEach((prestamo)=>{
-								prestamo.get('fees').then((cuotas)=>{
-									cuotas.forEach((cuota)=>{
-										set(cuotasUsuario[i], 'administracion', cuota.get('administration') + get(cuotasUsuario[i], 'administracion'));
-										set(cuotasUsuario[i], 'abono', cuota.get('payment') + get(cuotasUsuario[i], 'abono'));
-										set(cuotasUsuario[i], 'interes', cuota.get('interest') + get(cuotasUsuario[i], 'interes'));
-										set(cuotasUsuario[i], 'multa', cuota.get('fine') + get(cuotasUsuario[i], 'multa'));
-									});
-									i++;
+								return prestamo.get('fees').then((cuotas)=>{
+									if(cuotas.length > 0){
+										cuotas.forEach((cuota)=>{
+											set(cuotasUsuario[i], 'administracion', cuota.get('administration') + get(cuotasUsuario[i], 'administracion'));
+											set(cuotasUsuario[i], 'abono', cuota.get('payment') + get(cuotasUsuario[i], 'abono'));
+											set(cuotasUsuario[i], 'interes', cuota.get('interest') + get(cuotasUsuario[i], 'interes'));
+											set(cuotasUsuario[i], 'multa', cuota.get('fine') + get(cuotasUsuario[i], 'multa'));
+										});
+									}
+									return cuotasUsuario;
 								});
 							});
 						}else{
