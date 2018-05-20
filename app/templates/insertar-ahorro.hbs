@@ -68,13 +68,17 @@
 
 			{{#if verCuota}}
 			<i style="color:red">{{sinCuotas}}</i> <i>{{detalleCuota}}</i><br>
-		
 
 			<label >{{valorAbono}} </label><br>
 			<label >{{valorInteres}}</label><br>
 			<label >{{valorMulta}}</label><br>
-			<label >{{valorAdministracion}}</label><br>		
-				
+			<label >{{valorAdministracion}}</label><br>
+			{{#if multa}}
+				<label> Multa $10.000 </label><br>
+				<label> Total {{valorTotalMulta}}</label>
+			{{else}}
+				<label> Total {{valorTotal}}</label>
+			{{/if}}
 			{{/if}}
 		</div>
 	</div>

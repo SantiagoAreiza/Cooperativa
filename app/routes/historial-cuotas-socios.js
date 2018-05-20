@@ -7,8 +7,7 @@ export default Route.extend({
 	beforeModel() {
 		if(this.get('autenticacion').getUsuario().get('role') != 'Admin'){
 			this.transitionTo('mensajes');
-		}
-		else{
+		}else{
 			this.controllerFor('historial-cuotas-socios').set('seeByMonth', false);
 			this.controllerFor('historial-cuotas-socios').set('seeByPartner', false);
 			this.controllerFor('historial-cuotas-socios').set('table', false);

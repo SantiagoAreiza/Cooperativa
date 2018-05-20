@@ -11,6 +11,8 @@ export default Controller.extend({
 	valMulta:0,
 	valInteres:0,
 	valAbono:0,
+	valorTotalMulta:0,
+	valorTotal:0,
 
 	actions:{
 
@@ -74,6 +76,9 @@ export default Controller.extend({
 											this.set('valorInteres',('Valor interés: '+	('$' + Number(valorPrestamo*(0.02)).toFixed().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,"))));
 											this.valInteres = valorPrestamo*(0.02);
 
+											this.set('valorTotal', this.get('valAdministracion') + this.get('valInteres') + this.get('valAbono'));
+											this.set('valorTotalMulta', this.get('valAdministracion') + this.get('valInteres') + this.get('valAbono') + 10000);
+
 											if(this.get('multa')==true){
 												this.set('valorMulta','Valor multa: $10.000');
 												this.valMulta = 10000;
@@ -85,6 +90,8 @@ export default Controller.extend({
 						});
 					});
 				});
+			}else{
+				this.set('verCuota',true);
 			}
 		},
 
