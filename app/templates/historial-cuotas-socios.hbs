@@ -16,45 +16,39 @@
 			{{ventana-notificacion mensaje=errorMessage}}
 		</div>
 	{{/if}}
-	<div class="container" id="container_fees">
-		<div class="fees">
-			<div class="tituloCuotas"><h4><strong>Cuotas</strong></h4></div>
-			<div class="estetica" id="estetica_fees">
-				<div>
-					<table class = 'table table-bordered' id='tablaCuotasPorMes'>
-						<thead>
-							<tr>
-								{{#if seeByMonth}}
-									<th>Mes</th>
-								{{/if}}
-								{{#if seeByPartner}}
-									<th>Socio</th>
-								{{/if}}
-								<th>Administración</th>
-								<th>Abonos</th>
-								<th>Intereses</th>
-								<th>Multas</th>
-							</tr>
-						</thead>
-						<tbody>
-							{{#each model as |mes|}}
-							<tr>
-								{{#if seeByMonth}}
-									<td><strong>{{mes.mes}}</strong></td>
-								{{/if}}
-								{{#if seeByPartner}}
-									<td><strong>{{mes.nombreSocio}}</strong></td>
-								{{/if}}
-								<td>{{mes.administracion}}</td>
-								<td>{{mes.abono}}</td>
-								<td>{{mes.interes}}</td>
-								<td>{{mes.multa}}</td>
-							</tr>
-							{{/each}}
-						</tbody>
-					</table>
-				</div>
-			</div>
-		</div>
+	<div class="tituloCuotas"><h2><strong>Cuotas</strong></h2></div>
+	<div class="container">
+		<table class = 'table table-bordered' id='tablaCuotasPorMes'>
+			<thead>
+				<tr>
+					{{#if seeByMonth}}
+						<th>Mes</th>
+					{{/if}}
+					{{#if seeByPartner}}
+						<th>Socio</th>
+					{{/if}}
+					<th>Administración</th>
+					<th>Abonos</th>
+					<th>Intereses</th>
+					<th>Multas</th>
+				</tr>
+			</thead>
+			<tbody>
+				{{#each model as |mes|}}
+				<tr>
+					{{#if seeByMonth}}
+						<td><strong>{{mes.mes}}</strong></td>
+					{{/if}}
+					{{#if seeByPartner}}
+						<td><strong>{{mes.nombreSocio}}</strong></td>
+					{{/if}}
+					<td>{{mes.administracion}}</td>
+					<td>{{mes.abono}}</td>
+					<td>{{mes.interes}}</td>
+					<td>{{mes.multa}}</td>
+				</tr>
+				{{/each}}
+			</tbody>
+		</table>
 	</div>
 {{/if}}

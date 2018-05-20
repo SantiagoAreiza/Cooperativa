@@ -21,6 +21,7 @@ export default Route.extend({
 				this.controllerFor('prestamos-solicitado').set('errorMessage', "No existen préstamos solicitados");
 				return prestamos;
 			}else{
+				this.controllerFor('prestamos-solicitados').set('error', false);
 				return prestamos;
 			}
 		});
