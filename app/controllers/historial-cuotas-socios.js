@@ -91,31 +91,29 @@ export default Controller.extend({
 			this.set('table', true);
 			this.store.query('user',{orderBy: 'role', equalTo:'Socio'}).then((socios)=>{
 				var cuotasUsuario = [];
+				var indexUsuario = {};
 				var i = 0;
 				socios.forEach((socio)=>{
 					cuotasUsuario[i] = createUserFee();
 					cuotasUsuario[i].nombreSocio = socio.get('name');
+					indexUsuario[socio.get('name')] = i;
 					i++;
 				});
 				socios.forEach((socio)=>{
-					i = 0;
 					socio.get('loans').then((prestamos)=>{
 						if(prestamos.length > 0){
 							prestamos.forEach((prestamo)=>{
-								return prestamo.get('fees').then((cuotas)=>{
+								prestamo.get('fees').then((cuotas)=>{
 									if(cuotas.length > 0){
 										cuotas.forEach((cuota)=>{
-											set(cuotasUsuario[i], 'administracion', cuota.get('administration') + get(cuotasUsuario[i], 'administracion'));
-											set(cuotasUsuario[i], 'abono', cuota.get('payment') + get(cuotasUsuario[i], 'abono'));
-											set(cuotasUsuario[i], 'interes', cuota.get('interest') + get(cuotasUsuario[i], 'interes'));
-											set(cuotasUsuario[i], 'multa', cuota.get('fine') + get(cuotasUsuario[i], 'multa'));
+											set(cuotasUsuario[indexUsuario[socio.get('name')]], 'administracion', cuota.get('administration') + get(cuotasUsuario[indexUsuario[socio.get('name')]], 'administracion'));
+											set(cuotasUsuario[indexUsuario[socio.get('name')]], 'abono', cuota.get('payment') + get(cuotasUsuario[indexUsuario[socio.get('name')]], 'abono'));
+											set(cuotasUsuario[indexUsuario[socio.get('name')]], 'interes', cuota.get('interest') + get(cuotasUsuario[indexUsuario[socio.get('name')]], 'interes'));
+											set(cuotasUsuario[indexUsuario[socio.get('name')]], 'multa', cuota.get('fine') + get(cuotasUsuario[indexUsuario[socio.get('name')]], 'multa'));
 										});
 									}
-									return cuotasUsuario;
 								});
 							});
-						}else{
-							i++;
 						}
 					});
 				});
