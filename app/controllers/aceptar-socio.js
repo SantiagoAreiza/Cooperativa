@@ -9,7 +9,7 @@ export default Controller.extend({
 			var fechaActual = new Date();
 			var prestamoInicial = this.get('store').createRecord('loan', {
 				value: 800000,
-				state: false,
+				state: true,
 				date: fechaActual.getDate().toString() + '/' + (fechaActual.getMonth() + 1).toString() + '/' + fechaActual.getFullYear().toString(),
 			});
 			this.store.findRecord('user', usuario.id).then((user) => {
