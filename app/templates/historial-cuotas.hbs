@@ -9,21 +9,23 @@
 		<table class = 'table table-bordered' id='tablaProximasCuotas'>
 			<thead>
 				<tr>
+					<th>Fecha</th>
 					<th>Abono</th>
 					<th>Interés</th> 
 					<th>Multa</th>
 					<th>Administracion</th>
-					<th>Fecha</th>
+					<th>Total</th>
 				</tr>
 			</thead>
 			<tbody>
 				{{#each model as |cuota|}}
 					<tr class="bodyTable {{cuota.Clase}}">
+						<td>{{cuota.date}}</td>
 						<td>{{cuota.payment}}</td>
 						<td>{{cuota.interest}}</td>
 						<td>{{cuota.fine}}</td>
 						<td>{{cuota.administration}}</td>
-						<td>{{cuota.date}}</td>
+						<td>{{cuota.total}}</td>
 					</tr>
 				{{/each}}
 			</tbody>
