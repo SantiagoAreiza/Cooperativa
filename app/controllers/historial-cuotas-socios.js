@@ -10,6 +10,15 @@ function createMonthFee() {
 	};
 }
 
+function createUserFee() {
+	return {
+		'administracion':0,
+		'abonos':0,
+		'intereses':0,
+		'multas':0,
+	};
+}
+
 export default Controller.extend({
 	error: false,
 	errorMessage: null,
@@ -21,8 +30,6 @@ export default Controller.extend({
 			this.set('error', false);
 			this.set('seeByMonth', true);
 			this.set('seeByPartner', false);
-			this.set('error', true);
-			this.set('errorMessage', "Interfaz Por Mes");
 			var meses = this.store.findAll('fee').then((cuotas)=>{
 				var meses = [];
 				for(var i=0; i<12; i++){
@@ -78,8 +85,28 @@ export default Controller.extend({
 			this.set('error', false);
 			this.set('seeByMonth', false);
 			this.set('seeByPartner', true);
-			this.set('error', true);
-			this.set('errorMessage', "Interfaz Por Socios");
+			this.store.query('user',{orderBy: 'role', equalTo:'Socio'}).then((socios)=>{
+				var cuotasUsuario = [];
+				var i = 0;
+				socios.forEach((socios)=>{
+					cuotasUsuario[i] = createUserFee();
+					i++;
+				});
+				console.log(i);
+				socios.forEach((socio)=>{
+					socio.get('loans').forEach((prestamo)=>{
+						i = 0;
+						prestamo.get('fees').forEach((cuotas)=>{
+							cuotasUsuario[i].administracion = cuotasUsuario[i].administracion + cuotas.get('administration');
+							cuotasUsuario[i].abonos = cuotasUsuario[i].abonos + cuotas.get('payment');
+							cuotasUsuario[i].intereses = cuotasUsuario[i].intereses + cuotas.get('interest');
+							cuotasUsuario[i].multas = cuotasUsuario[i].multas + cuotas.get('fine');
+						});
+						i++;
+					});
+					console.log(cuotasUsuario);
+				});
+			});
 		}
 	}
 });

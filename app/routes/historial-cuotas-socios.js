@@ -23,6 +23,6 @@ export default Route.extend({
 	},
 
 	model() {
-		return this.store.findAll('fee')
+		return this.store.findAll('fee');
 	},
 });

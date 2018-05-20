@@ -18,7 +18,7 @@
 	{{/if}}
 	<div class="container" id="container_fees">
 		<div class="fees">
-			<h4><strong>Cuotas</strong></h4>
+			<div class="tituloCuotas"><h4><strong>Cuotas</strong></h4></div>
 			<div class="estetica" id="estetica_fees">
 				<div>
 					<table class = 'table table-bordered' id='tablaCuotasPorMes'>
@@ -45,7 +45,6 @@
 					</table>
 				</div>
 			</div>
-			<br>
 		</div>
 	</div>
 {{/if}}
@@ -58,7 +57,7 @@
 	{{/if}}
 	<div class="container" id="container_fees">
 		<div class="fees">
-			<h4><strong>Cuotas</strong></h4>
+			<div class="tituloCuotas"><h4><strong>Cuotas</strong></h4></div>
 			<div class="estetica" id="estetica_fees">
 				<div>
 					{{#each model as |cuota|}}
