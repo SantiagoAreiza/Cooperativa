@@ -18,6 +18,20 @@ export default Route.extend({
 	},
 
 	model() {
-		return this.store.findAll('message')
+		return this.store.findAll('message').then((mensajes) => {
+			var mensajesTemporales = [];
+			mensajes.forEach((mensaje)=> {
+				var mensajeTemporal = {
+					text : mensaje.get('text'),
+					date : mensaje.get('date'),
+				}
+				mensajesTemporales = mensajesTemporales.concat(mensajeTemporal);
+			})
+			mensajesTemporales.sort(function(a,b){
+			return new Date(b.date.split('/')[2], b.date.split('/')[1], b.date.split('/')[0]) - 
+				new Date(a.date.split('/')[2], a.date.split('/')[1], a.date.split('/')[0])
+			});
+			return mensajesTemporales;
+		})
 	},
 });
