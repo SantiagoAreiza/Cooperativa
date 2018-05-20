@@ -16,6 +16,7 @@ Router.map(function() {
   this.route('insertar-ahorro');
   this.route('solicitar-prestamo');
   this.route('historial-cuotas-socios');
+  this.route('historial-cuotas');
 });
 
 export default Router;
