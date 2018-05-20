@@ -13,8 +13,12 @@ Router.map(function() {
   this.route('proximas-cuotas');
   this.route('aceptar-socio');
   this.route('prestamos-solicitados');
+<<<<<<< HEAD
   this.route('insertar-ahorro');
   this.route('solicitar-prestamo');
+=======
+  this.route('historial-cuotas-socios');
+>>>>>>> feature/historialCuotas
 });
 
 export default Router;

@@ -1,0 +1,76 @@
+{{menu-superior}}
+{{outlet}}
+
+<div class="container" id="container_filter_fees">
+	<h4 id="label_filter_fees"><strong>Historial de Cuotas</strong></h4>
+	<div class="filter_fees">
+		<button class="btn btn-primary" id="boton_ver_por_mes" {{action "verMes"}}><span class="glyphicon glyphicon-search"></span>Ver por Mes</button>
+		<button class="btn btn-primary" id="boton_ver_por_socios" {{action "verSocios"}}><span class="glyphicon glyphicon-search"></span>Ver por Socios</button>
+	</div>
+</div>
+
+<br>
+{{#if seeByMonth}}
+	{{#if error}}
+		<div class="container">
+			{{ventana-notificacion mensaje=errorMessage}}
+		</div>
+	{{/if}}
+	<div class="container" id="container_fees">
+		<div class="fees">
+			<div class="tituloCuotas"><h4><strong>Cuotas</strong></h4></div>
+			<div class="estetica" id="estetica_fees">
+				<div>
+					<table class = 'table table-bordered' id='tablaCuotasPorMes'>
+						<thead>
+							<tr>
+								<th>Mes</th>
+								<th>Administración</th>
+								<th>Abonos</th>
+								<th>Intereses</th>
+								<th>Multas</th>
+							</tr>
+						</thead>
+						<tbody>
+							{{#each model as |mes|}}
+							<tr>
+								<td><strong>{{mes.mes}}</strong></td>
+								<td>{{mes.administracion}}</td>
+								<td>{{mes.abono}}</td>
+								<td>{{mes.interes}}</td>
+								<td>{{mes.multa}}</td>
+							</tr>
+							{{/each}}
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+{{/if}}
+
+{{#if seeByPartner}}
+	{{#if error}}
+		<div class="container">
+			{{ventana-notificacion mensaje=errorMessage}}
+		</div>
+	{{/if}}
+	<div class="container" id="container_fees">
+		<div class="fees">
+			<div class="tituloCuotas"><h4><strong>Cuotas</strong></h4></div>
+			<div class="estetica" id="estetica_fees">
+				<div>
+					{{#each model as |cuota|}}
+						<p id="label_fee"><span> </span><span>{{cuota.date}}</span></p>
+						<p id="label_fee"><span> </span><span>{{cuota.payment}}</span></p>
+						<p id="label_fee"><span> </span><span>{{cuota.interest}}</span></p>
+						<p id="label_fee"><span> </span><span>{{cuota.fine}}</span></p>
+						<p id="label_fee"><span> </span><span>{{cuota.administration}}</span></p>
+						<hr id="lineas_separacion">
+					{{/each}}
+				</div>
+			</div>
+			<br>
+		</div>
+	</div>
+{{/if}}
