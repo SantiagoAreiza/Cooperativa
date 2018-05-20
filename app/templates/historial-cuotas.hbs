@@ -1,0 +1,32 @@
+{{menu-superior}}
+{{outlet}}
+<div class='container' >
+	{{#if model.error}} 
+		<div class="container">
+			{{ventana-notificacion mensaje=model.errorMessage}}
+		</div>
+	{{else}}
+		<table class = 'table table-bordered' id='tablaProximasCuotas'>
+			<thead>
+				<tr>
+					<th>Abono</th>
+					<th>Interés</th> 
+					<th>Multa</th>
+					<th>Administracion</th>
+					<th>Fecha</th>
+				</tr>
+			</thead>
+			<tbody>
+				{{#each model as |cuota|}}
+					<tr class="bodyTable {{cuota.Clase}}">
+						<td>{{cuota.payment}}</td>
+						<td>{{cuota.interest}}</td>
+						<td>{{cuota.fine}}</td>
+						<td>{{cuota.administration}}</td>
+						<td>{{cuota.date}}</td>
+					</tr>
+				{{/each}}
+			</tbody>
+		</table>
+	{{/if}}
+</div>
