@@ -178,7 +178,6 @@ thead{
 	margin: 0px 0px 5px;
 }
 
-<<<<<<< HEAD
 #ahorro {
 	border:1px solid #e1dad9;
 	border-radius: 5px;
@@ -190,7 +189,7 @@ thead{
 
 #valorSolicitado {
 	width: 300px;
-=======
+}
 #container_filter_fees{
 	border:1px solid #6d6261; 
 	border-radius: 5px; 
@@ -234,5 +233,4 @@ thead{
 
 .tituloCuotas{
 	margin: 0% 48%;
->>>>>>> feature/historialCuotas
 }
