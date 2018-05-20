@@ -78,10 +78,16 @@ export default Route.extend({
 						cuotasTemporales = cuotasTemporales.concat(nuevaCuota);
 					})
 					if(cuotasTemporales.length == 0){
-						return {
-							'error': true,
-							'errorMessage': 'No tienes deudas en este momento'
+						var fechaActual = new Date();
+						var cuota = {
+							payment: 0,
+							interest: 0,
+							fine: 0,
+							administration: 0,
+							Total: "0",
+							date: fechaActual.getDate().toString() + '/' + (fechaActual.getMonth() + 1).toString() + '/' + fechaActual.getFullYear().toString(),
 						}
+						return this.calcularProximasCuotas(valorPrestamo, cuota, valorPorPagar);
 					}else{
 						cuotasTemporales.sort(function(a,b){
 						return new Date(b.date.split('/')[2], b.date.split('/')[1], b.date.split('/')[0]) - 
