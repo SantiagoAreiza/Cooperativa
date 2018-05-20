@@ -1,4 +1,5 @@
 import Controller from '@ember/controller';
+import { set, get } from '@ember/object';
 
 function createMonthFee() {
 	return {
@@ -98,16 +99,14 @@ export default Controller.extend({
 				});
 				socios.forEach((socio)=>{
 					i = 0;
-					socio.get('loans').then((prestamos)=>{
+					return socio.get('loans').then((prestamos)=>{
 						prestamos.forEach((prestamo)=>{
-							prestamo.get('fees').then((cuotas)=>{
+							return prestamo.get('fees').then((cuotas)=>{
 								cuotas.forEach((cuota)=>{
-									debugger;
-									console.log(cuotasUsuario[i].administracion);
-									cuotasUsuario[i].administracion = cuotasUsuario[i].administracion + cuota.get('administration');
-									cuotasUsuario[i].abono = cuotasUsuario[i].abono + cuota.get('payment');
-									cuotasUsuario[i].interes = cuotasUsuario[i].interes + cuota.get('interest');
-									cuotasUsuario[i].multa = cuotasUsuario[i].multa + cuota.get('fine');
+									set(cuotasUsuario[i], 'administracion', cuota.get('administration') + get(cuotasUsuario[i], 'administracion'));
+									set(cuotasUsuario[i], 'abono', cuota.get('payment') + get(cuotasUsuario[i], 'abono'));
+									set(cuotasUsuario[i], 'interes', cuota.get('interest') + get(cuotasUsuario[i], 'interes'));
+									set(cuotasUsuario[i], 'multa', cuota.get('fine') + get(cuotasUsuario[i], 'multa'));
 								});
 							});
 						});
