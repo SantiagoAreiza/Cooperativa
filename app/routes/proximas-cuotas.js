@@ -77,7 +77,7 @@ export default Route.extend({
 						};
 						cuotasTemporales = cuotasTemporales.concat(nuevaCuota);
 					})
-					if(cuotasTemporales == []){
+					if(cuotasTemporales.length == 0){
 						return {
 							'error': true,
 							'errorMessage': 'No tienes deudas en este momento'
