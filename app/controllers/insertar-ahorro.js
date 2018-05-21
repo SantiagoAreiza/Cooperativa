@@ -34,9 +34,6 @@ export default Controller.extend({
 			this.set('montoParcial',null);
 			this.set('valorTotalMulta',null);
 			this.set('valorTotal',null);
-			
-			
-
 
 			if(usuarioSeleccionado != 'vacio'){
 				this.set('verCuota',true);
@@ -85,18 +82,19 @@ export default Controller.extend({
 											
 											this.set('detalleCuota','Detalles de la cuota a pagar: ');
 
-											if((valorPrestamo-montoParcial)>valorPrestamo*(0.12)){
-												this.set('valorAbono',('Valor abono: ' + ('$' + Number(valorPrestamo*(0.12)).toFixed().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,"))));
-												this.valAbono = valorPrestamo*(0.12);
+											if((valorPrestamo-montoParcial)>((valorPrestamo-montoParcial)*0.12)){
+												this.set('valorAbono',(('$' + Number((valorPrestamo-montoParcial)*0.12).toFixed().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,"))));
+												this.valAbono = (valorPrestamo-montoParcial)*0.12;
+												
 											}else{
-												this.set('valorAbono',('Valor abono: ' + ('$' + Number(valorPrestamo-montoParcial).toFixed().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,"))));
+												this.set('valorAbono',(('$' + Number(valorPrestamo-montoParcial).toFixed().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,"))));
 												this.valAbono = (valorPrestamo-montoParcial);
 											}	
 
 											this.set('montoRestante',(this.valorPrestamo-this.montoParcial).toString());
 
-											this.set('valorInteres',('Valor interés: '+	('$' + Number(valorPrestamo*(0.02)).toFixed().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,"))));
-											this.valInteres = valorPrestamo*(0.02);
+											this.set('valorInteres',('Valor interés: '+	('$' + Number((valorPrestamo-montoParcial)*(0.02)).toFixed().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,"))));
+											this.valInteres = (valorPrestamo-montoParcial)*(0.02);
 
 											this.set('valorTotal', ('$' + Number(this.get('valAdministracion') + this.get('valInteres') + this.get('valAbono')).toFixed().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,")));
 											this.set('valorTotalMulta',('$' + Number(this.get('valAdministracion') + this.get('valInteres') + this.get('valAbono') + 10000).toFixed().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,")));
@@ -118,7 +116,6 @@ export default Controller.extend({
 		},
 
 		insertarCuota: function(){
-
 			
 			var fechaActual = new Date();
 			this.objetoPrestamo.get('fees').then((cuotas)=>{
@@ -131,7 +128,7 @@ export default Controller.extend({
 
 						if(this.estadoCuotaMes){
 							this.set('error',true);
-							this.set('errorMessage',"Error: El socio ya ha insertado un ahorro el mes actual");
+							this.set('errorMessage',"Error: El socio ya ha insertado una cuota el mes actual");
 						}else{
 							var cuotaPrestamo = this.get('store').createRecord('fee',{
 								administration: parseInt(this.valAdministracion),
@@ -140,7 +137,7 @@ export default Controller.extend({
 								interest: parseInt(this.valInteres),
 								payment: parseInt(document.getElementById('valorAbono').value),
 							});
-									
+
 							
 							this.store.findRecord('loan',this.objetoPrestamo.get('id')).then((prestamoEncontrado) => {
 								cuotaPrestamo.set('loan', prestamoEncontrado);

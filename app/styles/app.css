@@ -233,3 +233,7 @@ thead{
 .tituloCuotas{
 	margin: 0% 48%;
 }
+
+#valorAbono{
+	width: 120px;
+}

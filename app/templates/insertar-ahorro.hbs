@@ -8,14 +8,14 @@
 			<select value="role" class="form-control" onchange={{action "updateValue" value="target.value"}}>
 				<option value="vacio">No has seleccionado ningún socio</option>
 				{{#each model.users as |role|}}
+					{{#if role.acepted}}
 					<option value="{{role.id}}">{{role.name}}</option>
+					{{/if}}
 				{{/each}}
 			</select>
-			<br><br>		
-			<button class="btn btn-primary" {{action 'insertarAhorro'}}>Insertar ahorro</button>
-		
-		</div> 
-		
+			<br><br>
+			<button class="btn btn-primary" {{action 'insertarAhorro'}}>Insertar ahorro</button>		
+		</div>
 		<div class="col-sm-6">
 		{{#if model.fecha}}
 				<div class="container" id="ahorro">
@@ -66,8 +66,8 @@
 			<div class="container" id="cuota">
 			{{#if verCuota}}
 				<i style="color:red">{{sinCuotas}}</i> <i>{{detalleCuota}}</i><br>
-
-				<input type=number min="1" max={{montoRestante}} value=valorAbono class="form-control" placeholder={{valorAbono}} id="valorAbono">
+				
+				<label >Valor Abono: </label> <input type=number min="1" max={{montoRestante}} value=valorAbono class="form-control" placeholder={{valorAbono}} id="valorAbono">
 				<label >{{valorInteres}}</label><br>
 				<label >{{valorMulta}}</label><br>
 				<label >{{valorAdministracion}}</label><br>
