@@ -52,33 +52,31 @@
 	<div class="row">
 		<div class="col-sm-7">
 			{{#if verCuota}}
+				<label >{{valorPrestamo}}</label><br>
+				<label >{{fechaPrestamo}}</label><br>
+				<label >{{montoParcial}}</label><br><br>
 
-			<label >{{valorPrestamo}}</label><br>
-			<label >{{fechaPrestamo}}</label><br>
-			<label >{{montoParcial}}</label><br><br>
-
-			{{input type="checkbox" name="multa" checked=multa}} <label >Multa</label> <br>
-			<button class="btn btn-primary" {{action 'insertarCuota'}}>Insertar Cuota</button>
-
+				{{input type="checkbox" name="multa" checked=multa}} <label >Multa</label> <br>
+				<button class="btn btn-primary" {{action 'insertarCuota'}}>Insertar Cuota</button>
 			{{/if}}
 
 		</div>
 
 		<div class="col-sm-4">
 			<div class="container" id="cuota">
-				{{#if verCuota}}
-			<i style="color:red">{{sinCuotas}}</i> <i>{{detalleCuota}}</i><br>
+			{{#if verCuota}}
+				<i style="color:red">{{sinCuotas}}</i> <i>{{detalleCuota}}</i><br>
 
-			<input type=number min="1" max={{montoRestante}} value=valorAbono class="form-control" placeholder={{valorAbono}} id="valorAbono">
-			<label >{{valorInteres}}</label><br>
-			<label >{{valorMulta}}</label><br>
-			<label >{{valorAdministracion}}</label><br>
-			{{#if multa}}
-				<label> Multa: $10.000 </label><br>
-				<label> Total: {{valorTotalMulta}}</label>
-			{{else}}
-				<label> Total:  {{valorTotal}}</label>
-			{{/if}}
+				<input type=number min="1" max={{montoRestante}} value=valorAbono class="form-control" placeholder={{valorAbono}} id="valorAbono">
+				<label >{{valorInteres}}</label><br>
+				<label >{{valorMulta}}</label><br>
+				<label >{{valorAdministracion}}</label><br>
+				{{#if multa}}
+					<label> Multa: $10.000 </label><br>
+					<label> Total: {{valorTotalMulta}}</label>
+				{{else}}
+					<label> Total:  {{valorTotal}}</label>
+				{{/if}}
 			{{/if}}
 			</div>
 			

@@ -113,7 +113,7 @@ export default Controller.extend({
 					});
 				});
 			}else{
-				this.set('verCuota',true);
+				this.set('verCuota',false);
 			}
 		},
 
