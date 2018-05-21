@@ -6,15 +6,15 @@
     <ul class="nav navbar-nav">
 			{{#if session.isAuthenticated}}
 				{{#if Admin}}
-					<li><a href="mensajes">Mensajes</a></li>
-					<li><a href="insertar-ahorro">Pagos</a></li>
-					<li><a href="prestamos-solicitados">Préstamos Solicitados</a></li>
-					<li><a href="aceptar-socio">Aceptar Socios</a></li>
-					<li><a href="historial-cuotas-socios">Historial de Cuotas</a></li>
+					<li><a href="/mensajes">Mensajes</a></li>
+					<li><a href="/insertar-ahorro">Pagos</a></li>
+					<li><a href="/prestamos-solicitados">Préstamos Solicitados</a></li>
+					<li><a href="/aceptar-socio">Aceptar Socios</a></li>
+					<li><a href="/historial-cuotas-socios">Historial de Cuotas</a></li>
 				{{else}}
-					<li><a href="mensajes">Mensajes</a></li>
-					<li><a href="proximas-cuotas">Próximas Cuotas</a></li>
-					<li><a href="solicitar-prestamo">Solicitar Préstamo</a></li>
+					<li><a href="/mensajes">Mensajes</a></li>
+					<li><a href="/proximas-cuotas">Próximas Cuotas</a></li>
+					<li><a href="/solicitar-prestamo">Solicitar Préstamo</a></li>
 				{{/if}}
 			{{/if}}
     </ul>
