@@ -130,14 +130,22 @@ export default Controller.extend({
 							this.set('error',true);
 							this.set('errorMessage',"Error: El socio ya ha insertado una cuota el mes actual");
 						}else{
+							
+							var valorDelAbono = 0
+							if(document.getElementById('valorAbono').value){
+								valorDelAbono = document.getElementById('valorAbono').value;
+							}else{
+								valorDelAbono = 0;
+							}
+
 							var cuotaPrestamo = this.get('store').createRecord('fee',{
 								administration: parseInt(this.valAdministracion),
 								date: fechaActual.getDate().toString() + '/' + (fechaActual.getMonth() + 1).toString() + '/' + fechaActual.getFullYear().toString(),
 								fine: parseInt(this.valMulta),
 								interest: parseInt(this.valInteres),
-								payment: parseInt(document.getElementById('valorAbono').value),
+								payment: parseInt(valorDelAbono),								
 							});
-
+							
 							
 							this.store.findRecord('loan',this.objetoPrestamo.get('id')).then((prestamoEncontrado) => {
 								cuotaPrestamo.set('loan', prestamoEncontrado);
@@ -192,7 +200,7 @@ export default Controller.extend({
 									cuota_ahorro.save().then(() =>{
 										return socio_encontrado.save().then(()=>{                                
 											this.set('error',true);
-											this.set('errorMessage',"Exito: Mensaje publicado con éxito");
+											this.set('errorMessage',"Exito: Ahorro insertado con éxito");
 											});
 										})
 									})
