@@ -19,7 +19,7 @@
 		<div class="col-sm-6">
 		{{#if model.fecha}}
 				<div class="container" id="ahorro">
-						<h2>Detalle ahorro:</h2>
+						<h2>Detalle ahorro:</h2><hr> 
 						<label >Fondo solidaridad: $1.000</label><br>
 						<label >Cuota base: $30.000 </label><br>
 						<label >Bono: $20.000</label><br>
@@ -50,7 +50,7 @@
 	<h3 >Insertar cuota</h3>
 
 	<div class="row">
-		<div class="col-sm-4">
+		<div class="col-sm-7">
 			{{#if verCuota}}
 
 			<label >{{valorPrestamo}}</label><br>
@@ -65,21 +65,23 @@
 		</div>
 
 		<div class="col-sm-4">
-
-			{{#if verCuota}}
+			<div class="container" id="cuota">
+				{{#if verCuota}}
 			<i style="color:red">{{sinCuotas}}</i> <i>{{detalleCuota}}</i><br>
 
-			<label >{{valorAbono}} </label><br>
+			<input type=number min="1" max={{montoRestante}} value=valorAbono class="form-control" placeholder={{valorAbono}} id="valorAbono">
 			<label >{{valorInteres}}</label><br>
 			<label >{{valorMulta}}</label><br>
 			<label >{{valorAdministracion}}</label><br>
 			{{#if multa}}
-				<label> Multa $10.000 </label><br>
-				<label> Total {{valorTotalMulta}}</label>
+				<label> Multa: $10.000 </label><br>
+				<label> Total: {{valorTotalMulta}}</label>
 			{{else}}
-				<label> Total {{valorTotal}}</label>
+				<label> Total:  {{valorTotal}}</label>
 			{{/if}}
 			{{/if}}
+			</div>
+			
 		</div>
 	</div>
 </div>

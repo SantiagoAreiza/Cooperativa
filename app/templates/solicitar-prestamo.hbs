@@ -3,11 +3,16 @@
 	<label >Valor a solicitar: </label><br><br>
 	
 	<div class="form-group">
-			<input type=number value=valorSolicitado  class="form-control" id="valorSolicitado">
-	</div>
-	
+			<input type=number value=valorSolicitado class="form-control" id="valorSolicitado">
+	</div>	
 	<br>
+	<label >Ingrese la fecha en la que desea el préstamo: </label>
+	<br><br>
+	<input value=dateSolicitud id="dateSolicitud" type="date" required pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}">
+	<br><br>
+
 	<button class="btn btn-primary btn-md" id="boton_solicitar" {{action "solicitarPrestamo" valorSolicitado}}>Solicitar Préstamo</button><br/><br>
+	
 	<label class="notificacion">{{notificacionSolicitud}}</label>
 	{{outlet}}
 </div>

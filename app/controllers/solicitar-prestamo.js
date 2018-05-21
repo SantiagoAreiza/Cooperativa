@@ -7,7 +7,10 @@ export default Controller.extend({
 		solicitarPrestamo(){
 			var estadoPrestamo = false;
 			var valorSolicitado = document.getElementById('valorSolicitado').value;
-			var fechaActual = new Date();
+		  var	fechaSolicitada = document.getElementById('dateSolicitud').value;
+			var fechaActual = new Date(fechaSolicitada);
+
+					
 			this.store.findRecord('user', this.get('session').get('currentUser').uid).then((usuario)=>{
 				usuario.get('loans').then((prestamos)=>{
 					prestamos.forEach((prestamo)=>{
@@ -21,7 +24,7 @@ export default Controller.extend({
 						if(valorSolicitado<=0){
 							this.set('notificacionSolicitud','El monto solicitado debe ser mayor a 0');
 			
-						}else if(fechaActual.getMonth() > 9){
+						}else if((fechaActual.getMonth()+1) > 9){
 							this.set('notificacionSolicitud','Fecha no válida para solicitar préstamos');
 						}else if(valorSolicitado > 1200000){
 							this.set('notificacionSolicitud',"El monto solicitado debe ser menor a $1'200.000");

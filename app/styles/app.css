@@ -181,10 +181,20 @@ thead{
 #ahorro {
 	border:1px solid #e1dad9;
 	border-radius: 5px;
-	width: 250px;
+	width: 370px;
 	min-height:100px;
 	text-align: justify;
 	background-color: #f9f7f7;
+}
+
+#cuota{
+	border:1px solid #e1dad9;
+	border-radius: 5px;
+	width: 370px;
+	min-height:100px;
+	text-align: justify;
+	background-color: #f9f7f7;
+
 }
 
 #valorSolicitado {
