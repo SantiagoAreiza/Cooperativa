@@ -34,18 +34,22 @@
 				</tr>
 			</thead>
 			<tbody>
-				{{#each model as |mes|}}
+				{{#each model as |objeto|}}
 				<tr>
 					{{#if seeByMonth}}
-						<td><strong>{{mes.mes}}</strong></td>
+						<td><strong>{{objeto.mes}}</strong></td>
 					{{/if}}
 					{{#if seeByPartner}}
-						<td><strong>{{mes.nombreSocio}}</strong></td>
+							<td><strong>
+								{{#link-to 'historial-cuotas-socio.socio' objeto.socioId}}
+									{{objeto.nombreSocio}}
+								{{/link-to}}
+							</strong></td>
 					{{/if}}
-					<td>{{mes.administracion}}</td>
-					<td>{{mes.abono}}</td>
-					<td>{{mes.interes}}</td>
-					<td>{{mes.multa}}</td>
+					<td>{{objeto.administracion}}</td>
+					<td>{{objeto.abono}}</td>
+					<td>{{objeto.interes}}</td>
+					<td>{{objeto.multa}}</td>
 				</tr>
 				{{/each}}
 			</tbody>

@@ -1,7 +1,7 @@
 {{menu-superior}}
 {{outlet}}
-<h2 class = "prestamosSolicitados">Próximas cuotas</h2>
-<div class='container' >
+<h2 class = "prestamosSolicitados">{{model.socio}}</h2>
+<div class='container'>
 	{{#if model.error}} 
 		<div class="container">
 			{{ventana-notificacion mensaje=model.errorMessage}}
@@ -15,20 +15,18 @@
 					<th>Interés</th> 
 					<th>Multa</th>
 					<th>Administracion</th>
-					<th>Falta por pagar</th>
 					<th>Total</th>
 				</tr>
 			</thead>
 			<tbody>
-				{{#each model as |cuota|}}
+				{{#each model.cuotas as |cuota|}}
 					<tr class="bodyTable {{cuota.Clase}}">
-						<td>{{cuota.Fecha}}</td>
-						<td>{{cuota.Abono}}</td>
-						<td>{{cuota.Interes}}</td>
-						<td>{{cuota.Multa}}</td>
-						<td>{{cuota.Administracion}}</td>
-						<td>{{cuota.faltaPagar}}</td>
-						<td>{{cuota.Total}}</td>
+						<td>{{cuota.date}}</td>
+						<td>{{cuota.payment}}</td>
+						<td>{{cuota.interest}}</td>
+						<td>{{cuota.fine}}</td>
+						<td>{{cuota.administration}}</td>
+						<td>{{cuota.total}}</td>
 					</tr>
 				{{/each}}
 			</tbody>

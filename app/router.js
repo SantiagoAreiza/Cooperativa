@@ -16,6 +16,9 @@ Router.map(function() {
   this.route('insertar-ahorro');
   this.route('solicitar-prestamo');
   this.route('historial-cuotas-socios');
+	this.route('historial-cuotas-socio', function() {
+    this.route('socio', { path : ':id' });
+  });
   this.route('historial-cuotas');
 });
 

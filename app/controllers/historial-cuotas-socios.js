@@ -17,7 +17,8 @@ function createUserFee() {
 		'abono':0,
 		'interes':0,
 		'multa':0,
-		'nombreSocio': null
+		'nombreSocio': null,
+		'socioId': null
 	};
 }
 
@@ -96,6 +97,7 @@ export default Controller.extend({
 				socios.forEach((socio)=>{
 					cuotasUsuario[i] = createUserFee();
 					cuotasUsuario[i].nombreSocio = socio.get('name');
+					cuotasUsuario[i].socioId = socio.get('id');
 					indexUsuario[socio.get('name')] = i;
 					i++;
 				});
