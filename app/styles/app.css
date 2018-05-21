@@ -2,22 +2,16 @@ body {
 	background-color:white;
 }
 
-div.navbar-header {
-	position: absolute;
-	left: 1px;
+div.navbar-nav {
+	position: 0px 0px;
+}
+div.navbar-header{
+	position: 0px 0px;
 }
 
-.navbar-default .navbar-brand {
-	color: #ffff;
-}
-
-.navbar-default .navbar-nav > li > a {
-	color: #ffff;
-}
-
-div.navbar-content {
-	position: absolute;
-	left: 40%;
+div.container-fluid{
+	position: relative;
+	justify-content: center;
 }
 
 ul {
@@ -41,12 +35,7 @@ container{
 	justify-content: center;
 }
 
-.navbar-default {
-	background-color: rgb(40,40,40);
-	border-color: rgb(40,40,40);
-}
-
-div.salir{
+.salir{
 	float: right;
 	position: relative;
 	right: 0;
