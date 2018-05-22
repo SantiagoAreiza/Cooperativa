@@ -133,7 +133,7 @@ export default Controller.extend({
 						}
 						else if((document.getElementById('valorAbono').value)<0){
 							this.set('error',true);
-							this.set('errorMessage',"Error: Cuota tiene valores negativos")
+							this.set('errorMessage',"Error: El valor del abono debe ser mayor o igual a 0")
 						}
 						else{
 							
