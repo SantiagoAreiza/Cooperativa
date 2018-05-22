@@ -33,11 +33,12 @@ export default Controller.extend({
 						nuevoMensaje.set('admin',administrador);
 						administrador.get('messages').addObject(nuevoMensaje);
 						nuevoMensaje.save().then(function () {
+							this.set('model',this.store.findAll('message'));
+							this.set('error',true);
+							this.set('errorMessage',"Exito: Mensaje publicado con éxito");
 							return administrador.save();
 						});
 					});
-				this.set('error',true);
-				this.set('errorMessage',"Exito: Mensaje publicado con éxito");
 			}
 		},
 
@@ -46,14 +47,24 @@ export default Controller.extend({
 			var textoBuscar = this.get('buscarMensaje');
 			if(this.camposInvalidos([textoBuscar])){
 				this.set('error', true);
+				this.set('errorMessage', 'Advertencia: Campos incompletos');
 			}else{
 				this.store.findAll('message').then((mensajes)=>{
-					//Logica para filtrar los mensajes
-					if(mensajes.length == 0){
+					var mensajesTemporales = [];
+					mensajes.forEach((mensaje) => {
+						if(mensaje.get('text').toUpperCase().includes(textoBuscar.toUpperCase())){
+							mensajesTemporales = mensajesTemporales.concat(mensaje);
+						}
+					});
+					mensajesTemporales.sort(function(a,b){
+						return new Date(b.get('date').split('/')[2], b.get('date').split('/')[1], b.get('date').split('/')[0]) - 
+						new Date(a.get('date').split('/')[2], a.get('date').split('/')[1], a.get('date').split('/')[0])
+					});
+					if(mensajesTemporales.length == 0){
 						this.set('error', true);
 						this.set('errorMessage',"Advertencia: No se han encontrado mensajes");
 					}else{
-						this.set('model',mensajes);
+						this.set('model',mensajesTemporales);
 					}
 				})
 			}
