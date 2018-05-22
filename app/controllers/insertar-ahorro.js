@@ -1,5 +1,5 @@
 import Controller from '@ember/controller';
-import { parse } from 'querystring';
+
 
 export default Controller.extend({
 	user: null,
@@ -131,19 +131,20 @@ export default Controller.extend({
 							this.set('error',true);
 							this.set('errorMessage',"Error: El socio ya ha insertado una cuota el mes actual");
 						}
-						/*else if((document.getElementById('valorAbono').value)<0){
+						else if((document.getElementById('valorAbono').value)<0){
 							this.set('error',true);
-							this.set('errorMessage',"Cuota tiene valores negativos")
+							this.set('errorMessage',"Error: Cuota tiene valores negativos")
 						}
-						*/
 						else{
 							
 							var valorDelAbono = 0
+							
 							if(document.getElementById('valorAbono').value){
 								valorDelAbono = document.getElementById('valorAbono').value;
 							}else{
 								valorDelAbono = 0;
 							}
+							
 
 							var cuotaPrestamo = this.get('store').createRecord('fee',{
 								administration: parseInt(this.valAdministracion),
